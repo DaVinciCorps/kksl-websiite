@@ -3,7 +3,7 @@ import HomePage from "./screen/HomePage";
 
 function App() {
   return (
-    <div >
+    <div style={{height:"100%"}}>
       <HomePage />
     </div>
   );

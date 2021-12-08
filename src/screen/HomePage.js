@@ -5,9 +5,9 @@ import Home from '../components/Home'
 
 
 export default function HomePage() {
-    const [value, setValue] = useState(0);
+    // const [value, setValue] = useState(0);
     return (
-        <div>
+        <div style={{height:'100%'}}>
             <Navbar />
             <Header value={0} />
             <Home />
