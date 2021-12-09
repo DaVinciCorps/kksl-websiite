@@ -9,6 +9,9 @@ import Equity from '../images/equity.png'
 import Derivatives from '../images/derivative.png'
 import MutualFund from '../images/mutualfunds.png'
 import Illustration1 from '../images/Illustration1.png'
+import illustration2 from '../images/illustration2.png'
+import illustration3 from '../images/illustration3.png'
+import illustration4 from '../images/illustration4.png'
 import Trust1 from '../images/Trust1.png'
 import TextField from '@mui/material/TextField';
 import Ellipse1 from '../images/Ellipse1.png'
@@ -326,24 +329,63 @@ function Home() {
                                 neque sit donec. Ornare nullam consectetur sed tortor urna.
                             </div>
                             <div className={classes.image}>
-                                <img src={Illustration1} alt="Equity" />
+                                <img src={illustration2} alt="Equity" />
                             </div>
                         </div>
                     </div>
                     </TabPanel>
                     <TabPanel>
                     <div className="panel-content">
-                        <h2>Any content 2</h2>
+                        <div>
+                            <div className={classes.head}>
+                                Lorem Ipsum
+                            </div>
+                            <div className={classes.body}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Viverra varius urna viverra nunc 
+                                vel pulvinar diam, dui. Libero euismod massa sed sit quam 
+                                neque sit donec. Ornare nullam consectetur sed tortor urna.
+                            </div>
+                            <div className={classes.image}>
+                                <img src={illustration3} alt="Derivatives" />
+                            </div>
+                        </div>
                     </div>
                     </TabPanel>
                     <TabPanel>
                     <div className="panel-content">
-                        <h2>Any content 3</h2>
+                        <div>
+                            <div className={classes.head}>
+                                Lorem Ipsum
+                            </div>
+                            <div className={classes.body}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Viverra varius urna viverra nunc 
+                                vel pulvinar diam, dui. Libero euismod massa sed sit quam 
+                                neque sit donec. Ornare nullam consectetur sed tortor urna.
+                            </div>
+                            <div className={classes.image}>
+                                <img src={illustration4} alt="Commodities" />
+                            </div>
+                        </div>
                     </div>
                     </TabPanel>
                     <TabPanel>
                     <div className="panel-content">
-                        <h2>Any content 4</h2>
+                        <div>
+                            <div className={classes.head}>
+                                Lorem Ipsum
+                            </div>
+                            <div className={classes.body}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Viverra varius urna viverra nunc 
+                                vel pulvinar diam, dui. Libero euismod massa sed sit quam 
+                                neque sit donec. Ornare nullam consectetur sed tortor urna.
+                            </div>
+                            <div className={classes.image}>
+                                <img src={Illustration1} alt="Mutual Funds" />
+                            </div>
+                        </div>
                     </div>
                     </TabPanel>
                 </Tabs>
