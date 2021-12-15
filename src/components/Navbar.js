@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import TrendImage from '../images/Vector.png'
-
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Menu from "../images/menu.png"
 const useStyles = makeStyles({
     root:{
         // width: '100%',
@@ -9,7 +10,10 @@ const useStyles = makeStyles({
         backgroundColor: '#0953AA',
         display: 'flex',
         alignItems: 'center',
-        justifyContent : 'space-around',
+        justifyContent : 'space-between',
+        position: 'sticky',
+        top: 0,
+        padding: "0px 14.4%"
         // paddingLeft: '14.5%',
         // paddingRight: '14.5%'
     },
@@ -29,7 +33,8 @@ const useStyles = makeStyles({
         letterSpacing: '0.005em',
         // textTransform: 'uppercase',
         color: '#FFFFFF',
-        marginRight: 32
+        marginRight: 32, 
+        cursor: 'pointer'
     },
 
     nifty:{
@@ -102,54 +107,65 @@ const useStyles = makeStyles({
 
 export default function Navbar() {
     const classes = useStyles();
+    const isMobile = useMediaQuery('(max-width:600px)');
     return (
-        <div className = {classes.root} >
-            
-            <div className = {classes.navLinks}>
-                <p className={classes.navP}>
-                    OPEN AN ACCOUNT
+        <React.Fragment >
+        {isMobile && 
+            <div style={{padding: "0px 6.4%", display: 'flex',justifyContent: 'space-between', backgroundColor: "#0953AA", height: 45,alignItems: 'center'}}>
+                <p style={{fontFamily: 'Mulish', fontWeight: 600, fontSize: 20, lineHeight: "25.1px", letterSpacing: "0.04em", color: "white"}}>
+                    kk Securities
                 </p>
-                <p className={classes.navP}>
-                    IPO
-                </p>
-                <p className={classes.navP}>
-                    FUND TRANSFER
-                </p>
-                <p className={classes.navP}>
-                    Re-KYC
-                </p>
+                <img src={Menu} />
             </div>
+        }
+        {!isMobile &&    <div className = {classes.root} >
+                
+                <div className = {classes.navLinks}>
+                    <p className={classes.navP}>
+                        OPEN AN ACCOUNT
+                    </p>
+                    <p className={classes.navP}>
+                        IPO
+                    </p>
+                    <p className={classes.navP}>
+                        FUND TRANSFER
+                    </p>
+                    <p className={classes.navP}>
+                        Re-KYC
+                    </p>
+                </div>
 
-            <div className={classes.nifty}>
-                <div className={classes.shares}>
-                    <div className={classes.name}>
-                        NIFTY
+                <div className={classes.nifty}>
+                    <div className={classes.shares}>
+                        <div className={classes.name}>
+                            NIFTY
+                        </div>
+                        <div className={classes.value}>
+                            15784.10
+                        </div>
+                        <div className={classes.trend}>
+                            <img src={TrendImage} alt="Trend Icon" style={{width: '15.67px', height: '13.58px'}} /> 46.35(0.29%)
+                        </div>
                     </div>
-                    <div className={classes.value}>
-                        15784.10
-                    </div>
-                    <div className={classes.trend}>
-                        <img src={TrendImage} alt="Trend Icon" style={{width: '15.67px', height: '13.58px'}} /> 46.35(0.29%)
+                    <div className={classes.shares}>
+                        <div className={classes.name}>
+                            SENSEX
+                        </div>
+                        <div className={classes.value}>
+                            52.515.51
+                        </div>
+                        <div className={classes.trend}>
+                            <img src={TrendImage} alt="Trend Icon" style={{width: '15.67px', height: '13.58px'}}/> 215.04(0.41%)
+                        </div>
                     </div>
                 </div>
-                <div className={classes.shares}>
-                    <div className={classes.name}>
-                        SENSEX
-                    </div>
-                    <div className={classes.value}>
-                        52.515.51
-                    </div>
-                    <div className={classes.trend}>
-                        <img src={TrendImage} alt="Trend Icon" style={{width: '15.67px', height: '13.58px'}}/> 215.04(0.41%)
-                    </div>
-                </div>
-            </div>
 
-            <div >
-                <button className={classes.signInButton}>
-                    Sign In
-                </button>
-            </div>
-        </div>
+                <div >
+                    <button className={classes.signInButton}>
+                        Sign In
+                    </button>
+                </div>
+            </div>}
+        </React.Fragment>
     )
 }

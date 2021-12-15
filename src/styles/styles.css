@@ -4,6 +4,10 @@
   margin-bottom: 50px;
 }
 
+p{
+  margin: 0px;
+}
+
 .react-tabs__tab-list {
   display: flex;
   flex-direction: column;
@@ -36,9 +40,9 @@
 
 .react-tabs__tab-panel--selected {
   display: flex;
-  padding-left: 25px;
+  padding-left: 15px;
   margin-top: 30px;
-  /* width: 40%; */
+  width: 100%;
 }
 
 .react-tabs__tab {

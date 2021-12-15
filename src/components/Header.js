@@ -1,131 +1,139 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-// import { styled } from '@mui/material/styles';
-// import Box from '@mui/material/Box';
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
-// import TabPanel from '@mui/lab/TabPanel';
-// import TabContext from '@mui/lab/TabContext';
+import { Link } from "react-router-dom";
+import { useHistory, useLocation } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const useStyles = makeStyles({
-    root : {
-        backgroundColor:'#E5E5E5',
-        height: 70,
-        display: 'flex',
-        alignItems: 'center',
-    },
+  root: {
+    backgroundColor: 'white',
+    height: 80,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  link:{
+    fontFamily: 'Mulish',
+    fontSize: 16,
+    lineHeight: "120%",
+    paddingLeft: 16,
+    paddingRight: 16,
+    cursor: 'pointer'
+  },
 
-    appName : {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        height:'100%',
-        alignItems:'center',
-    },
-
-    navigation : {
-        display:'flex',
-        flex:2,
-        justifyContent:'space-evenly',
-        fontFamily: 'Mulish',
-        height:'100%',
-        alignItems:'center',
-    },
-
-    currentTabStyle : {
-      fontWeight: 'bold',
-      width:'100%',
-      color : 'black',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderBottom: '4px solid #0953AA',
-    },
-
-    normalTabStyle : {
-      width:'100%',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-
-  });
+});
 
 
-  // const AntTabs = styled(Tabs)({
-  //   borderBottom: '1px  #e8e8e8',
-  //   '& .MuiTabs-indicator': {
-  //     backgroundColor: '#0953AA',
-  //   },
-  // });
-  
-  // const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-  //   textTransform: 'none',
-  //   fontFamily: [
-  //     'Mulish',
-  //   ].join(','),
-  //   '&:hover': {
-  //     opacity: 1,
-  //   },
-  //   '&.Mui-selected': {
-  //     color: 'black',
-  //     fontWeight: 'bold',
-  //   },
-  // }));
+function Header() {
+  const classes = useStyles();
+  const isMobile = useMediaQuery('(max-width:600px)');
+  const history = useHistory();
+  const {pathname} = useLocation();
+  const [value,setValue] = useState();
+  useEffect(()=>{
+    const path = pathname.split("/")[1];
+    if(path==''){
+      setValue(0);
+    }
+    else if(path=='about'){
+      setValue(1);
+    }
+    else if(path=='product'){
+      setValue(3);
+    }
+    else if(path=='services'){
+      setValue(4);
+    }
+  },[pathname])
 
+  const handleNavigate=(link)=>{
+    history.push(link);
+  }
 
+  return (
+    <React.Fragment>
+    
+    {!isMobile &&
+      
+    <div className={classes.root}>
+      <div style={{position: 'relative', left: '9.7%'}}><span style={{color: '#3E4953',fontSize: 20,cursor :'pointer' }}><b>logo</b>ipsum</span></div>
+      <div style={{display: 'flex', margin: 'auto',}}>
+        
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/")}} style={{color: value==0? "#161A1B":"rgba(22, 26, 27, 0.6)", fontWeight: value==0? 'bold':400 }}>
+              Home
+            </p>
+            {value ==0 &&  
+              <div style={{marginTop: 8, height: 4,backgroundColor: "#0953AA"}}>
 
-function Header(props) {
-    const classes = useStyles();
-    // const [value, setValue] = useState(0);
-
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
-
-    return (
-      <div className={classes.root}>
-        <div className={classes.appName}>
-          logoIPSUM
-        </div>
-        <div className={classes.navigation}>
-          {/* <Box sx={{ width: '100%'}}>
-            <AntTabs value={value} onChange={handleChange} centered>
-              <AntTab label="Home" value="0" default/>
-              <AntTab label="About Us" value="1" />
-              <AntTab label="Market" value="2"/>
-              <AntTab label="Product" value="3"/>
-              <AntTab label="Services" value="4"/>
-              <AntTab label="Tools" value="5"/>
-              <AntTab label="Blogs/Videos" value="6"/>
-            </AntTabs>
-          </Box> */}
-          <div className={props.value === 0 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Home
+              </div>
+            }
           </div>
-          <div className={props.value === 1 ? classes.currentTabStyle: classes.normalTabStyle}>
-            About Us
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/about")}} style={{color: value==1? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==1? 'bold':400 }}>
+              About Us
+            </p>
+            {value ==1 &&  
+              <div style={{marginTop: 8, height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-          <div className={props.value === 2 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Market
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/")}} style={{color: value==2? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==2? 'bold':400 }}>
+              Market
+            </p>
+            {value ==2 &&  
+              <div style={{marginTop: 8,  height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-          <div className={props.value === 3 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Product
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/product")}} style={{color: value==3? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==3? 'bold':400 }}>
+              Product
+            </p>
+            {value ==3 &&  
+              <div style={{marginTop: 8, height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-          <div className={props.value === 4 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Services
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/services")}} style={{color: value==4? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==4? 'bold':400 }}>
+              Services
+            </p>
+            {value ==4 &&  
+              <div style={{marginTop: 8, height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-          <div className={props.value === 5 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Tools
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/")}} style={{color: value==5? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==5? 'bold':400 }}>
+              Tools
+            </p>
+            {value ==5 &&  
+              <div style={{marginTop: 8, height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-          <div className={props.value === 6 ? classes.currentTabStyle: classes.normalTabStyle}>
-            Blogs/Videos
+          <div >
+            <p className={classes.link} onClick={()=>{handleNavigate("/")}} style={{color: value==6? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==6? 'bold':400 }}>
+              Blogs/Videos
+            </p>
+            {value ==6 &&  
+              <div style={{marginTop: 8, width: 80, height: 4,backgroundColor: "#0953AA"}}>
+
+              </div>
+            }
           </div>
-        </div>
       </div>
-    )
+    </div>
+    
+    }
+    </React.Fragment>
+  )
 }
 
 export default Header
