@@ -1,8 +1,7 @@
 import React from 'react'
-import laptop from "../../images/Product/Laptop.png"
-import Phone from "../../images/Product/Phone.png"
-import stock from "../../images/Product/stock.png"
-import Desktop from "../../images/Product/Desktop.png"
+import laptop from "../../images/Product/Group 626252.png"
+import stock from "../../images/Product/Group 626253.png"
+import Desktop from "../../images/Product/Group 626254.png"
 import apple from "../../images/Product/Group (1).png"
 import google from "../../images/Product//Group.png"
 import {useHistory } from 'react-router-dom';
@@ -65,7 +64,10 @@ function Product() {
         return (
             <div style={{display: 'flex', justifyContent: 'space-between', marginTop:isMobile?60: 324, marginBottom:isMobile?48: 160, flexWrap: isMobile?'wrap-reverse':''}}>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <img src={Desktop} style={{width: isMobile?311.8:"", marginTop:isMobile?24:0}} />
+                    <div>
+                        <img src={Desktop} style={{width: isMobile?311.8:"", marginTop:isMobile?24:0}} />
+                    </div>
+                
                     {isMobile && 
                         <button style={{margin: "auto" ,marginTop: 24,width:isMobile?120: 257, height:isMobile?44: 56, backgroundColor: '#2584F4', color: 'white', fontSize:isMobile?14: 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer'}}>
                             Get Started

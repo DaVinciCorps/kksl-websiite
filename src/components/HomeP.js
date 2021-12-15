@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import { makeStyles } from '@mui/styles';
+import React,{useState,useEffect,useRef, useCallback} from 'react'
+import { makeStyles, } from '@mui/styles';
 import HeroSectionImage from '../images/HeroSection1.png'
 
 import Bar from "../images/BarChart.png";
@@ -19,9 +19,17 @@ import Arrow1 from '../images/Arrow 1 (1).png'
 import Arrow2 from '../images/Arrow 2.png'
 import Android from '../images/ic_baseline-phone-android.png'
 import Iphone from '../images/fluent_phone-12-regular.png'
-import Laptop from '../images/bx_bx-laptop.png'
+import Laptop from '../images/bx_bx-laptop.png';
+import Person1 from "../images/Ellipse 7.png";
+import Person2 from "../images/Ellipse 8.png";
+import Person3 from "../images/Ellipse 9.png";
+import Stars from  "../images/Group 3.png";
+import RightArrow from "../images/Vector (11).png";
+import LeftArrow from "../images/Vector (12).png";
+import Pattern from "../images/Pattern.png";
 
 import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 const useStyles = makeStyles(() => ({
@@ -75,6 +83,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function HomeP() {
+    const scrollRef = useRef();
     const isMobile = useMediaQuery('(max-width:600px)');
     const classes = useStyles();
     const [side,setSide] = useState("Equity");
@@ -84,6 +93,9 @@ export default function HomeP() {
         body: 'Our stronghold in the secondary market with our reliable relationship managers gives you complete autonomy over your investment choices. ',
         img: illustration1
     });
+
+    
+    
     const buildYourInvestment=()=>{
         return(
             <div style={{marginTop:isMobile?40: 130, marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
@@ -244,7 +256,7 @@ export default function HomeP() {
 
     const section4=()=>{
         return (
-            <div style={{backgroundColor: '#0953AA'}}>
+            <div style={{backgroundColor: '#0953AA', backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile?"25%":""}}>
                 <div style={{marginLeft:isMobile?"6.2%": "14.4%", marginRight:isMobile?"6.2%": '14.4%', paddingTop:isMobile?48: 183, paddingBottom:isMobile?48: 137, display: 'flex', alignItems: 'end', flexWrap: isMobile?"wrap": ''}}>
                     <div style={{marginTop: 10}}>
                         <p style={{fontFamily: 'Mulish',fontWeight: 'bold',fontSize:isMobile?20: 56,color: "white"}}>
@@ -327,6 +339,91 @@ export default function HomeP() {
         )
     }
 
+    const section6=()=>{
+        const data = [
+            {
+                img: Person1,
+                name: "Jane Cooper",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
+            {
+                img: Person2,
+                name: "Eleanor Pena",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
+            {
+                img: Person3,
+                name: "Kathryn Murphy",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
+        ]
+
+        const scrollLeft=()=>{
+            for(var i=0;i<50;i++){
+                setTimeout(()=>{scroll(-10)},200)
+            }
+            
+        }
+        const scrollRight=()=>{
+            for(var i=0;i<50;i++){
+                setTimeout(()=>{scroll(+10)},200)
+            }
+        }
+
+        const scroll=(x)=>{
+            scrollRef.current.scrollLeft += x
+        }
+
+        const feedbackCard=(data,index)=>{
+            return(
+                <div id={`card-${index}`} style={{backgroundColor: "#E7F1FE",boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)",borderRadius: 15, margin:isMobile?"96px 20px 40.88px 20px": "138px 120px 78px 25px",minWidth:isMobile?327: 420}}>
+                    <div style={{margin: "0px 32px 32px 32px", }}>
+                        <img src={data.img} style={{position: "relative", borderRadius: "100%",bottom: 56 }} />
+                        <div style={{marginTop: -40}}>
+                            <img src={Stars} ></img>
+                        </div>
+                        <p style={{fontFamily: 'Mulish', fontSize: 12, lineHeight:isMobile?"20px": "24px", color: 'black',marginTop: 24, maxWidth:isMobile?263: 356}}>
+                            {data.text}
+                        </p>
+                        <p style={{fontFamily: 'Mulish', fontSize: 16,fontWeight: 700, lineHeight:isMobile?"20.8px": "24px", color: 'black',marginTop: 16}} >
+                            {data.name}
+                        </p>
+                        <p style={{fontFamily: 'Mulish', fontSize:isMobile?12: 14,fontWeight: 500, lineHeight:isMobile?"15.06px": "21px", color: 'black',marginTop: isMobile?4:8}} >
+                            {data.profession}
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        return(
+            <div style={{marginTop: 120,  backgroundColor: '#F7F7F7', }}>
+                <div style={{margin:isMobile?"0px 6.2% 0px 6.2%": "0px 0% 132px 7.2%",paddingTop:isMobile?40: 88}}>
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <p style={{fontSize:isMobile?20: 36, lineHeight:isMobile?"25.1px": "45.18px", fontWeight: 'bold', fontFamily: 'Mulish',color: "#3C4856"}}>
+                            What People Say About Us?
+                        </p>
+                        <p style={{fontSize:isMobile?12: 16,marginTop:isMobile?16: 24, lineHeight:isMobile?"20px": "26px", fontWeight: 400, fontFamily: 'Mulish',color: "rgba(0, 0, 0, 0.7)", maxWidth: 592, textAlign: 'center'}}>
+                            With personalized support, qualitative research, and sound advice, we make investing easy for you.
+                        </p>
+                    </div>
+                    <div ref={scrollRef} style={{display: 'flex', overflowX:'auto',margin:isMobile? '0px -6.2%':0}}>
+                        {data.map((i,index)=>
+                            feedbackCard(i,index)    
+                        )}
+                    </div>
+                    <div style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132, justifyContent: 'end', marginRight:isMobile?"0px": "14.4%" }}>
+                        <img onClick={scrollLeft} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                        <img onClick={scrollRight} src = {RightArrow} style={{cursor: "pointer"}} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     const section7=()=>{
         return(
             <React.Fragment>
@@ -355,6 +452,7 @@ export default function HomeP() {
             {section3()}
             {section4()}
             {section5()}
+            {section6()}
             {section7()}
         </div>
     )

@@ -235,7 +235,7 @@ function Debt() {
     const investInStocks=()=>{
         return(
             <div style={{margin:isMobile?"48px 6.2% ": "160px 14.4% 160px 14.4%", maxWidth: 1440,}}>
-                <div style={{ backgroundColor: "#0953AA", borderRadius: 15,display: 'flex',justifyContent: "space-between", padding:isMobile?"40px 6.2%": "125px 82px 100px 104px", flexWrap: isMobile?"wrap":'', }}>
+                <div style={{ backgroundColor: "#0953AA", borderRadius: 15,display: 'flex',justifyContent: "space-between", padding:isMobile?"40px 6.2%": "125px 82px 100px 104px", flexWrap: isMobile?"wrap":'',backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile?"25%":"" }}>
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
                         <p style={{color: "white", fontFamily: 'Mulish', fontWeight: 'bold', fontSize:isMobile?20: 40, lineHeight:isMobile?"25.1px": "52px", letterSpacing: "0.005em"}}>
                             Invest in Stocks

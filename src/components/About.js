@@ -1,25 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { makeStyles } from '@mui/styles';
 import g7 from '../images/g7.png'
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import pc1 from '../images/pc1.png'
-import vector10 from '../images/Vector (10).png'
 import icon1 from "../images/eos-icons_trusted-organization.png"
-import pc2 from '../images/pc2.png'
 import pc3 from '../images/pc3.png'
 import d1 from '../images/d1.png'
 import d2 from '../images/d2.png'
 import d3 from '../images/d3.png'
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Group from "../images/Group.png";
+import cross from "../images/x.png";
+
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -79,7 +69,8 @@ const useStyles = makeStyles({
         ['@media (max-width:600px)']: {
             margin: "0px 6.2% 48px 6.2%",
             flexWrap: 'wrap'
-        }
+        },
+        borderRadius: 15,
     },
 
 
@@ -124,16 +115,19 @@ function About() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const isMobile = useMediaQuery('(max-width:600px)');
-    const handleClickOpen = () => {
+    const isLarge = useMediaQuery('(min-width:1200px)');
+    const [currAbout,setCurrAbout] = useState(0);
+    const handleClickOpen = (e) => {
+        setCurrAbout(e);
         setOpen(true);
     };
-
+    
     const handleClose = () => {
         setOpen(false);
     };
     const cardTrust=()=>{
         return(
-            <div style={{boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile?24:''}}>
+            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile?24:''}}>
                 <div style={{margin:isMobile? "16px 16px 24px 16px":40, }}> 
                     <img src={icon1} style={{width: isMobile?72:120}}/>
                     <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight:isMobile?600: 'bold', lineHeight:isMobile?"22.59px": '25px'}}>
@@ -158,7 +152,7 @@ function About() {
 
     const cardPoint=()=>{
         return(
-            <div style={{boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389,  height:isMobile?"": "100%", display: 'flex',flexDirection: 'column', marginBottom: isMobile?24:'' }}>
+            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389,  height:isMobile?"": "100%", display: 'flex',flexDirection: 'column', marginBottom: isMobile?24:'' }}>
                 <div style={{margin:isMobile? "16px 16px 24px 16px":40, flex: 1, display: 'flex', flexDirection: 'column'}}> 
                     <div style={{height:isMobile?72: 120}}><img src={Group} style={{width: isMobile?72:120, height: isMobile?72:120}}/></div>
                     <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight: 'bold', lineHeight:isMobile?"22.59px": '25px'}}>
@@ -182,7 +176,7 @@ function About() {
 
     const cardSeamless=()=>{
         return(
-            <div style={{boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center',}}>
+            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center',}}>
                 <div style={{margin: isMobile? "16px 16px 24px 16px":40,}}>
                     <img src={pc3}style={{width: isMobile?72:120,}} />
                     <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight: 'bold', lineHeight:isMobile?"22.59px": '25px'}} >
@@ -205,23 +199,45 @@ function About() {
         )
     }
 
-    const aboutCard=(img, name, post)=>{
+    const aboutData = [
+        {
+            name: "Kamal Gupta",
+            img: d1,
+            about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
+            post: "Director"
+        },
+        {
+            name: "Mr. Auchitya Gupta",
+            img: d2,
+            about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
+            post: "Director"
+        },
+        {
+            name: "T.R. Agarwal",
+            img: d3,
+            about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
+            post: "Director"
+        }
+    ]
+
+    const aboutCard=(img, name, post,id)=>{
         return(
-            <div style={{width: 389,minHeight: 387,display: 'flex', flexDirection: 'column', alignItems: 'center',  boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile?32:0}}>
+            <div style={{backgroundColor: "white",width: 389,minHeight: 387,display: 'flex', flexDirection: 'column', alignItems: 'center',  boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile?32:0}}>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: isMobile?"24px 16px": "48px 0px", flex: 1}}>
                     <img src={img} style={{width:isMobile?72: 120, height:isMobile?72: 120, borderRadius: "100%",}}></img>
                     <p style={{marginTop: 24, color: '#161A1B',fontFamily: 'Mulish',fontSize:isMobile?18: 20, lineHeight:isMobile?"22.59px": "25px", fontWeight: 'bold',}}>{name}</p>
                     <p style={{marginTop:isMobile?4: 8, color: '#161A1B',fontFamily: 'Mulish',fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: isMobile?"":1}}>{post}</p>
-                    {isMobile && <p style={{marginTop: 24,textAlign: 'center', color:'rgba(22, 26, 27, 0.6)',fontFamily: 'Mulish',fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: 1}}>Director of the company since 2013, Auchitya completed his
+                    {isMobile && <p style={{marginTop: 24,textAlign: 'center', color:'rgba(22, 26, 27, 0.6)',fontFamily: 'Mulish',fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: 1}}>
+                                    Director of the company since 2013, Auchitya completed his
                                     graduation from Delhi University and Masters in Banking and
                                     Finance from University of London. He has a varied bounty of
                                     experience which he gained in his internships with the biggest
                                     names in the Industry like Standard Chartered Bank, ICICI Bank,
                                     Amplify Trading in London and BMW India Financial Services
                                     Ltd.
-                                    </p>}
+                                </p>}
                     {!isMobile && 
-                        <button style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
+                        <button onClick={()=>{handleClickOpen(id)}} style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
                             Read More
                         </button>
                     }
@@ -231,7 +247,7 @@ function About() {
     }
 
     return (
-        <div style={{ backgroundImage: '', margin:0 }}>
+        <div style={{ backgroundImage:  `url("/Vector2.png")`, margin:0, backgroundRepeat: "no-repeat",backgroundPosition: "100% 8%", backgroundSize:isLarge?"70%": "100%" }}>
             <div className={classes.section1}>
                 <div className={classes.section1Text}>
                     <div className={classes.section1Head}>
@@ -278,9 +294,9 @@ function About() {
                 </div>
                 <div className={classes.section3Body}>
                     
-                    {aboutCard(d1,"Kamal Gupta","Director")}
-                    {aboutCard(d2,"Mr. Auchitya Gupta","Director")}
-                    {aboutCard(d3,"T.R. Agarwal","Director")}
+                    {aboutCard(aboutData[0].img,aboutData[0].name,aboutData[0].post,0)}
+                    {aboutCard(aboutData[1].img,aboutData[1].name,aboutData[1].post,1)}
+                    {aboutCard(aboutData[2].img,aboutData[2].name,aboutData[2].post,2)}
 
                 </div>
 
@@ -289,24 +305,24 @@ function About() {
                     <Dialog
                         open={open}
                         onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
+                        style={{boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15}}
+                        maxWidth="md" 
                     >
-                        <DialogTitle id="alert-dialog-title">
-                            {"Use Google's location service?"}
-                        </DialogTitle>
-                        <DialogContent>
-                            <DialogContentText id="alert-dialog-description">
-                                Let Google help apps determine location. This means sending anonymous
-                                location data to Google, even when no apps are running.
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Disagree</Button>
-                            <Button onClick={handleClose} autoFocus>
-                                Agree
-                            </Button>
-                        </DialogActions>
+                        <div style={{width: 831, height: 644,background: 'white',display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <img src={cross} style={{position: 'absolute', top: 32, right: 32, cursor: 'pointer',}} onClick={handleClose} />
+                            <div style={{margin: "64px 64px 151px 64px"}}>
+                                <img src={aboutData[currAbout].img} style={{width: 160, height: 160, borderRadius: "100%"}} />
+                                <p style={{marginTop: 24, fontSize: 24, lineHeight: "30.12px", fontFamily: 'Mulish', color: "#161A1B", fontWeight: 'bold', textTransform: 'uppercase'}} >
+                                    {aboutData[currAbout].name}
+                                </p>
+                                <p style={{marginTop: 8, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400, textTransform: 'uppercase'}} >
+                                    {aboutData[currAbout].post}
+                                </p>
+                                <p style={{marginTop: 47, fontSize: 16, lineHeight: "26px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400,maxWidth: 703 }} >
+                                    {aboutData[currAbout].about}
+                                </p>
+                            </div>
+                        </div>
                     </Dialog>
                 </div>
             </div>

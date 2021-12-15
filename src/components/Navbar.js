@@ -13,7 +13,8 @@ const useStyles = makeStyles({
         justifyContent : 'space-between',
         position: 'sticky',
         top: 0,
-        padding: "0px 14.4%"
+        padding: "0px 14.4%",
+        zIndex: 1000,
         // paddingLeft: '14.5%',
         // paddingRight: '14.5%'
     },
@@ -111,7 +112,7 @@ export default function Navbar() {
     return (
         <React.Fragment >
         {isMobile && 
-            <div style={{padding: "0px 6.4%", display: 'flex',justifyContent: 'space-between', backgroundColor: "#0953AA", height: 45,alignItems: 'center'}}>
+            <div style={{zIndex: 1000,padding: "0px 6.4%", display: 'flex',justifyContent: 'space-between', backgroundColor: "#0953AA", height: 45,alignItems: 'center'}}>
                 <p style={{fontFamily: 'Mulish', fontWeight: 600, fontSize: 20, lineHeight: "25.1px", letterSpacing: "0.04em", color: "white"}}>
                     kk Securities
                 </p>
