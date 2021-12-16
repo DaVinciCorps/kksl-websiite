@@ -77,7 +77,7 @@ function Services() {
         return(
             <div style={{display: 'flex',alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: isMobile? 'wrap-reverse':''}}>
                 <img src={data.image} style={{width:isMobile?"100%": 504, height: isMobile?"": 328, marginTop: isMobile?24:0}} />
-                <div style={{marginLeft:isMobile?0: 20}}>
+                <div style={{marginLeft:isMobile?0: 30}}>
                     <p style={{fontWeight: 'bold', fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px", textAlign: 'left', fontFamily: 'Mulish'}}>
                         {data.heading}
                     </p>
@@ -101,7 +101,7 @@ function Services() {
         return(
             <div style={{display: 'flex',alignItems: 'flex-start', justifyContent: 'space-between', flexWrap:isMobile? 'wrap':''}}>
                 
-                <div style={{marginRight:isMobile?0: 20}}>
+                <div style={{marginRight:isMobile?0: 30}}>
                     <p style={{fontWeight: 'bold', fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px", textAlign: 'left', fontFamily: 'Mulish'}}>
                         {data.heading}
                     </p>

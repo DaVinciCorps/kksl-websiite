@@ -22,7 +22,7 @@ function Product() {
                         </button>
                     }
                 </div>
-                <div style={{marginLeft: 20,}} >
+                <div style={{marginLeft:isMobile?0: 30,}} >
                     <p style={{fontWeight: 'bold',marginTop: 0,  fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px",fontFamily: 'Mulish'}}>Web Trading</p>
                     <p style={{fontWeight: 400,marginTop:isMobile?12: 24,  fontSize:isMobile?12: 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight:isMobile?"18px": "26px",fontFamily: 'Mulish', maxWidth: 400}}>Easy to navigate and adapt, our platform is one you can always count on. Integrated with latest stats on the market along with fast and efficient trades, make sure you make the most of your investments. </p>
                     {!isMobile && 
@@ -38,7 +38,7 @@ function Product() {
         return (
             <div style={{display: 'flex', justifyContent: 'space-between', marginTop:isMobile?48: 240, flexWrap: isMobile?'wrap':''}}>
                 
-                <div style={{marginRight: 20}} >
+                <div style={{marginRight:isMobile?0: 30}} >
                     <p style={{fontWeight: 'bold',marginTop: 0,  fontSize:isMobile?20: 36, color: '#161A1B', lineHeight: isMobile?"24px":"43.2px",fontFamily: 'Mulish'}}>Mobile Application</p>
                     <p style={{fontWeight: 400,marginTop:isMobile?12: 24,  fontSize:isMobile?12: 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight:isMobile?"18px": "26px",fontFamily: 'Mulish', maxWidth: 400}}>Trade and invest on the go with our reliable and easy-to-use mobile application. Stay in touch with the market and get live updates no matter where you are. Enjoy the KKSM experience seamlessly on Android and iOS devices.</p>
                     {!isMobile && 
@@ -74,7 +74,7 @@ function Product() {
                         </button>
                     }
                 </div>
-                <div style={{marginLeft: 20}} >
+                <div style={{marginLeft:isMobile?0: 30}} >
                     <p style={{fontWeight: 'bold',marginTop: 0,  fontSize:isMobile?20: 36, color: '#161A1B', lineHeight: isMobile?"24px":"43.2px",fontFamily: 'Mulish'}}>Desktop Application</p>
                     <p style={{fontWeight: 400,marginTop:isMobile?12: 24,  fontSize:isMobile?12: 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight:isMobile?"18px": "26px",fontFamily: 'Mulish', maxWidth: 400}}>With our desktop application, enjoy all the top notch features of the market as well as live updates on all the stocks and trends. Experience a quick trading and a user-friendly interface currently available on Windows & macOS.</p>
                     {!isMobile &&

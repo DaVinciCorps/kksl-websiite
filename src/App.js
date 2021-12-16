@@ -16,6 +16,7 @@ import InternationalInvestment from "./components/Services/InterInvest"
 import UnlistedEquity from "./components/Services/UnlistedEquity"
 import Trading from './components/Services/Trading';
 import "./App.css";
+import Login from './components/Login';
 // import Demat from "./components/Services/Demat/Demat"
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/unlisted-equity"  ><UnlistedEquity /></Route>
           <Route exact path="/mutual-funds"  ><MutualFunds /></Route>
           <Route exact path="/trading"  ><Trading /></Route>
+          <Route exact path="/login"  ><Login /></Route>
           <Route path="/" > <Home /></Route>
         </Switch>
         <Footer />

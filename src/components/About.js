@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
 import g7 from '../images/g7.png'
 import icon1 from "../images/eos-icons_trusted-organization.png"
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
         ['@media (max-width:600px)']: {
             fontSize: 24,
             lineHeight: "30.12px",
-            textAlign: 'center'            
+            textAlign: 'center'
         },
     },
 
@@ -116,32 +116,33 @@ function About() {
     const [open, setOpen] = React.useState(false);
     const isMobile = useMediaQuery('(max-width:600px)');
     const isLarge = useMediaQuery('(min-width:1200px)');
-    const [currAbout,setCurrAbout] = useState(0);
+    const is1300 = useMediaQuery('(max-width:1300px)');
+    const [currAbout, setCurrAbout] = useState(0);
     const handleClickOpen = (e) => {
         setCurrAbout(e);
         setOpen(true);
     };
-    
+
     const handleClose = () => {
         setOpen(false);
     };
-    const cardTrust=()=>{
-        return(
-            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile?24:''}}>
-                <div style={{margin:isMobile? "16px 16px 24px 16px":40, }}> 
-                    <img src={icon1} style={{width: isMobile?72:120}}/>
-                    <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight:isMobile?600: 'bold', lineHeight:isMobile?"22.59px": '25px'}}>
+    const cardTrust = () => {
+        return (
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile ? 24 : '' }}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column' }}>
+                    <img src={icon1} style={{ width: isMobile ? 72 : 120 }} />
+                    <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: isMobile ? 600 : 'bold', lineHeight: isMobile ? "22.59px" : '25px' }}>
                         Trust And Assurance
                     </p>
-                    <div style={{marginTop: 8,}}>
-                        <ul style={{color: 'rgba(22, 26, 27, 0.6)', fontSize:isMobile?12: 16, lineHeight:isMobile?"18px" :"26px", padding: 0, paddingLeft: 18}}>
+                    <div style={{ marginTop: 8,flex:1 }}>
+                        <ul style={{ color: 'rgba(22, 26, 27, 0.6)', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", padding: 0, paddingLeft: 18 }}>
                             <li>One of the oldest and most trusted brokers in India since 1995.</li>
                             <li>Get help investing your money just as it’s our own.</li>
                             <li>Experience one of the lowest brokerage fees in the market.</li>
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
+                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
@@ -150,47 +151,47 @@ function About() {
         )
     }
 
-    const cardPoint=()=>{
-        return(
-            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389,  height:isMobile?"": "100%", display: 'flex',flexDirection: 'column', marginBottom: isMobile?24:'' }}>
-                <div style={{margin:isMobile? "16px 16px 24px 16px":40, flex: 1, display: 'flex', flexDirection: 'column'}}> 
-                    <div style={{height:isMobile?72: 120}}><img src={Group} style={{width: isMobile?72:120, height: isMobile?72:120}}/></div>
-                    <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight: 'bold', lineHeight:isMobile?"22.59px": '25px'}}>
-                    One Point Access to all Markets
+    const cardPoint = () => {
+        return (
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, height: isMobile ? "" : "100%", display: 'flex', flexDirection: 'column', marginBottom: isMobile ? 24 : '' }}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ height: isMobile ? 72 : 120 }}><img src={Group} style={{ width: isMobile ? 72 : 120, height: isMobile ? 72 : 120 }} /></div>
+                    <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: 'bold', lineHeight: isMobile ? "22.59px" : '25px' }}>
+                        One Point Access to all Markets
                     </p>
-                    <div style={{marginTop: 8,flex: 1}}>
-                        <ul style={{color: 'rgba(22, 26, 27, 0.6)', fontSize: isMobile?12:16, lineHeight: isMobile?"18px":"26px", padding: 0, paddingLeft: 18}}>
+                    <div style={{ marginTop: 8, flex: 1 }}>
+                        <ul style={{ color: 'rgba(22, 26, 27, 0.6)', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", padding: 0, paddingLeft: 18 }}>
                             <li>Single access to all market segments of BSE, NSE & MCX.</li>
                             <li> Find large avenues of investment solutions and financial services all under one roof.</li>
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
+                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
-                </div>   
+                </div>
             </div>
         )
     }
 
-    const cardSeamless=()=>{
-        return(
-            <div style={{backgroundColor: 'white',boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center',}}>
-                <div style={{margin: isMobile? "16px 16px 24px 16px":40,}}>
-                    <img src={pc3}style={{width: isMobile?72:120,}} />
-                    <p style={{marginTop:isMobile?24: 42,color: '#161A1B', fontFamily: "Mulish", fontSize:isMobile?18: 20, fontWeight: 'bold', lineHeight:isMobile?"22.59px": '25px'}} >
-                        Seamless Trading    
+    const cardSeamless = () => {
+        return (
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', }}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column'  }}>
+                    <img src={pc3} style={{ width: isMobile ? 72 : 120, }} />
+                    <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: 'bold', lineHeight: isMobile ? "22.59px" : '25px' }} >
+                        Seamless Trading
                     </p>
-                    <div style={{marginTop: 8,}}>
-                        <ul style={{color: 'rgba(22, 26, 27, 0.6)', fontSize: isMobile?12:16, lineHeight: isMobile?"18px":"26px", padding: 0, paddingLeft: 18}}>
+                    <div style={{ marginTop: 8,flex: 1 }}>
+                        <ul style={{ color: 'rgba(22, 26, 27, 0.6)', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", padding: 0, paddingLeft: 18 }}>
                             <li>Seamless browser and application-based trading across all devices.</li>
                             <li> Top notch in terms of speed, convenience and risk management.</li>
                             <li> Gain control on your transactions like never before.</li>
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
+                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
@@ -220,24 +221,24 @@ function About() {
         }
     ]
 
-    const aboutCard=(img, name, post,id)=>{
-        return(
-            <div style={{backgroundColor: "white",width: 389,minHeight: 387,display: 'flex', flexDirection: 'column', alignItems: 'center',  boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile?32:0}}>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: isMobile?"24px 16px": "48px 0px", flex: 1}}>
-                    <img src={img} style={{width:isMobile?72: 120, height:isMobile?72: 120, borderRadius: "100%",}}></img>
-                    <p style={{marginTop: 24, color: '#161A1B',fontFamily: 'Mulish',fontSize:isMobile?18: 20, lineHeight:isMobile?"22.59px": "25px", fontWeight: 'bold',}}>{name}</p>
-                    <p style={{marginTop:isMobile?4: 8, color: '#161A1B',fontFamily: 'Mulish',fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: isMobile?"":1}}>{post}</p>
-                    {isMobile && <p style={{marginTop: 24,textAlign: 'center', color:'rgba(22, 26, 27, 0.6)',fontFamily: 'Mulish',fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: 1}}>
-                                    Director of the company since 2013, Auchitya completed his
-                                    graduation from Delhi University and Masters in Banking and
-                                    Finance from University of London. He has a varied bounty of
-                                    experience which he gained in his internships with the biggest
-                                    names in the Industry like Standard Chartered Bank, ICICI Bank,
-                                    Amplify Trading in London and BMW India Financial Services
-                                    Ltd.
-                                </p>}
-                    {!isMobile && 
-                        <button onClick={()=>{handleClickOpen(id)}} style={{border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer'}}>
+    const aboutCard = (img, name, post, id) => {
+        return (
+            <div style={{ marginRight:isMobile?0: 20, marginLeft:isMobile?0: id == 0 ? 20 : 0, backgroundColor: "white", width: 389, minHeight: 387, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile ? 32 : 0 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: isMobile ? "24px 16px" : "48px 0px", flex: 1 }}>
+                    <img src={img} style={{ width: isMobile ? 72 : 120, height: isMobile ? 72 : 120, borderRadius: "100%", }}></img>
+                    <p style={{ marginTop: 24, color: '#161A1B', fontFamily: 'Mulish', fontSize: isMobile ? 18 : 20, lineHeight: isMobile ? "22.59px" : "25px", fontWeight: 'bold', }}>{name}</p>
+                    <p style={{ marginTop: isMobile ? 4 : 8, color: '#161A1B', fontFamily: 'Mulish', fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: isMobile ? "" : 1 }}>{post}</p>
+                    {isMobile && <p style={{ marginTop: 24, textAlign: 'center', color: 'rgba(22, 26, 27, 0.6)', fontFamily: 'Mulish', fontSize: 14, lineHeight: "17.57px", fontWeight: 400, flex: 1 }}>
+                        Director of the company since 2013, Auchitya completed his
+                        graduation from Delhi University and Masters in Banking and
+                        Finance from University of London. He has a varied bounty of
+                        experience which he gained in his internships with the biggest
+                        names in the Industry like Standard Chartered Bank, ICICI Bank,
+                        Amplify Trading in London and BMW India Financial Services
+                        Ltd.
+                    </p>}
+                    {!isMobile &&
+                        <button onClick={() => { handleClickOpen(id) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
@@ -247,38 +248,38 @@ function About() {
     }
 
     return (
-        <div style={{ backgroundImage:  `url("/Vector2.png")`, margin:0, backgroundRepeat: "no-repeat",backgroundPosition: "100% 8%", backgroundSize:isLarge?"70%": "100%" }}>
+        <div style={{ backgroundImage: `url("/Vector2.png")`, margin: 0, backgroundRepeat: "no-repeat", backgroundPosition: "100% 8%", backgroundSize: isLarge ? "70%" : "100%", }}>
             <div className={classes.section1}>
                 <div className={classes.section1Text}>
                     <div className={classes.section1Head}>
                         About Us
                     </div>
                     <div className={classes.section1SubHead}>
-                    KK Securities Ltd. is a full-service boutique broking firm and a corporate member of the National Stock Exchange of India (since September 1995) in the capital market, F&O and currency derivative segment of NSE. With 11,000 clients in hand, the company yields a depository AUM of INR 4600 crores.
+                        KK Securities Ltd. is a full-service boutique broking firm and a corporate member of the National Stock Exchange of India (since September 1995) in the capital market, F&O and currency derivative segment of NSE. With 11,000 clients in hand, the company yields a depository AUM of INR 4600 crores.
                     </div>
-                    {isMobile && 
+                    {isMobile &&
                         <div className={classes.section1Image}>
-                            <img src={g7} style={{ marginTop: 70,marginBottom: 81, width: 327}} />
+                            <img src={g7} style={{ marginTop: 70, marginBottom: 81, width: 327 }} />
                         </div>
                     }
-                    <div className={classes.section1SubHead} style={{marginTop: 20}}>
-                    We have been standing strong in the financial market for 50 glorious years, growing your money by making smart investment choices for you. Our strength lies in operating with a niche segment of investors hence providing them with personalized trading services. By practicing such a contemporary business approach, our intention is to change the way India invests… One investment at a time.
+                    <div className={classes.section1SubHead} style={{ marginTop: 20 }}>
+                        We have been standing strong in the financial market for 50 glorious years, growing your money by making smart investment choices for you. Our strength lies in operating with a niche segment of investors hence providing them with personalized trading services. By practicing such a contemporary business approach, our intention is to change the way India invests… One investment at a time.
 
                     </div>
                 </div>
                 {!isMobile &&
                     <div className={classes.section1Image}>
-                        <img src={g7} style={{ width: '90%'}} />
+                        <img src={g7} style={{ width: '90%' }} />
                     </div>
                 }
             </div>
 
 
             <div className={classes.section2}>
-                <div>
+                <div style={{ marginRight:isMobile?0: 20 }}>
                     {cardTrust()}
                 </div>
-                <div >
+                <div style={{ marginRight:isMobile?0: 20 }}>
                     {cardPoint()}
                 </div>
                 <div>
@@ -292,11 +293,11 @@ function About() {
                 <div className={classes.section3Head}>
                     Meet Our Board of Directors
                 </div>
-                <div className={classes.section3Body}>
-                    
-                    {aboutCard(aboutData[0].img,aboutData[0].name,aboutData[0].post,0)}
-                    {aboutCard(aboutData[1].img,aboutData[1].name,aboutData[1].post,1)}
-                    {aboutCard(aboutData[2].img,aboutData[2].name,aboutData[2].post,2)}
+                <div className={classes.section3Body} >
+
+                    {aboutCard(aboutData[0].img, aboutData[0].name, aboutData[0].post, 0)}
+                    {aboutCard(aboutData[1].img, aboutData[1].name, aboutData[1].post, 1)}
+                    {aboutCard(aboutData[2].img, aboutData[2].name, aboutData[2].post, 2)}
 
                 </div>
 
@@ -305,20 +306,20 @@ function About() {
                     <Dialog
                         open={open}
                         onClose={handleClose}
-                        style={{boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15}}
-                        maxWidth="md" 
+                        style={{ boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15 }}
+                        maxWidth="md"
                     >
-                        <div style={{width: 831, height: 644,background: 'white',display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <img src={cross} style={{position: 'absolute', top: 32, right: 32, cursor: 'pointer',}} onClick={handleClose} />
-                            <div style={{margin: "64px 64px 151px 64px"}}>
-                                <img src={aboutData[currAbout].img} style={{width: 160, height: 160, borderRadius: "100%"}} />
-                                <p style={{marginTop: 24, fontSize: 24, lineHeight: "30.12px", fontFamily: 'Mulish', color: "#161A1B", fontWeight: 'bold', textTransform: 'uppercase'}} >
+                        <div style={{ width: 831, height: 644, background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <img src={cross} style={{ position: 'absolute', top: 32, right: 32, cursor: 'pointer', }} onClick={handleClose} />
+                            <div style={{ margin: "64px 64px 151px 64px" }}>
+                                <img src={aboutData[currAbout].img} style={{ width: 160, height: 160, borderRadius: "100%" }} />
+                                <p style={{ marginTop: 24, fontSize: 24, lineHeight: "30.12px", fontFamily: 'Mulish', color: "#161A1B", fontWeight: 'bold', textTransform: 'uppercase' }} >
                                     {aboutData[currAbout].name}
                                 </p>
-                                <p style={{marginTop: 8, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400, textTransform: 'uppercase'}} >
+                                <p style={{ marginTop: 8, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400, textTransform: 'uppercase' }} >
                                     {aboutData[currAbout].post}
                                 </p>
-                                <p style={{marginTop: 47, fontSize: 16, lineHeight: "26px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400,maxWidth: 703 }} >
+                                <p style={{ marginTop: 47, fontSize: 16, lineHeight: "26px", fontFamily: 'Mulish', color: "rgba(22, 26, 27, 0.6)", fontWeight: 400, maxWidth: 703 }} >
                                     {aboutData[currAbout].about}
                                 </p>
                             </div>

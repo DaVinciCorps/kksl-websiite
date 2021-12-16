@@ -64,7 +64,7 @@ function Trading() {
                     <div style={{padding:isMobile?"16px 24px": "44px 52px",boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.1)',marginTop: isMobile?16:0}}>
                         <img src={data.img} style={{width: "100%", }} />
                     </div>
-                    <div style={{marginLeft:isMobile?0: 20}}>
+                    <div style={{marginLeft:isMobile?0: 30}}>
                         <p style={{fontWeight: 'bold', fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px", textAlign: 'left', fontFamily: 'Mulish'}}>
                             {data.heading}
                         </p>

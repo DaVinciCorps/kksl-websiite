@@ -5,3 +5,11 @@ p{
 ::-webkit-scrollbar {
   display: none;
 }
+
+.MuiList-root{
+  padding: 0px !important;
+}
+
+.MuiDialog-paper{
+  border-radius: 15px !important;
+}

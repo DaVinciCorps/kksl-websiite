@@ -311,7 +311,7 @@ export default function HomeP() {
                             </div>
                         </div>
                     </div>
-                    <div style={{}}>
+                    <div style={{marginLeft: isMobile?0:30}}>
                         <div style={{marginTop:isMobile?32: 0,borderRadius: '0px 56px', backgroundColor: '#D8E9FD', display: 'flex',justifyContent: 'space-between',alignItems: 'center',  padding: isMobile?"21.67px 32.33px": "34.33px 43px 34.33px 67px"}}>
                             <img src={Android} style={{width: isMobile?40:"56px"}} />
                             <p style={{fontWeight: 600, fontFamily: 'Mulish', fontSize:isMobile?18: 24,lineHeight:isMobile?"21.6px": "28.8px", color: '#161A1B',marginLeft: 27.67, marginRight: 27}}>
