@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
-import g7 from '../images/g7.png'
-import icon1 from "../images/eos-icons_trusted-organization.png"
-import pc3 from '../images/pc3.png'
-import d1 from '../images/d1.png'
-import d2 from '../images/d2.png'
-import d3 from '../images/d3.png'
+import AboutTopImg from '../images/g7.png'
+import TrustedVector from "../images/eos-icons_trusted-organization.png"
+import SeamlessVector from '../images/pc3.png'
+import About1 from '../images/d1.png'
+import About2 from '../images/d2.png'
+import About3 from '../images/d3.png'
 import Dialog from '@mui/material/Dialog';
 import Group from "../images/Group.png";
 import cross from "../images/x.png";
@@ -130,7 +130,7 @@ function About() {
         return (
             <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile ? 24 : '' }}>
                 <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column' }}>
-                    <img src={icon1} style={{ width: isMobile ? 72 : 120 }} />
+                    <img src={TrustedVector} style={{ width: isMobile ? 72 : 120 }} />
                     <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: isMobile ? 600 : 'bold', lineHeight: isMobile ? "22.59px" : '25px' }}>
                         Trust And Assurance
                     </p>
@@ -179,7 +179,7 @@ function About() {
         return (
             <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', }}>
                 <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column'  }}>
-                    <img src={pc3} style={{ width: isMobile ? 72 : 120, }} />
+                    <img src={SeamlessVector} style={{ width: isMobile ? 72 : 120, }} />
                     <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: 'bold', lineHeight: isMobile ? "22.59px" : '25px' }} >
                         Seamless Trading
                     </p>
@@ -203,19 +203,19 @@ function About() {
     const aboutData = [
         {
             name: "Kamal Gupta",
-            img: d1,
+            img: About1,
             about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
             post: "Director"
         },
         {
             name: "Mr. Auchitya Gupta",
-            img: d2,
+            img: About2,
             about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
             post: "Director"
         },
         {
             name: "T.R. Agarwal",
-            img: d3,
+            img: About3,
             about: "Director of the company since 2013, Auchitya completed his graduation from Delhi University and Masters in Banking and Finance from University of London. He has a varied bounty of experience which he gained in his internships with the biggest names in the Industry like Standard Chartered Bank, ICICI Bank,Amplify Trading in London and BMW India Financial Services Ltd.",
             post: "Director"
         }
@@ -259,7 +259,7 @@ function About() {
                     </div>
                     {isMobile &&
                         <div className={classes.section1Image}>
-                            <img src={g7} style={{ marginTop: 70, marginBottom: 81, width: 327 }} />
+                            <img src={AboutTopImg} style={{ marginTop: 70, marginBottom: 81, width: 327 }} />
                         </div>
                     }
                     <div className={classes.section1SubHead} style={{ marginTop: 20 }}>
@@ -269,7 +269,7 @@ function About() {
                 </div>
                 {!isMobile &&
                     <div className={classes.section1Image}>
-                        <img src={g7} style={{ width: '90%' }} />
+                        <img src={AboutTopImg} style={{ width: '90%' }} />
                     </div>
                 }
             </div>

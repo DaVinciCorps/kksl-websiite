@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef, useCallback} from 'react'
+import React,{useState,useRef} from 'react'
 import { makeStyles, } from '@mui/styles';
 import HeroSectionImage from '../images/HeroSection1.png'
 
@@ -8,15 +8,14 @@ import Person from "../images/Person1.png";
 import Equity from '../images/equity.png'
 import Derivatives from '../images/derivative.png'
 import MutualFund from '../images/mutualfunds.png'
-import illustration1 from '../images/Illustration1.png'
-import illustration2 from '../images/illustration2.png'
-import illustration3 from '../images/illustration3.png'
-import illustration4 from '../images/illustration4.png'
+import EquityImage from '../images/Illustration1.png'
+import DerivateImage from '../images/illustration2.png'
+import CommodityImage from '../images/illustration3.png'
+import MutualFundImage from '../images/illustration4.png'
 import Trust1 from '../images/Trust1.png'
 import Carbon from '../images/carbon_security.png'
 import Codicon from '../images/codicon_sync.png'
 import Arrow1 from '../images/Arrow 1 (1).png'
-import Arrow2 from '../images/Arrow 2.png'
 import Android from '../images/ic_baseline-phone-android.png'
 import Iphone from '../images/fluent_phone-12-regular.png'
 import Laptop from '../images/bx_bx-laptop.png';
@@ -91,12 +90,12 @@ export default function Home() {
         heading: "Equity",
         subHeading: `“The value of ownership in a business.”`,
         body: 'Our stronghold in the secondary market with our reliable relationship managers gives you complete autonomy over your investment choices. ',
-        img: illustration1
+        img: EquityImage
     });
 
     
     
-    const buildYourInvestment=()=>{
+    const section1=()=>{
         return(
             <div style={{marginTop:isMobile?40: 130, marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems:isMobile? 'center': ''}}>
@@ -166,25 +165,25 @@ export default function Home() {
             heading: "Equity",
             subHeading: `“The value of ownership in a business.”`,
             body: 'Our stronghold in the secondary market with our reliable relationship managers gives you complete autonomy over your investment choices. ',
-            img: illustration1
+            img: EquityImage
         }
         const data2 = {
             heading: "Derivatives",
             subHeading: `"Wise men put their trust in ideas, not circumstances."`,
             body: 'To build a long-term direct fixed income portfolio, we identify diverse options for you to choose in the primary and secondary bond market',
-            img: illustration2
+            img: DerivateImage
         }
         const data3 = {
             heading: "Commodities",
             subHeading: `“Commodities tend to zig when the equity markets zag.”`,
             body: 'Enjoy transparent and low margin trades via fair price discovery in commodity future trades while witnessing the rise in participation and low counterparty risks with the evolving online trading.',
-            img: illustration3
+            img: CommodityImage
         }
         const data4 = {
             heading: "Mutual Fund",
             subHeading: `“Price is what you pay. Value is what you get.” `,
             body: 'Handpick the best values for your investments with a diverse set of options, professional management and flexibility via well regulated Mutual Funds.',
-            img: illustration4
+            img: MutualFundImage
         }
         const handleSide=(e)=>{
             setSide(e);
@@ -359,22 +358,59 @@ export default function Home() {
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
                 profession: "Student",
             },
+            {
+                img: Person1,
+                name: "Jane Cooper",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
+            {
+                img: Person2,
+                name: "Eleanor Pena",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
+            {
+                img: Person3,
+                name: "Kathryn Murphy",
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
+                profession: "Student",
+            },
         ]
 
-        const scrollLeft=()=>{
-            for(var i=0;i<50;i++){
-                setTimeout(()=>{scroll(-10)},200)
+        const handleScroll=()=>{
+            var dist;
+            if(isMobile){
+                dist = 0.94*window.innerWidth;
             }
-            
-        }
-        const scrollRight=()=>{
-            for(var i=0;i<50;i++){
-                setTimeout(()=>{scroll(+10)},200)
+            else{
+                dist = window.innerWidth;
             }
+            sideScroll('right',25,dist,30);
         }
-
-        const scroll=(x)=>{
-            scrollRef.current.scrollLeft += x
+        const handleScroll_left=()=>{
+            var dist;
+            if(isMobile){
+                dist = window.innerWidth;
+            }
+            else{
+                dist = 0.9*window.innerWidth;
+            }
+            sideScroll('left',25,dist,30);
+        }
+        function sideScroll(direction,speed,distance,step){
+            var scrollAmount = 0;
+            var slideTimer = setInterval(function(){
+                if(direction == 'left'){
+                    scrollRef.current.scrollLeft -= step;
+                } else {
+                    scrollRef.current.scrollLeft += step;
+                }
+                scrollAmount += step;
+                if(scrollAmount >= distance){
+                    window.clearInterval(slideTimer);
+                }
+            }, speed);
         }
 
         const feedbackCard=(data,index)=>{
@@ -410,14 +446,14 @@ export default function Home() {
                             With personalized support, qualitative research, and sound advice, we make investing easy for you.
                         </p>
                     </div>
-                    <div ref={scrollRef} style={{display: 'flex', overflowX:'auto',margin:isMobile? '0px -6.2%':0}}>
+                    <div ref={scrollRef} id="cont" style={{display: 'flex', overflowX:'auto',margin:isMobile? '0px -6.2%':0}}>
                         {data.map((i,index)=>
                             feedbackCard(i,index)    
                         )}
                     </div>
                     <div style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132, justifyContent: 'end', marginRight:isMobile?"0px": "14.4%" }}>
-                        <img onClick={scrollLeft} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
-                        <img onClick={scrollRight} src = {RightArrow} style={{cursor: "pointer"}} />
+                        <img onClick={handleScroll_left} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                        <img onClick={handleScroll} src = {RightArrow} style={{cursor: "pointer"}} />
                     </div>
                 </div>
             </div>
@@ -447,7 +483,7 @@ export default function Home() {
 
     return (
         <div className={classes.root}>
-            {buildYourInvestment()}
+            {section1()}
             {section2()}
             {section3()}
             {section4()}
