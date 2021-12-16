@@ -15,7 +15,6 @@ import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
     root: {
-        // width: '100%',
         height: '70px',
         backgroundColor: '#0953AA',
         display: 'flex',
@@ -25,13 +24,10 @@ const useStyles = makeStyles({
         top: 0,
         padding: "0px 14.4%",
         zIndex: 1000,
-        // paddingLeft: '14.5%',
-        // paddingRight: '14.5%'
     },
 
     navLinks: {
         display: 'flex',
-        // marginRight: 51,
 
     },
 
@@ -42,7 +38,6 @@ const useStyles = makeStyles({
         fontFamily: 'Mulish',
         lineHeight: '120%',
         letterSpacing: '0.005em',
-        // textTransform: 'uppercase',
         color: '#FFFFFF',
         marginRight: 32,
         cursor: 'pointer'
@@ -52,13 +47,10 @@ const useStyles = makeStyles({
         backgroundColor: '#042349',
         height: '100%',
         width: 325,
-        // marginRight: 83,
         color: '#FFFFFF',
         justifyContent: 'space-evenly',
         display: 'flex',
         flexDirection: 'column'
-        // position: 'absolute',
-        // left: 722,
 
     },
 
@@ -69,7 +61,6 @@ const useStyles = makeStyles({
     },
 
     name: {
-        // paddingLeft:8,
         paddingRight: 6,
         fontFamily: 'Rubik',
         fontSize: '14px',
@@ -90,7 +81,6 @@ const useStyles = makeStyles({
 
     trend: {
         paddingLeft: 6,
-        // paddingRight:8,
         fontFamily: 'Rubik',
         fontSize: '12px',
         fontWeight: 'normal',
