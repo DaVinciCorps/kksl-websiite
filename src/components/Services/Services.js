@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {useHistory} from "react-router-dom";
 import Trading from "../../images/Services/service1.png";
@@ -76,7 +76,7 @@ function Services() {
     const leftBox=(data)=>{
         return(
             <div style={{display: 'flex',alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: isMobile? 'wrap-reverse':''}}>
-                <img src={data.image} style={{width:isMobile?"100%": 504, height: isMobile?"": 328, marginTop: isMobile?24:0}} />
+                <img src={data.image} style={{width:isMobile?"100%": 504, height: isMobile?"": 328, marginTop: isMobile?24:0}} alt="Data" />
                 <div style={{marginLeft:isMobile?0: 30}}>
                     <p style={{fontWeight: 'bold', fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px", textAlign: 'left', fontFamily: 'Mulish'}}>
                         {data.heading}
@@ -89,7 +89,7 @@ function Services() {
                             Learn More
                         </p>
                         <div>
-                            <img style={{width: 28, marginLeft: 8}} src={Arrow} />
+                            <img style={{width: 28, marginLeft: 8}} src={Arrow} alt="Arrow"/>
                         </div>
                     </div>
                 </div>
@@ -113,11 +113,11 @@ function Services() {
                             Learn More
                         </p>
                         <div>
-                            <img style={{width: 28, marginLeft: 8}} src={Arrow} />
+                            <img style={{width: 28, marginLeft: 8}} src={Arrow} alt="Arrow"/>
                         </div>
                     </div>
                 </div>
-                <img src={data.image} style={{width:isMobile?"100%": 504, height: isMobile?"": 328, marginTop: isMobile?24:0}} />
+                <img src={data.image} style={{width:isMobile?"100%": 504, height: isMobile?"": 328, marginTop: isMobile?24:0}} alt="Data"/>
             </div>
         )
     }

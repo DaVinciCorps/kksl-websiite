@@ -1,9 +1,9 @@
 import React from 'react'
-import laptop from "../../images/Product/Group 626252.png"
-import stock from "../../images/Product/Group 626253.png"
-import Desktop from "../../images/Product/Group 626254.png"
-import apple from "../../images/Product/Group (1).png"
-import google from "../../images/Product//Group.png"
+import laptop from "../images/Product/Group 626252.png"
+import stock from "../images/Product/Group 626253.png"
+import Desktop from "../images/Product/Group 626254.png"
+import apple from "../images/Product/Group (1).png"
+import google from "../images/Product//Group.png"
 import {useHistory } from 'react-router-dom';
 
 import useMediaQuery from '@mui/material/useMediaQuery';

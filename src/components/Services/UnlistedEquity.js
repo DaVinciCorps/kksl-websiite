@@ -8,18 +8,14 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-function Debt() {
+function UnlistedEquity() {
     const isMobile = useMediaQuery('(max-width:600px)');
-    const data = {
-        heading: "Debt",
-        para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit.Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
-    };
     const [selected, setSelected] = useState();
 
     const topDiv = () => {
         return (
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: isMobile ? "40px 6.2% 48px 6.2%" : "80px 14.4% 20px 14.4%", flexWrap: isMobile ? 'wrap-reverse' : "" }}>
-                <img style={{ marginTop: isMobile ? 32 : 0, width: isMobile ? "100%" : "" }} src={service1} />
+                <img style={{ marginTop: isMobile ? 32 : 0, width: isMobile ? "100%" : "" }} src={service1} alt="Service-1"/>
                 <div style={{ marginLeft: isMobile ? 0 : 20 }}>
                     <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 24 : 36, color: '#161A1B', lineHeight: isMobile ? "30.12px" : "43.2px", fontFamily: 'Mulish', textAlign: isMobile ? 'center' : "" }}>
                         Unlisted Equity
@@ -44,7 +40,7 @@ function Debt() {
                     <div >
                         <div style={{ display: 'flex' }}>
                             <div>
-                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
+                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} alt="Tick"/>
                             </div>
                             <div style={{ marginLeft: isMobile ? 14 : 28 }}>
                                 <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Paperless account opening</p>
@@ -53,7 +49,7 @@ function Debt() {
                         </div>
                         <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
                             <div>
-                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
+                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} alt="Tick"/>
                             </div>
                             <div style={{ marginLeft: isMobile ? 14 : 28 }}>
                                 <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
@@ -64,7 +60,7 @@ function Debt() {
                     <div style={{ marginLeft: isMobile ? 0 : 20, marginTop: isMobile ? 16 : 0 }}>
                         <div style={{ display: 'flex' }}>
                             <div>
-                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
+                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} alt="Tick"/>
                             </div>
                             <div style={{ marginLeft: isMobile ? 14 : 28 }}>
                                 <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Easy analysis of mutual funds</p>
@@ -73,7 +69,7 @@ function Debt() {
                         </div>
                         <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
                             <div>
-                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
+                                <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} alt="Tick"/>
                             </div>
                             <div style={{ marginLeft: isMobile ? 14 : 28 }}>
                                 <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
@@ -89,11 +85,11 @@ function Debt() {
     const howItWorks = () => {
         return (
             <div style={{ margin: isMobile ? "48px 6.2% 0px 6.2%" : "160px 7.2% 0px 7.2%" }}>
-                <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "25.1px" : "43.2px", fontFamily: 'Mulish', textAlign: 'center' }}>
+                <p style={{fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "25.1px" : "43.2px", fontFamily: 'Mulish', textAlign: 'center' }}>
                     How it Works
                 </p>
                 <div style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
-                    <p style={{ fontWeight: 400, marginTop: 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: 'center', maxWidth: 498 }}>
+                    <p style={{ fontWeight: 400, marginTop: 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', textAlign: 'center', maxWidth: 498 }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
@@ -179,18 +175,18 @@ function Debt() {
                         <p onClick={() => { handleSelect(id) }} style={{ fontWeight: 400, marginTop: 0, fontSize: isMobile ? 12 : 18, color: '#161A1B', lineHeight: isMobile ? "18px" : "24px", fontFamily: 'Mulish', cursor: 'pointer' }}>
                             {ques}
                         </p>
-                        {selected == id &&
+                        {selected === id &&
                             <p style={{ fontWeight: 400, marginRight: isMobile ? "-34px" : 0, fontSize: isMobile ? 12 : 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', marginTop: isMobile ? 12 : 25, }}>
                                 {ans}
                             </p>
                         }
                     </div>
-                    {selected != id &&
+                    {selected !== id &&
                         <div style={{ cursor: 'pointer' }} onClick={() => { handleSelect(id) }}>
                             <KeyboardArrowDownIcon />
                         </div>
                     }
-                    {selected == id &&
+                    {selected === id &&
                         <div style={{ cursor: 'pointer' }} onClick={() => { handleSelect(id) }}>
                             <KeyboardArrowUpIcon />
                         </div>
@@ -200,7 +196,7 @@ function Debt() {
         }
 
         const handleSelect = (e) => {
-            if (selected == e) {
+            if (selected === e) {
                 setSelected();
             }
             else {
@@ -210,7 +206,7 @@ function Debt() {
 
         return (
             <div style={{ maxWidth: 1440, margin: isMobile ? "48px 6.2%" : '160px 14.2% 0px 14.2%' }}>
-                <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish', textAlign: 'center' }}>
+                <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish', textAlign: 'center' }}>
                     Frequently Asked Questions
                 </p>
                 <div style={{ marginTop: isMobile ? 24 : 48 }}  >
@@ -248,7 +244,7 @@ function Debt() {
                         </button>
                     </div>
                     <div style={{ marginLeft: isMobile ? 0 : 20, marginTop: isMobile ? 33.66 : 0 }}>
-                        <img src={cuate} style={{ width: "100%", minWidth: isMobile ? "" : 300 }} />
+                        <img src={cuate} style={{ width: "100%", minWidth: isMobile ? "" : 300 }} alt="Cuate"/>
                     </div>
                 </div>
 
@@ -269,4 +265,4 @@ function Debt() {
     );
 
 }
-export default Debt;
+export default UnlistedEquity;

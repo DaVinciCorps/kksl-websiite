@@ -62,7 +62,7 @@ function Trading() {
             return(
                 <div style={{display: 'flex',alignItems: 'flex-start', justifyContent: 'space-between', flexWrap:isMobile? "wrap-reverse":""}}>
                     <div style={{padding:isMobile?"16px 24px": "44px 52px",boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.1)',marginTop: isMobile?16:0}}>
-                        <img src={data.img} style={{width: "100%", }} />
+                        <img src={data.img} style={{width: "100%", }} alt="Data" />
                     </div>
                     <div style={{marginLeft:isMobile?0: 30}}>
                         <p style={{fontWeight: 'bold', fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px", textAlign: 'left', fontFamily: 'Mulish'}}>
@@ -79,34 +79,34 @@ function Trading() {
             <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column',maxWidth: 1440, margin:isMobile?"32px 10% 0px 10%   ": "62px 14.4% 0px 14.4%" }}>
                 <div style={{display: 'flex', margin: 'auto',}}>
                     <div style={{ cursor: 'pointer'}}>
-                        <p  onClick={()=>{handleNavigate(0)}} style={{color: val===0? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===0?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px",color: "rgba(22, 26, 27, 0.7)", fontWeight: 400, }}>
+                        <p  onClick={()=>{handleNavigate(0)}} style={{color: val===0? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===0?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px"}}>
                             Equity
                         </p>
-                        {val == 0 &&  
+                        {val === 0 &&  
                             <div style={{marginTop: isMobile?4:8, height: 4,backgroundColor: "#0953AA"}}></div>
                         }
                     </div>
                     <div style={{marginRight: 0, cursor: 'pointer'}}>
-                        <p  onClick={()=>{handleNavigate(1)}} style={{color: val===1? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===1?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px",color: "rgba(22, 26, 27, 0.7)", fontWeight: 400, }}>
+                        <p  onClick={()=>{handleNavigate(1)}} style={{color: val===1? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===1?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px" }}>
                             FnO
                         </p>
-                        {val == 1 &&  
+                        {val === 1 &&  
                             <div style={{marginTop:isMobile?4: 8, height: 4,backgroundColor: "#0953AA"}}></div>
                         }
                     </div>
                     <div style={{marginRight: 0, cursor: 'pointer'}}>
-                        <p  onClick={()=>{handleNavigate(2)}} style={{color: val===2? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===2?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px",color: "rgba(22, 26, 27, 0.7)", fontWeight: 400,}}>
+                        <p  onClick={()=>{handleNavigate(2)}} style={{color: val===2? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===2?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px"}}>
                             Currency
                         </p>
-                        {val == 2 &&  
+                        {val === 2 &&  
                             <div style={{marginTop: isMobile?4:8, height: 4,backgroundColor: "#0953AA"}}></div>
                         }
                     </div>
                     <div style={{marginRight:0, cursor: 'pointer'}}>
-                        <p  onClick={()=>{handleNavigate(3)}} style={{color: val===3? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===3?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px",color: "rgba(22, 26, 27, 0.7)", fontWeight: 400, }}>
+                        <p  onClick={()=>{handleNavigate(3)}} style={{color: val===3? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: val===3?'bold':400,margin:isMobile?"0px 16px": "0px 20px", fontFamily: 'Mulish', fontSize:isMobile?14: 16, lineHeight:isMobile?"17.7px": "26px"}}>
                             Commodity
                         </p>
-                        {val == 3 &&  
+                        {val === 3 &&  
                             <div style={{marginTop: isMobile?4:8, height: 4,backgroundColor: "#0953AA"}}></div>
                         }
                     </div>
@@ -132,7 +132,7 @@ function Trading() {
                         <div >
                             <div style={{display: 'flex'}}>
                                 <div>
-                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick}/>
+                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick} alt="Tick"/>
                                 </div>
                                 <div style={{marginLeft: isMobile?14:28}}>
                                     <p style={{fontWeight: 700,  fontSize:isMobile?16: 20, color: '#161A1B', lineHeight:isMobile?"19.2px": "24px",fontFamily: 'Mulish', maxWidth: 400}}>Margin and Leverage</p>
@@ -143,7 +143,7 @@ function Trading() {
                             </div>
                             <div style={{display: 'flex', marginTop: 32}}>
                                 <div> 
-                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick}/>
+                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick} alt="Tick"/>
                                 </div>
                                 <div style={{marginLeft:isMobile?14: 28}}>
                                     <p style={{fontWeight: 700,  fontSize:isMobile?16: 20, color: '#161A1B', lineHeight:isMobile?"19.2px": "24px",fontFamily: 'Mulish', maxWidth: 400}}>Flexibility in Expiration</p>
@@ -152,7 +152,7 @@ function Trading() {
                             </div>
                             <div style={{display: 'flex', marginTop: 32}}>
                                 <div>
-                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick}/>
+                                    <img style={{width: isMobile?20:44, height: isMobile?20:44}} src={Tick} alt="Tick"/>
                                 </div>
                                 <div style={{marginLeft:isMobile?14: 28}}>
                                     <p style={{fontWeight: 700,  fontSize:isMobile?16: 20, color: '#161A1B', lineHeight:isMobile?"19.2px": "24px",fontFamily: 'Mulish', maxWidth: 400}}>Market is open to Investors</p>
@@ -182,18 +182,18 @@ function Trading() {
                         <p onClick={()=>{handleSelect(id)}} style={{fontWeight: 400,marginTop: 0,  fontSize:isMobile?12: 18, color: '#161A1B', lineHeight:isMobile?"18px": "24px",fontFamily: 'Mulish',cursor: 'pointer'}}>
                             {ques}
                         </p>
-                        {selected == id &&
+                        {selected === id &&
                             <p style={{fontWeight: 400 ,marginRight: isMobile?"-34px":0,fontSize:isMobile?12: 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight:isMobile?"18px": "26px",fontFamily: 'Mulish', marginTop:isMobile?12: 25, }}>
                                 {ans}
                             </p>
                         }
                     </div>
-                    {selected!=id && 
+                    {selected !==id && 
                         <div style={{cursor: 'pointer'}} onClick={()=>{handleSelect(id)}}>
                             <KeyboardArrowDownIcon />
                         </div>
                     }
-                    {selected==id && 
+                    {selected === id && 
                         <div style={{cursor: 'pointer'}} onClick={()=>{handleSelect(id)}}>
                             <KeyboardArrowUpIcon />
                         </div>
@@ -203,7 +203,7 @@ function Trading() {
         }
 
         const handleSelect=(e)=>{
-            if(selected == e){
+            if(selected === e){
                 setSelected();
             }
             else{
@@ -213,7 +213,7 @@ function Trading() {
 
         return(
             <div style={{maxWidth: 1440, margin:isMobile?"48px 6.2%": '160px 14.2% 0px 14.2%'}}>
-                <p style={{textAlign: 'center', fontWeight: 'bold',marginTop: 0,  fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px",fontFamily: 'Mulish', textAlign: 'center'}}>
+                <p style={{fontWeight: 'bold',marginTop: 0,  fontSize:isMobile?20: 36, color: '#161A1B', lineHeight:isMobile?"24px": "43.2px",fontFamily: 'Mulish', textAlign: 'center'}}>
                     Frequently Asked Questions
                 </p>
                 <div style={{marginTop:isMobile?24: 48}}  >

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useHistory } from 'react-router';
-import Associate from "../images/noto-v1_office-building.png";
-import User from "../images/fa-solid_user.png";
-import Security from "../images/security.png";
+import Associate from "../images/Navbar/noto-v1_office-building.png";
+import User from "../images/Navbar/fa-solid_user.png";
+import Security from "../images/Navbar/security.png";
 
 export default function Login() {
     const history = useHistory();

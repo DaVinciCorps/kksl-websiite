@@ -1,11 +1,10 @@
 import React from 'react';
-import Routes from '../src/routes'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header"
 import Navbar from "./components/Navbar"
-import Home from "./components/HomeP"
+import Home from "./components/Home"
 import About from "./components/About"
-import Product from "./components/Product/Product.js"
+import Product from "./components/Product.js"
 import Footer from "./components/Footer"
 import Services from "./components/Services/Services"
 import Debt from "./components/Services/Debt"

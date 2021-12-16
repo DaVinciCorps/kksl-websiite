@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import TrendImage from '../images/Vector.png'
+import TrendImage from '../images/Navbar/Vector.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
-import MenuSymbol from "../images/menu.png";
+import MenuSymbol from "../images/Navbar/menu.png";
 import Menu from '@mui/material/Menu';
-import Associate from "../images/noto-v1_office-building.png";
-import User from "../images/fa-solid_user.png";
+import Associate from "../images/Navbar/noto-v1_office-building.png";
+import User from "../images/Navbar/fa-solid_user.png";
 import Dialog from '@mui/material/Dialog';
 import cross from "../images/x (1).png";
-import Security from "../images/security.png";
+import Security from "../images/Navbar/security.png";
 import { useHistory } from 'react-router';
+
+
 
 const useStyles = makeStyles({
     root: {
@@ -123,6 +125,7 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(false);
     const [associateOpen, setAssociateOpen] = useState(false);
+    
     const handleClose = () => {
         setOpen(false);
         setAnchorEl(false);

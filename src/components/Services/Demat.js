@@ -8,7 +8,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-function Debt() {
+function Demat() {
     const isMobile = useMediaQuery('(max-width:600px)');
     const data = {
         heading: "Debt",
@@ -269,4 +269,4 @@ function Debt() {
     );
 
 }
-export default Debt;
+export default Demat;

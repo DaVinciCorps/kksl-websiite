@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
-import HomeP from '../components/HomeP'
+import Home from '../components/Home'
 import Footer from '../components/Footer'
 
 
@@ -11,7 +11,7 @@ export default function HomePage() {
         <div style={{height:'100%'}}>
             <Navbar />
             <Header value={0} />
-            <HomeP />
+            <Home />
             <Footer />
         </div>
     )
