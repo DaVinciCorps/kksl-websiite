@@ -26,7 +26,8 @@ import Stars from  "../images/Group 3.png";
 import RightArrow from "../images/Vector (11).png";
 import LeftArrow from "../images/Vector (12).png";
 import Pattern from "../images/Pattern.png";
-
+import Vector1 from "../images/Vector (13).png";
+import Vector2 from "../images/Vector (14).png";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -84,6 +85,7 @@ const useStyles = makeStyles(() => ({
 export default function Home() {
     const scrollRef = useRef();
     const isMobile = useMediaQuery('(max-width:600px)');
+    const isLarge = useMediaQuery('(max-width:1400px)');
     const classes = useStyles();
     const [side,setSide] = useState("Equity");
     const [data,setData] = useState({
@@ -99,7 +101,7 @@ export default function Home() {
         return(
             <div style={{marginTop:isMobile?40: 130, marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems:isMobile? 'center': ''}}>
-                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28: 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "" }}>Build Your Future With Investment</p>
+                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28: 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width: 510 }}>Build Your Future With Investment</p>
                     <p style={{fontFamily: 'Mulish', fontWeight: 400, fontSize:isMobile?12: 16, lineHeight: "20px", color: "#161A1B", marginRight: isMobile?"6.2%":'',textAlign: isMobile?'center':'left'  }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas sed fermentum aliquet est.</p>
                     <button style={{marginBottom: 30,outline: 'none', border: 'none',width: 140, height:50, backgroundColor: '#2584F4', marginTop: 48, borderRadius: 8, cursor: 'pointer'}}>
                         <p style={{fontSize: 16,fontWeight: 700,fontFamily: 'Mulish', color: 'white'}}>
@@ -108,7 +110,7 @@ export default function Home() {
                     </button>
                 </div>
                 <div style={{marginLeft: isMobile?"-6.2%":'',marginRight: isMobile?"-6.2%":''}}>
-                    <img src={HeroSectionImage} style={{width: "100%", marginTop: isMobile? 47:0,  }} ></img>
+                    <img src={HeroSectionImage} style={{ marginTop: isMobile? 47:0,width: isLarge?"100%":"" }} ></img>
                 </div>
             </div>
         )
@@ -278,7 +280,8 @@ export default function Home() {
 
 
         return (
-            <div style={{marginLeft:isMobile?"6.2%": "14.4%", marginRight:isMobile?"6.2%" :"14.4%", marginTop:isMobile?48: 160, marginBottom:isMobile?48: 120, maxWidth: 1440,}}>
+            <div style={{ maxWidth: 1440,padding: isMobile?"48px 6.2% 48px 6.2%":"160px 14.4% 120px 14.4%"}}>
+                
                 <p style={{fontSize:isMobile?20: 36,color: '#161A1B', lineHeight:isMobile?"24px": "43.2px",fontWeight: 700}}>
                     Invest On the Go.
                 </p>
@@ -318,7 +321,7 @@ export default function Home() {
                             </p>
                             <img src={Arrow1} />
                         </div>
-                        <div style={{marginTop:isMobile?32: 40,borderRadius: '0px 56px', backgroundColor: '#D8E9FD', display: 'flex',justifyContent: 'space-between',alignItems: 'center',  padding: isMobile?"21.67px 32.33px": "34.33px 43px 34.33px 67px"}}>
+                        <div style={{marginTop:isMobile?32: 40,borderRadius: '0px 56px', backgroundColor: '#C1F6E6', display: 'flex',justifyContent: 'space-between',alignItems: 'center',  padding: isMobile?"21.67px 32.33px": "34.33px 43px 34.33px 67px"}}>
                             <img src={Iphone} style={{width: isMobile?40:"56px"}}/>
                             <p style={{fontWeight: 600, fontFamily: 'Mulish', fontSize:isMobile?18: 24,lineHeight:isMobile?"21.6px": "28.8px", color: '#161A1B',marginLeft: 27.67, marginRight: 27}}>
                             IOS App
@@ -436,7 +439,7 @@ export default function Home() {
         }
 
         return(
-            <div style={{marginTop: 120,  backgroundColor: '#F7F7F7', }}>
+            <div style={{marginTop:isMobile?0: 0,  backgroundColor: '#F7F7F7', }}>
                 <div style={{margin:isMobile?"0px 6.2% 0px 6.2%": "0px 0% 132px 7.2%",paddingTop:isMobile?40: 88}}>
                     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                         <p style={{fontSize:isMobile?20: 36, lineHeight:isMobile?"25.1px": "45.18px", fontWeight: 'bold', fontFamily: 'Mulish',color: "#3C4856"}}>
@@ -467,12 +470,14 @@ export default function Home() {
                 <div style={{backgroundColor: '#0953AA', boxShadow: '0px 40px 92px -16px rgba(9, 83, 170, 0.3)', borderRadius: 8, padding:isMobile?"40px 6.2%": "80px 104px",}}>
                     <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize:isMobile?20: 48, lineHeight:isMobile?"24px": "57.6px", textAlign: 'center', color: 'white'}}> Let us send you offering</p>
                     <div style={{marginTop: 32, display: 'flex', justifyContent: 'center',flexWrap: isMobile?"wrap":''}}>
-                        <input style={{textAlign: 'center',flex: 1,background: "white", border: '1px solid #F1F1F6', borderRadius: 8, outline: 'none', padding:isMobile?"14px 38px": "18px 16px", fontSize: '16px', color: "#92929D"}} value={"email@gmail.com"}></input>
-                        <button style={{backgroundColor: "#2584F4", marginLeft: 8,width:isMobile?145: 164, height:isMobile?48: 56, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer', marginTop: isMobile?24:0}}> 
-                            <p style={{fontSize: 16, fontFamily: 'Mulish', color: 'white',}}>
-                                Subscribe Now
-                            </p>
-                        </button>
+                        {/* <input style={{textAlign: 'center',flex: 1,background: "white", border: '1px solid #F1F1F6', borderRadius: 8, outline: 'none', padding:isMobile?"14px 38px": "18px 16px", fontSize: '16px', color: "#92929D"}} value={"email@gmail.com"}></input> */}
+                        <a href="mailto:john@example.com? subject=Subject">
+                            <button style={{backgroundColor: "#2584F4", marginLeft: 8,width:isMobile?145: 164, height:isMobile?48: 56, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer', marginTop: isMobile?24:0}}> 
+                                <p style={{fontSize: 16, fontFamily: 'Mulish', color: 'white',}}>
+                                    Contact Us
+                                </p>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -487,7 +492,16 @@ export default function Home() {
             {section2()}
             {section3()}
             {section4()}
-            {section5()}
+            <div>
+                {!isMobile &&
+                    <React.Fragment>
+                        <img src={Vector1} style={{width :510,position: 'absolute', right: 0}} />
+                        <img src={Vector2} style={{height :695, position: 'absolute', right: 0,}} />
+                    </React.Fragment>
+                }
+                {section5()}
+            </div>
+            
             {section6()}
             {section7()}
         </div>

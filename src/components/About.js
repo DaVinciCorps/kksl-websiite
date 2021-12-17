@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
 import AboutTopImg from '../images/g7.png'
 import TrustedVector from "../images/eos-icons_trusted-organization.png"
-import SeamlessVector from '../images/pc3.png'
+import SeamlessVector from '../images/community.png'
 import About1 from '../images/d1.png'
 import About2 from '../images/d2.png'
 import About3 from '../images/d3.png'
 import Dialog from '@mui/material/Dialog';
-import Group from "../images/Group.png";
+import Group from "../images/building.png";
 import cross from "../images/x.png";
 
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -103,7 +103,8 @@ const useStyles = makeStyles({
 
     section3Body: {
         display: 'flex',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
+        margin: "0px 7.2%",
         ['@media (max-width:600px)']: {
             flexWrap: 'wrap',
         }
@@ -223,7 +224,7 @@ function About() {
 
     const aboutCard = (img, name, post, id) => {
         return (
-            <div style={{ marginRight:isMobile?0: 20, marginLeft:isMobile?0: id == 0 ? 20 : 0, backgroundColor: "white", width: 389, minHeight: 387, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile ? 32 : 0 }}>
+            <div style={{ marginRight:isMobile?0:is1300? 20:0, marginLeft:isMobile?0: (id == 0 && is1300) ? 20 : 0, backgroundColor: "white", width: 389, minHeight: 387, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile ? 32 : 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: isMobile ? "24px 16px" : "48px 0px", flex: 1 }}>
                     <img src={img} style={{ width: isMobile ? 72 : 120, height: isMobile ? 72 : 120, borderRadius: "100%", }}></img>
                     <p style={{ marginTop: 24, color: '#161A1B', fontFamily: 'Mulish', fontSize: isMobile ? 18 : 20, lineHeight: isMobile ? "22.59px" : "25px", fontWeight: 'bold', }}>{name}</p>

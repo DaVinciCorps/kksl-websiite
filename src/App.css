@@ -2,14 +2,38 @@ p{
   margin: 0px;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 .MuiList-root{
   padding: 0px !important;
+  box-shadow: none !important;
 }
 
 .MuiDialog-paper{
   border-radius: 15px !important;
+}
+
+.MuiMenu-list{
+  box-shadow: none !important;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+  box-shadow: none !important;
+}
+
+#logincard:active{
+  background-color: #E7F1FE;
+
+}
+
+#login-button:active{
+  border: none !important;
+  background-color: #2584F4 !important;
+  color: white !important;
 }

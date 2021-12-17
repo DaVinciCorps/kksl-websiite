@@ -83,7 +83,7 @@ function Footer() {
                         <div className={classes.subsection}>Code of Conduct</div>
                     </div>
                 </div>
-                <div style={{display: 'flex', margin: "115px 0px 192px 0px",}}>
+                <div style={{display: 'flex', margin: "115px 0px 130px 0px",}}>
                     <div style={{flex: 1}}><img src={logo} /></div>
                     <div style={{ color: '#92929D' }}>Copyright 2020</div>
                 </div>

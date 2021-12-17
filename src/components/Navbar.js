@@ -239,7 +239,7 @@ export default function Navbar() {
 
         const loginCard = (data) => {
             return (
-                <div style={{ boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, width: 222, height: 272 }}>
+                <div id="logincard" style={{ boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, width: 222, height: 272 }}>
                     <div style={{ margin: "32px 32px 24px 32px", }}>
                         <img src={data.img} />
                         <p style={{ marginTop: 16, color: "#161A1B", fontSize: 18, fontFamily: 'Mulish', lineHeight: "21.6px", fontWeight: 'bold' }}>
@@ -248,7 +248,7 @@ export default function Navbar() {
                         <p style={{ marginTop: 4, color: "rgba(22, 26, 27, 0.6)", fontSize: 12, fontFamily: 'Mulish', lineHeight: "18px", fontWeight: 400, maxWidth: 192 }}>
                             {data.text}
                         </p>
-                        <button onClick={() => { setAssociateOpen(true) }} style={{ marginTop: 16, width: 120, height: 48, outline: 'none', border: '1px solid #2584F4', borderRadius: 8, color: "#2584F4", fontWeight: 700, fontSize: 16, backgroundColor: "inherit", cursor: 'pointer' }}>
+                        <button id="login-button" onClick={() => { setAssociateOpen(true) }} style={{ marginTop: 16, width: 120, height: 48, outline: 'none', border: '1px solid #2584F4', borderRadius: 8, color: "#2584F4", fontWeight: 700, fontSize: 16, backgroundColor: "inherit", cursor: 'pointer' }}>
                             Login
                         </button>
                     </div>
