@@ -418,7 +418,7 @@ export default function Home() {
 
         const feedbackCard=(data,index)=>{
             return(
-                <div id={`card-${index}`} style={{backgroundColor: "#E7F1FE",boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)",borderRadius: 15, margin:isMobile?"96px 20px 40.88px 20px": "138px 120px 78px 25px",minWidth:isMobile?327: 420}}>
+                <div id={`card-${index}`} style={{zIndex: 100,backgroundColor: "#E7F1FE",boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)",borderRadius: 15, margin:isMobile?"96px 20px 40.88px 20px": "138px 120px 78px 25px",minWidth:isMobile?327: 420}}>
                     <div style={{margin: "0px 32px 32px 32px", }}>
                         <img src={data.img} style={{position: "relative", borderRadius: "100%",bottom: 56 }} />
                         <div style={{marginTop: -40}}>
@@ -440,7 +440,8 @@ export default function Home() {
 
         return(
             <div style={{marginTop:isMobile?0: 0,  backgroundColor: '#F7F7F7', }}>
-                <div style={{margin:isMobile?"0px 6.2% 0px 6.2%": "0px 0% 132px 7.2%",paddingTop:isMobile?40: 88}}>
+                <div style={{margin:isMobile?"0px 6.2% 0px 6.2%": "0px 0% 132px 7.2%",paddingTop:isMobile?40: 88, }}>
+                    {!isMobile && <img src={Pattern} style={{position: 'absolute', marginTop: 447, left: 320}} />}
                     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                         <p style={{fontSize:isMobile?20: 36, lineHeight:isMobile?"25.1px": "45.18px", fontWeight: 'bold', fontFamily: 'Mulish',color: "#3C4856"}}>
                             What People Say About Us?
