@@ -99,7 +99,7 @@ export default function Home() {
     
     const section1=()=>{
         return(
-            <div style={{marginTop:isMobile?40: 130, marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
+            <div style={{marginTop:isMobile?40: 130,overflowX: "hidden", marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems:isMobile? 'center': ''}}>
                     <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28: 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width: 510 }}>Build Your Future With Investment</p>
                     <p style={{fontFamily: 'Mulish', fontWeight: 400, fontSize:isMobile?12: 16, lineHeight: "20px", color: "#161A1B", marginRight: isMobile?"6.2%":'',textAlign: isMobile?'center':'left'  }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas sed fermentum aliquet est.</p>

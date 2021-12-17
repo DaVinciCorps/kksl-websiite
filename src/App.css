@@ -2,10 +2,6 @@ p{
   margin: 0px;
 }
 
-html{
-  overflow-x: hidden;
-}
-
 ::-webkit-scrollbar {
   display: none;
 }

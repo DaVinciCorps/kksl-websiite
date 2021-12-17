@@ -143,7 +143,7 @@ function About() {
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
+                        <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
@@ -167,7 +167,7 @@ function About() {
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
+                        <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
@@ -192,7 +192,7 @@ function About() {
                         </ul>
                     </div>
                     {!isMobile &&
-                        <button style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
+                        <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
                     }
