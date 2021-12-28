@@ -6,13 +6,20 @@ import 'react-dropdown/style.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useHistory } from 'react-router';
 
 
 function Ipo() {
     const isMobile = useMediaQuery('(max-width:600px)');
     const [selected, setSelected] = useState();
+    const history = useHistory();
+
 
     const topDiv = () => {
+
+        const startIPOSection = () => {
+            history.push("/IPO/home")
+        }
         return (
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: isMobile ? "40px 6.2% 48px 6.2%" : "80px 14.4% 20px 14.4%", flexWrap: isMobile ? 'wrap-reverse' : "" }}>
                 <img style={{ marginTop: isMobile ? 32 : 0, width: isMobile ? "100%" : "" }} src={service1} alt="Service1" />
@@ -22,7 +29,7 @@ function Ipo() {
                     </p>
                     <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? 'center' : '' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est.</p>
                     <div style={{ display: "flex", justifyContent: isMobile ? 'center' : "" }}>
-                        <button style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+                        <button style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }} onClick={startIPOSection}>
                             Get Started
                         </button>
                     </div>

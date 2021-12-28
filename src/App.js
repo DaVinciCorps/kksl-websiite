@@ -16,6 +16,8 @@ import UnlistedEquity from "./components/Services/UnlistedEquity"
 import Trading from './components/Services/Trading';
 import "./App.css";
 import Login from './components/Login';
+import IpoHome from './components/IpoHome';
+import IpoApply from './components/IpoApply';
 // import Demat from "./components/Services/Demat/Demat"
 
 
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="/debt"  ><Debt /></Route>
           <Route exact path="/demat"  ><Demat /></Route>
           <Route exact path="/IPO"  ><Ipo /></Route>
+          <Route exact path="/IPO/home"  ><IpoHome /></Route>
+          <Route exact path="/IPO/apply"  ><IpoApply /></Route>
           <Route exact path="/international-investments"  ><InternationalInvestment /></Route>
           <Route exact path="/unlisted-equity"  ><UnlistedEquity /></Route>
           <Route exact path="/mutual-funds"  ><MutualFunds /></Route>
