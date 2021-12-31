@@ -149,11 +149,13 @@ function IpoApply() {
     }
 
     return (
-        <div style={{marginLeft:isMobile ? '6%': '14.2%', marginRight:isMobile ? '6%': '14.2%',  marginTop:'88px', display:'flex', flexDirection:'column', backgroundColor:'#fffafa', marginBottom: isMobile? '48px':'160px'}}>
-            {section1()}
-            {section2()}
-            {section3()}
-            {section4()}
+        <div style={{maxWidth:'1440px', margin:'auto'}}>
+            <div style={{marginLeft:isMobile ? '6%': '14.2%', marginRight:isMobile ? '6%': '14.2%',  marginTop:'88px', display:'flex', flexDirection:'column', backgroundColor:'#fffafa', marginBottom: isMobile? '48px':'160px'}}>
+                {section1()}
+                {section2()}
+                {section3()}
+                {section4()}
+            </div>
         </div>
     )
 }

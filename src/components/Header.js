@@ -118,7 +118,7 @@ function Header() {
             }
           </div>
           <div >
-            <p className={classes.link} onClick={()=>{handleNavigate("/")}} style={{color: value==6? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==6? 'bold':400 }}>
+            <p className={classes.link} onClick={()=>{handleNavigate("/blog/home")}} style={{color: value==6? "#161A1B":"rgba(22, 26, 27, 0.6)",fontWeight: value==6? 'bold':400 }}>
               Blogs/Videos
             </p>
             {value ==6 &&  

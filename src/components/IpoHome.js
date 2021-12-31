@@ -306,7 +306,7 @@ function IpoHome() {
     }
 
     return (
-        <div>
+        <div style={{margin:'auto', maxWidth:'1440px'}}>
             {section1()}
             {section2()}
             {section3()}

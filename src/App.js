@@ -18,6 +18,9 @@ import "./App.css";
 import Login from './components/Login';
 import IpoHome from './components/IpoHome';
 import IpoApply from './components/IpoApply';
+import Blog from './components/Blog';
+import BlogContent from './components/BlogContent';
+import BlogHome from './components/BlogHome';
 // import Demat from "./components/Services/Demat/Demat"
 
 
@@ -43,6 +46,9 @@ function App() {
           <Route exact path="/mutual-funds"  ><MutualFunds /></Route>
           <Route exact path="/trading"  ><Trading /></Route>
           <Route exact path="/login"  ><Login /></Route>
+          <Route exact path="/blog/home"  ><BlogHome /></Route>
+          <Route exact path="/blog"  ><Blog /></Route>
+          <Route exact path="/blog/content"  ><BlogContent /></Route>
           <Route path="/" > <Home /></Route>
         </Switch>
         <Footer />
