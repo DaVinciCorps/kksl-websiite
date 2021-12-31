@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { useHistory } from 'react-router';
 import MasterImage from '../images/BlogHome/master.png'
 import Blog1 from '../images/BlogHome/small1.png'
@@ -14,6 +14,10 @@ import Explainer1 from '../images/BlogHome/explainer1.png'
 import Explainer2 from '../images/BlogHome/explainer2.png'
 import Explainer3 from '../images/BlogHome/explainer3.png'
 import Explainer4 from '../images/BlogHome/explainer4.png'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import RightArrow from "../images/Vector (11).png";
+import LeftArrow from "../images/Vector (12).png";
+
 
 function createData(video, text){
     return {video, text};
@@ -33,7 +37,7 @@ const tutorial = [
         'Meet long-term goals'
     ),
     createData(
-        Tutorial4,
+        Tutorial2,
         'Enter the "ground floor" '
     ),
     createData(
@@ -61,7 +65,7 @@ const explainer = [
         'Meet long-term goals'
     ),
     createData(
-        Explainer4,
+        Explainer2,
         'More price transparency'
     ),
     createData(
@@ -77,19 +81,61 @@ const explainer = [
 
 function BlogHome() {
     const history = useHistory();
+    const scrollRef = useRef();
+    const isMobile = useMediaQuery('(max-width:600px)');
+    const isLarge = useMediaQuery('(max-width:1400px)');
+
+
+
+    const handleScroll=()=>{
+        var dist;
+        if(isMobile){
+            dist = 0.94*window.innerWidth;
+        }
+        else{
+            dist = window.innerWidth;
+        }
+        sideScroll('right',25,dist,30);
+    }
+    const handleScroll_left=()=>{
+        var dist;
+        if(isMobile){
+            dist = window.innerWidth;
+        }
+        else{
+            dist = 0.9*window.innerWidth;
+        }
+        sideScroll('left',25,dist,30);
+    }
+    function sideScroll(direction,speed,distance,step){
+        var scrollAmount = 0;
+        var slideTimer = setInterval(function(){
+            if(direction == 'left'){
+                scrollRef.current.scrollLeft -= step;
+            } else {
+                scrollRef.current.scrollLeft += step;
+            }
+            scrollAmount += step;
+            if(scrollAmount >= distance){
+                window.clearInterval(slideTimer);
+            }
+        }, speed);
+    }
+
+
 
     const section1 = () => {
         return (
-            <div style={{marginTop:'88px', backgroundColor:'#F7F7F7',paddingLeft:'7.2%', paddingRight:'7.2%'}}>
-                <div style={{paddingTop:'56px', fontFamily:'Mulish', fontSize:'36px', fontWeight:'bold', fontStyle:'normal', lineHeight:'120%'}}>
+            <div style={{marginTop:isMobile?0:'88px', backgroundColor:'#F7F7F7',paddingLeft:'7.2%', paddingRight:'7.2%'}}>
+                <div style={{paddingTop:'56px', fontFamily:'Mulish', fontSize:'36px', fontWeight:'bold', fontStyle:'normal', lineHeight:'120%', textAlign:isMobile?'center':''}}>
                     Blogs
                 </div>
-                <div style={{paddingTop:'40px', display:'flex', justifyContent:'space-between', paddingBottom:'56px'}}>
-                    <div style={{flex:1, paddingRight:16}}>
+                <div style={{paddingTop:'40px', display:'flex', justifyContent:'space-between', paddingBottom:'56px', flexWrap:'wrap'}}>
+                    <div style={{flex:1, paddingRight:16, display:isMobile?'none':''}}>
                         <img src={MasterImage} />
                     </div>
-                    <div style={{flex:1, display:'flex', flexDirection:'column' }}>
-                        <div style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap',}}>
+                    <div style={{flex:1, display:'flex', flexDirection:'column'}}>
+                        <div style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap', flexDirection:isMobile?'column':'row', alignItems:isMobile?'center':''}}>
                             <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
                                 <div style={{height:167}}>
                                     <img src={Blog1} width="100%"/>
@@ -169,7 +215,7 @@ function BlogHome() {
                         </div>
                         
                         <div style={{alignSelf:'center', paddingTop:16, }}>
-                            <button style={{width: 257,color: "#FFFFFF",height: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
+                            <button style={{width: isMobile?120:257,color: "#FFFFFF",height: isMobile?44: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:isMobile?14:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
                                 View All
                             </button>
                         </div>
@@ -181,30 +227,30 @@ function BlogHome() {
 
     const section2 = () => {
         return (
-            <div style={{paddingLeft:'7.2%', paddingRight:'7.2%', paddingTop:'80px', display:'flex', justifyContent:'space-around', paddingBottom:'80px', flexWrap:'wrap'}}>
+            <div style={{paddingLeft:'7.2%', paddingRight:'7.2%', paddingTop:'80px', display:'flex', justifyContent:'space-around', paddingBottom:'80px', }}>
                 <div style={{display:'flex', paddingTop:'66px', flexDirection:'column', alignItems:'center', paddingBottom:'66px'}}>
-                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'18px', lineHeight:'32px', color:'#1ECF9A'}}>
+                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:isMobile?'10px':'18px', lineHeight:'32px', color:'#1ECF9A'}}>
                         Lorem Ipsum
                     </div>
-                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:'bold', fontSize:'32px', lineHeight:'32px'}}>
+                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:isMobile?600:'bold', fontSize:isMobile?'10px':'32px', lineHeight:'32px'}}>
                         The Lorem Ipsum
                     </div>
                 </div>
                 <div style={{borderLeft:'1px solid rgba(0, 14, 28, 0.2)'}} />
                 <div style={{display:'flex', paddingTop:'66px', flexDirection:'column', alignItems:'center', paddingBottom:'66px'}}>
-                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'18px', lineHeight:'32px', color:'#1ECF9A'}}>
+                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:isMobile?'10px':'18px', lineHeight:'32px', color:'#1ECF9A'}}>
                         Lorem Ipsum
                     </div>
-                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:'bold', fontSize:'32px', lineHeight:'32px'}}>
-                        The Lorem Ipsum
+                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:isMobile?600:'bold', fontSize:isMobile?'10px':'32px', lineHeight:'32px'}}>
+                        Checkout our latest blogs
                     </div>
                 </div>
                 <div style={{borderLeft:'1px solid rgba(0, 14, 28, 0.2)'}} />
                 <div style={{display:'flex', paddingTop:'66px', flexDirection:'column', alignItems:'center', paddingBottom:'66px'}}>
-                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'18px', lineHeight:'32px', color:'#1ECF9A'}}>
+                    <div style={{fontStyle:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:isMobile?'10px':'18px', lineHeight:'32px', color:'#1ECF9A'}}>
                         Lorem Ipsum
                     </div>
-                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:'bold', fontSize:'32px', lineHeight:'32px'}}>
+                    <div style={{paddingTop:16,fontStyle:'Mulish', fontStyle:'normal',fontWeight:isMobile?600:'bold', fontSize:isMobile?'10px':'32px', lineHeight:'32px'}}>
                         The Lorem Ipsum
                     </div>
                 </div>
@@ -215,26 +261,30 @@ function BlogHome() {
     const section3 = () => {
         return (
             <div style={{paddingLeft:'7.2%', paddingRight:'7.2%', backgroundColor:'#F7F7F7', paddingTop:'56px', marginBottom:'160px', paddingBottom:'56px'}}>
-                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: '36px',lineHeight: '120%',}}>
+                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: isMobile?'20px':'36px',lineHeight: '120%',}}>
                     Tutorial Videos
                 </div>
-                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
+                <div style={{paddingTop:'32px', display:'flex', flexDirection:isMobile?'column':'row', justifyContent:'space-between' }}>
                     {tutorial.map((tut)=> (
                         <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
-                            <div style={{height:300, width:400, borderRadius:'15px'}}><img src={tut.video}/></div>
-                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px'}}>{tut.text}</div>
+                            <div style={{height:isMobile?245:300, width: isMobile?327:400, borderRadius:'15px'}}><img src={tut.video} height="100%" width="100%"/></div>
+                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px',display:isMobile?'none':''}}>{tut.text}</div>
                         </div>
                     ))}
+                    <div style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132,  marginRight:isMobile?"0px": "14.4%" }}>
+                        <img  src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                        <img  src = {RightArrow} style={{cursor: "pointer"}} />
+                    </div>
                     
                 </div>
-                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: '36px',lineHeight: '120%', paddingTop:'80px'}}>
+                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize:isMobile?'20px': '36px',lineHeight: '120%', paddingTop:'80px'}}>
                     Explainer Videos
                 </div>
                 <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
                     {explainer.map((tut)=> (
                         <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
-                            <div style={{height:300, width:400, borderRadius:'15px'}}><img src={tut.video}/></div>
-                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px'}}>{tut.text}</div>
+                            <div style={{height:isMobile?245:300, width:isMobile?327:400, borderRadius:'15px'}}><img src={tut.video}/></div>
+                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px', display:isMobile?'none':''}}>{tut.text}</div>
                         </div>
                     ))}
                     
