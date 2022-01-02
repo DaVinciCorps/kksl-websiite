@@ -264,7 +264,7 @@ function BlogHome() {
                 <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: isMobile?'20px':'36px',lineHeight: '120%',}}>
                     Tutorial Videos
                 </div>
-                <div style={{paddingTop:'32px', display:'flex', flexDirection:isMobile?'column':'row', justifyContent:'space-between' }}>
+                <div style={{paddingTop:'32px', display:'flex', flexDirection:isMobile?'column':'row', justifyContent:'space-between',overflow: 'auto' }}>
                     {tutorial.map((tut)=> (
                         <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
                             <div style={{height:isMobile?245:300, width: isMobile?327:400, borderRadius:'15px'}}><img src={tut.video} height="100%" width="100%"/></div>
@@ -280,7 +280,7 @@ function BlogHome() {
                 <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize:isMobile?'20px': '36px',lineHeight: '120%', paddingTop:'80px'}}>
                     Explainer Videos
                 </div>
-                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
+                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between' ,overflow: 'auto'}}>
                     {explainer.map((tut)=> (
                         <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
                             <div style={{height:isMobile?245:300, width:isMobile?327:400, borderRadius:'15px'}}><img src={tut.video}/></div>

@@ -3,12 +3,12 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import PolicyBazar from '../images/policybazar.png'
 
 function IpoApply() {
-    const isMobile = useMediaQuery('(max-width:600px)');
-
-
+    const isMobile = useMediaQuery('(max-width:850px)');
+    const is960 = useMediaQuery('(max-width:960px)');
+    const isTab = useMediaQuery('(max-width:1100px)');
     const section1 = () => {
         return (
-            <div style={{display:'flex', paddingRight:'9.8%', paddingLeft:'9.8%', justifyContent:'space-between', paddingTop: isMobile?'':'80px', flexDirection: isMobile?'column':'row'}}>
+            <div style={{display:'flex', paddingRight:'9.8%', paddingLeft:'9.8%', justifyContent:'space-between', marginTop: isMobile?'':is960?"88px":'133px', flexDirection: isMobile?'column':'row'}}>
                 <div style={{display:'flex'}}>
                     <div style={{width:'80px', height:'80px', borderRadius:'15px', borderSizing:'border-box', border: '1px solid rgba(0, 0, 0, 0.1)', display:'flex', alignItems:'center', justifyContent:'center'}}>
                         <img src={PolicyBazar} alt="LOGO"/>
@@ -149,13 +149,15 @@ function IpoApply() {
     }
 
     return (
-        <div style={{maxWidth:'1440px', margin:'auto'}}>
-            <div style={{marginLeft:isMobile ? '6%': '14.2%', marginRight:isMobile ? '6%': '14.2%',  marginTop:'88px', display:'flex', flexDirection:'column', backgroundColor:'#fffafa', marginBottom: isMobile? '48px':'160px'}}>
+        <div style={{background: "white"}}>
+        <div style={{maxWidth:isMobile?'600px': '1440px', margin:'auto',}}>
+            <div style={{background: "white",marginLeft:isMobile ? '6%':isTab?"7.4%": '14.2%', marginRight:isMobile ? '6%':isTab?"7.4%": '14.2%',  paddingTop:isMobile?"40px":'88px', display:'flex', flexDirection:'column', marginBottom: isMobile? '48px':'160px'}}>
                 {section1()}
                 {section2()}
                 {section3()}
                 {section4()}
             </div>
+        </div>
         </div>
     )
 }

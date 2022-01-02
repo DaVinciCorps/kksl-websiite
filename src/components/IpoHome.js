@@ -144,14 +144,18 @@ function createData(name, calories, fat, carbs, address) {
   ];
 
 function IpoHome() {
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
+    const is960 = useMediaQuery('(max-width:960px)');
+    const isTab = useMediaQuery('(max-width:1100px)');
     const history = useHistory();
-
+    const handleApply=()=>{
+        history.push('/IPO/apply')
+    }
     const section1 = () => {
 
         return (
-            <div style={{ display: 'flex', justifyContent: 'space-between', margin: isMobile ? "40px 6.2% 48px 6.2%" : "80px 14.4% 20px 14.4%", flexWrap: isMobile ? 'wrap-reverse' : "" }}>
-                <div style={{ marginLeft: isMobile ? 0 : 20 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', margin: isMobile ? "40px 6.2% 48px 6.2%" :is960?"80px 7.4% 20px 7.4%":isTab?"125px 7.4% 20px 7.4%": "125px 14.4% 20px 14.4%", flexWrap: isMobile ? 'wrap' : "" }}>
+                <div style={{ margin: isMobile?'auto':'',marginRight: isMobile ? "auto" : 60, }}>
                     <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 24 : 36, color: '#161A1B', lineHeight: isMobile ? "30.12px" : "43.2px", fontFamily: 'Mulish', textAlign: isMobile ? 'center' : "" }}>
                         IPO
                     </p>
@@ -159,12 +163,14 @@ function IpoHome() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est.
                     </p>
                     <div style={{ display: "flex", justifyContent: isMobile ? 'center' : "" }}>
-                        <button style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }} >
+                        <button onClick={handleApply} style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }} >
                             Apply for an IPO
                         </button>
                     </div>
                 </div>
-                <img style={{ marginTop: isMobile ? 32 : 0, width: isMobile ? "100%" : "" }} src={service1} alt="Service1" />
+                <div>
+                <img style={{ marginTop: isMobile ? 32 : 0, width: isMobile ? "100%" : "100%" }} src={service1} alt="Service1" />
+                </div>
             </div>
         )
     }
@@ -172,11 +178,11 @@ function IpoHome() {
 
     const section2 = () => {
         return (
-            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" : "14.4%", paddingRight: isMobile ? "6.2%" : "14.4%", marginTop: isMobile ? 0 : 160, flexDirection:'column'}}>
-                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize:'36px', lineHeight:'120%'}}>
+            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", paddingRight: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", marginTop: isMobile ? 0 : 160, flexDirection:'column'}}>
+                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize: isMobile?20:'36px', lineHeight:isMobile?"24px":'120%'}}>
                     Active IPOs
                 </div>
-                <div style={{paddingTop:'32px'}}>
+                <div style={{paddingTop:isMobile?24:'32px'}}>
                     <TableContainer>
                         <Table sx={{ maxWidth: 1024 }} aria-label="customized table">
                             <TableHead>
@@ -222,11 +228,11 @@ function IpoHome() {
 
     const section3 = () => {
         return (
-            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" : "14.4%", paddingRight: isMobile ? "6.2%" : "14.4%", marginTop: isMobile ? 0 : 80, flexDirection:'column'}}>
-                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize:'36px', lineHeight:'120%'}}>
+            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", paddingRight: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", marginTop: isMobile ? 48 : 80, flexDirection:'column'}}>
+                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize: isMobile?20:'36px', lineHeight:isMobile?"24px":'120%'}}>
                     Upcoming IPOs
                 </div>
-                <div style={{paddingTop:'32px'}}>
+                <div style={{paddingTop:isMobile?"24px":'32px'}}>
                     <TableContainer>
                         <Table sx={{ maxWidth: 1024 }} aria-label="customized table">
                             <TableHead>
@@ -265,11 +271,11 @@ function IpoHome() {
 
     const section4 = () => {
         return (
-            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" : "14.4%", paddingRight: isMobile ? "6.2%" : "14.4%", marginTop: isMobile ? 0 : 80, flexDirection:'column', marginBottom: isMobile ? '80px' : '160px'}}>
-                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize:'36px', lineHeight:'120%'}}>
+            <div style={{ display:'flex', paddingLeft: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", paddingRight: isMobile ? "6.2%" :isTab?"7.4%": "14.4%", marginTop: isMobile ? 48 : 80, flexDirection:'column', marginBottom: isMobile ? '80px' : '160px'}}>
+                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize: isMobile?20:'36px', lineHeight:isMobile?"24px":'120%'}}>
                     Closed IPOs
                 </div>
-                <div style={{paddingTop:'32px'}}>
+                <div style={{paddingTop:isMobile?'24px':'32px'}}>
                     <TableContainer>
                         <Table sx={{ maxWidth: 1024 }} aria-label="customized table">
                             <TableHead>
@@ -306,7 +312,7 @@ function IpoHome() {
     }
 
     return (
-        <div style={{margin:'auto', maxWidth:'1440px'}}>
+        <div style={{margin:'auto', maxWidth:isMobile?600:'1440px',}}>
             {section1()}
             {section2()}
             {section3()}

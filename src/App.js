@@ -21,8 +21,7 @@ import IpoApply from './components/IpoApply';
 import Blog from './components/Blog';
 import BlogContent from './components/BlogContent';
 import BlogHome from './components/BlogHome';
-// import Demat from "./components/Services/Demat/Demat"
-
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -31,6 +30,7 @@ function App() {
       <Router>
         <Navbar />
         <Header />
+        <ScrollToTop />
         <Switch>
           <Route exact path="/home"  > <Home></Home> </Route>
           <Route exact path="/about"><About /> </Route>

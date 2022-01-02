@@ -9,6 +9,10 @@ const useStyles = makeStyles({
     height: 80,
     display: 'flex',
     alignItems: 'center',
+    position: 'fixed',
+    top: 70,
+    width: "100%",
+    transition: "top 0.4s"
   },
   link:{
     fontFamily: 'Mulish',
@@ -24,10 +28,24 @@ const useStyles = makeStyles({
 
 function Header() {
   const classes = useStyles();
-  const isMobile = useMediaQuery('(max-width:600px)');
+  const isMobile = useMediaQuery('(max-width:960px)');
   const history = useHistory();
   const {pathname} = useLocation();
   const [value,setValue] = useState();
+  useEffect(()=>{
+    if(!isMobile){
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos >= currentScrollPos && !isMobile && document.getElementById("header") !=null ) {
+          document.getElementById("header").style.top = "70px";
+        } else if(!isMobile && document.getElementById("header") !=null){
+          document.getElementById("header").style.top = "-150px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+    }
+  })
   useEffect(()=>{
     const path = pathname.split("/")[1];
     if(path==''){
@@ -53,8 +71,8 @@ function Header() {
     
     {!isMobile &&
       
-    <div className={classes.root}>
-      <div style={{position: 'relative', left: '9.7%'}}><span style={{color: '#3E4953',fontSize: 20,cursor :'pointer' }}><b>logo</b>ipsum</span></div>
+    <div className={classes.root} id="header">
+      <div style={{position: 'relative', left: '9.7%', top: "-7px"}}><span style={{color: '#3E4953',fontSize: 20,cursor :'pointer' }}><b>logo</b>ipsum</span></div>
       <div style={{display: 'flex', margin: 'auto',}}>
         
           <div >

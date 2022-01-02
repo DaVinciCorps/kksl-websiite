@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 
 function Footer() {
     const classes = useStyles();
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
     return (
         <React.Fragment>
         {!isMobile && 

@@ -1,4 +1,4 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef, useEffect} from 'react'
 import { makeStyles, } from '@mui/styles';
 import HeroSectionImage from '../images/HeroSection1.png'
 
@@ -8,10 +8,10 @@ import Person from "../images/Person1.png";
 import Equity from '../images/equity.png'
 import Derivatives from '../images/derivative.png'
 import MutualFund from '../images/mutualfunds.png'
-import EquityImage from '../images/Illustration1.png'
-import DerivateImage from '../images/illustration2.png'
-import CommodityImage from '../images/illustration3.png'
-import MutualFundImage from '../images/illustration4.png'
+import EquityImage from '../images/Group 626240.png'
+import DerivateImage from '../images/Group 626241.png'
+import CommodityImage from '../images/Group 626242.png'
+import MutualFundImage from '../images/Group 626243.png'
 import Trust1 from '../images/Trust1.png'
 import Carbon from '../images/carbon_security.png'
 import Codicon from '../images/codicon_sync.png'
@@ -43,9 +43,11 @@ const useStyles = makeStyles(() => ({
         backgroundColor: 'white',
         marginRight: 20,
         borderRadius: "100%",
-        ['@media (max-width:600px)']: {
+        minWidth: 80,
+        ['@media (max-width:850px)']: {
             width: 40,
             height: 40,
+            minWidth: 40,
         }
     },
     imgHead:{
@@ -53,7 +55,7 @@ const useStyles = makeStyles(() => ({
         fontSize: '40px',
         lineHeight: '150%',
         color: '#86BBF9',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             marginTop: 16,
             fontWeight: 500,
             fontSize: 14,
@@ -65,7 +67,7 @@ const useStyles = makeStyles(() => ({
         fontSize: '16px',
         lineHeight: '28px',
         color: '#FFFFFF',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             marginTop: 2,
             fontWeight: 400,
             fontSize: 10,
@@ -73,7 +75,7 @@ const useStyles = makeStyles(() => ({
         }
     },
     img:{
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             width: 20,
             height: 20
         }
@@ -84,7 +86,9 @@ const useStyles = makeStyles(() => ({
 
 export default function Home() {
     const scrollRef = useRef();
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
+    const isTab = useMediaQuery('(max-width:1100px)')
+    const is960 = useMediaQuery('(max-width:960px)')
     const isLarge = useMediaQuery('(max-width:1400px)');
     const classes = useStyles();
     const [side,setSide] = useState("Equity");
@@ -94,14 +98,19 @@ export default function Home() {
         body: 'Our stronghold in the secondary market with our reliable relationship managers gives you complete autonomy over your investment choices. ',
         img: EquityImage
     });
+    const [leftArrowActive,setLeftArrowActive] = useState(false);
+    const [rightArrowActive,setRightArrowActive] = useState(true);
 
-    
+    useEffect(()=>{
+        document.getElementById("cont").addEventListener("scroll",handleActiveArrows)
+    })
     
     const section1=()=>{
         return(
-            <div style={{marginTop:isMobile?40: 130,overflowX: "hidden", marginLeft:isMobile?"6.2%": '14.4%', display: 'flex',maxWidth: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
+            <div style={{margin: 'auto', width: "100%", display: 'flex', justifyContent: 'center'}}>
+            <div style={{marginTop:isMobile?40:is960?105: 185,overflowX: "hidden", marginLeft:isMobile?"6.2%":isTab?"7.4%": '14.4%', display: 'flex',maxWidth:isMobile?500: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems:isMobile? 'center': ''}}>
-                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28: 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width: 510 }}>Build Your Future With Investment</p>
+                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28:isTab?"48px": 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width:isTab?"": 510 }}>Build Your Future With Investment</p>
                     <p style={{fontFamily: 'Mulish', fontWeight: 400, fontSize:isMobile?12: 16, lineHeight: "20px", color: "#161A1B", marginRight: isMobile?"6.2%":'',textAlign: isMobile?'center':'left'  }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas sed fermentum aliquet est.</p>
                     <button style={{marginBottom: 30,outline: 'none', border: 'none',width: 140, height:50, backgroundColor: '#2584F4', marginTop: 48, borderRadius: 8, cursor: 'pointer'}}>
                         <p style={{fontSize: 16,fontWeight: 700,fontFamily: 'Mulish', color: 'white'}}>
@@ -112,6 +121,7 @@ export default function Home() {
                 <div style={{marginLeft: isMobile?"-6.2%":'',marginRight: isMobile?"-6.2%":''}}>
                     <img src={HeroSectionImage} style={{ marginTop: isMobile? 47:0,width: isLarge?"100%":"" }} ></img>
                 </div>
+            </div>
             </div>
         )
     }
@@ -137,11 +147,11 @@ export default function Home() {
         ]
 
         return(
-            <div style={{background: '#0953AA',}}>
-                <div style={{marginLeft: '10.6%',paddingTop: 32, paddingBottom: 44, display: 'flex',marginRight: "10.6%", justifyContent: 'space-between'}}  >
+            <div style={{background: '#0953AA',display: 'flex', justifyContent: 'center'}}>
+                <div style={{marginLeft:isMobile?"10.6%":isTab?"7.4%": '10.6%',paddingTop: 32, paddingBottom: 44, display: 'flex',marginRight:isMobile?"10.6%":isTab?"7.4%": "10.6%", justifyContent: 'space-between',maxWidth: isMobile?500:'',width: '100%' }}  >
                     {data.map(i=>
                             
-                        <div style={{display: 'flex', flexWrap: isMobile?"wrap":''}}>
+                        <div style={{display: 'flex', flexWrap: isMobile?"wrap":'', maxWidth:isMobile? 78:""}}>
                             <div className={classes.imgDiv}>
                             <img src={i.img} alt="Bar" className={classes.img} />
                             </div>
@@ -222,15 +232,14 @@ export default function Home() {
                         <p style={{color: 'rgba(22, 26, 27, 0.7)', fontSize:isMobile?12: 16,fontWeight: 'bold',fontFamily: "Mulish", marginTop: 24, lineHeight:isMobile?"20px": "120%", maxWidth: 515}}>{data.subHeading}</p>
                         <p style={{color: '#161A1B', fontSize:isMobile?12: 16,fontFamily: "Mulish", lineHeight:isMobile?"20px": "26px",maxWidth: 515, marginTop: 5,letterSpacing: '0.005em'}}>{data.body}</p>
                     </div>
-                    <div style={{boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.1)',marginTop: 22,}}>
-                        <img style={{margin:isMobile?"16px 24px" :36, width:isMobile?280: "100%", maxWidth: 550}} src={data.img} />
-                    </div>
+                        <img style={{   marginTop:isMobile?24:25, width:isMobile?"100%": "100%", maxWidth: 681}} src={data.img} />
                 </div>
             )
         }
 
         return(
-            <div style={{margin:isMobile?"48px 6.2%": "120px 14.4%", maxWidth: 1440,}}>
+            <div style={{display: "flex",justifyContent: 'center'}}>
+            <div style={{margin:isMobile?"48px 6.2%":isTab?"120px 7.4%": "120px 14.4%", maxWidth:isMobile?500: 1440,display:isMobile?"": 'flex',justifyContent: 'center'}}>
                 {isMobile && <p style={{marginBottom: 24, fontFamily: 'Mulish', fontSize: 20, lineHeight: "24px",fontWeight: 700}}>{data.heading}</p>}
                 <div style={{display: 'flex',flexWrap:isMobile?'wrap':"" }}>
                     <div style={{display: 'flex', flexDirection: isMobile? 'row':'column', flexWrap: isMobile?'wrap':'', justifyContent:isMobile?'space-between':''}}>
@@ -252,13 +261,14 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            </div>
         )
     }
 
     const section4=()=>{
         return (
-            <div style={{backgroundColor: '#0953AA', backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile?"25%":""}}>
-                <div style={{marginLeft:isMobile?"6.2%": "14.4%", marginRight:isMobile?"6.2%": '14.4%', paddingTop:isMobile?48: 183, paddingBottom:isMobile?48: 137, display: 'flex', alignItems: 'end', flexWrap: isMobile?"wrap": ''}}>
+            <div style={{backgroundColor: '#0953AA', backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile?"25%":"", display: 'flex', justifyContent: 'center'}}>
+                <div style={{marginLeft:isMobile?"6.2%":isTab?"7.4%": "14.4%", marginRight:isMobile?"6.2%":isTab?"7.4%": '14.4%', paddingTop:isMobile?48: 183, paddingBottom:isMobile?48: 137, display: 'flex', alignItems: 'end', flexWrap: isMobile?"wrap": '', maxWidth: isMobile?500: ''}}>
                     <div style={{marginTop: 10}}>
                         <p style={{fontFamily: 'Mulish',fontWeight: 'bold',fontSize:isMobile?20: 56,color: "white"}}>
                         Purpose driven with Trust
@@ -280,7 +290,8 @@ export default function Home() {
 
 
         return (
-            <div style={{ maxWidth: 1440,padding: isMobile?"48px 6.2% 48px 6.2%":"160px 14.4% 120px 14.4%"}}>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{ maxWidth:isMobile?500: 1440,padding: isMobile?"48px 6.2% 48px 6.2%":isTab?"160px 7.4% 120px 7.4%":"160px 14.4% 120px 14.4%",}}>
                 
                 <p style={{fontSize:isMobile?20: 36,color: '#161A1B', lineHeight:isMobile?"24px": "43.2px",fontWeight: 700}}>
                     Invest On the Go.
@@ -338,9 +349,27 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            </div>
         )
     }
-
+    const handleActiveArrows=()=>{
+        const div = document.getElementById("cont");
+        const clientWidth  = div.clientWidth;
+        const scrollLeft = div.scrollLeft;
+        const scrollWidth = div.scrollWidth;
+        if(scrollLeft==0){
+            setLeftArrowActive(false);
+        }
+        else{
+            setLeftArrowActive(true);
+        }
+        if(scrollWidth - scrollLeft == clientWidth){
+            setRightArrowActive(false);
+        }
+        else{
+            setRightArrowActive(true);
+        }
+    }
     const section6=()=>{
         const data = [
             {
@@ -381,23 +410,28 @@ export default function Home() {
             },
         ]
 
+        
+        
         const handleScroll=()=>{
+            
             var dist;
             if(isMobile){
-                dist = 0.94*window.innerWidth;
+                // dist = 0.96*window.innerWidth;
+                dist = 360
             }
             else{
-                dist = window.innerWidth;
+                // dist = window.innerWidth;
+                dist = 565
             }
             sideScroll('right',25,dist,30);
         }
         const handleScroll_left=()=>{
             var dist;
             if(isMobile){
-                dist = window.innerWidth;
+                dist = 360;
             }
             else{
-                dist = 0.9*window.innerWidth;
+                dist = 565
             }
             sideScroll('left',25,dist,30);
         }
@@ -413,9 +447,11 @@ export default function Home() {
                 if(scrollAmount >= distance){
                     window.clearInterval(slideTimer);
                 }
+                handleActiveArrows();
             }, speed);
+            
         }
-
+        
         const feedbackCard=(data,index)=>{
             return(
                 <div id={`card-${index}`} style={{zIndex: 100,backgroundColor: "#E7F1FE",boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)",borderRadius: 15, margin:isMobile?"96px 20px 40.88px 20px": "138px 120px 78px 25px",minWidth:isMobile?327: 420}}>
@@ -437,6 +473,26 @@ export default function Home() {
                 </div>
             )
         }
+        const leftInActive=()=>{
+            return(
+                <img onClick={handleScroll_left} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+            )
+        }
+        const leftActive=()=>{
+            return(
+                <img onClick={handleScroll_left} src = {RightArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer", WebkitTransform: "scaleX(-1)",transform:"scaleX(-1)"}}/>
+            )
+        }
+        const rightInActive=()=>{
+            return(
+                <img onClick={handleScroll} src = {LeftArrow} style={{ cursor: "pointer",WebkitTransform: "scaleX(-1)",transform:"scaleX(-1)"}}/>
+            )
+        }
+        const rightActive=()=>{
+            return(
+                <img onClick={handleScroll} src = {RightArrow} style={{cursor: "pointer"}}/>
+            )
+        }
 
         return(
             <div style={{marginTop:isMobile?0: 0,  backgroundColor: '#F7F7F7', }}>
@@ -455,9 +511,12 @@ export default function Home() {
                             feedbackCard(i,index)    
                         )}
                     </div>
-                    <div style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132, justifyContent: 'end', marginRight:isMobile?"0px": "14.4%" }}>
-                        <img onClick={handleScroll_left} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
-                        <img onClick={handleScroll} src = {RightArrow} style={{cursor: "pointer"}} />
+                    <div onScroll={handleActiveArrows} style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132, justifyContent: 'end', marginRight:isMobile?"0px": "14.4%" }}>
+                        {/* <img onClick={handleScroll_left} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                        <img onClick={handleScroll} src = {RightArrow} style={{cursor: "pointer"}} /> */}
+                        
+                        {leftArrowActive? leftActive():leftInActive()}
+                        {rightArrowActive? rightActive(): rightInActive()}
                     </div>
                 </div>
             </div>
@@ -467,7 +526,8 @@ export default function Home() {
     const section7=()=>{
         return(
             <React.Fragment>
-            <div style={{ margin:isMobile?"48px 0px": "160px 14.4%" ,maxWidth: 1440,}}>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{ margin:isMobile?"48px 0px":isTab?"160px 7.4%": "160px 14.4%" ,maxWidth:isMobile?500: 1440, width: '100%'}}>
                 <div style={{backgroundColor: '#0953AA', boxShadow: '0px 40px 92px -16px rgba(9, 83, 170, 0.3)', borderRadius: 8, padding:isMobile?"40px 6.2%": "80px 104px",}}>
                     <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize:isMobile?20: 48, lineHeight:isMobile?"24px": "57.6px", textAlign: 'center', color: 'white'}}> Let us send you offering</p>
                     <div style={{marginTop: 32, display: 'flex', justifyContent: 'center',flexWrap: isMobile?"wrap":''}}>
@@ -482,7 +542,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
+            </div>
             </React.Fragment>
         )
     }

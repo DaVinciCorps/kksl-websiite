@@ -16,9 +16,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 const useStyles = makeStyles({
     section1: {
         display: 'flex',
-        margin: "50px 7.2% 80px 7.2%",
-        ['@media (max-width:600px)']: {
+        margin: "95px 7.2% 80px 7.2%",
+        ['@media (max-width:960px)']: {
+            margin: "50px 7.2% 80px 7.2%",
+        },
+        ['@media (max-width:850px)']: {
             margin: "40px 6.2% 48px 6.2%",
+            justifyContent: 'center'
         },
     },
 
@@ -28,8 +32,9 @@ const useStyles = makeStyles({
         width: '40%',
         flexDirection: 'column',
         justifyContent: 'center',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             alignItems: "center",
+            maxWidth:500
         },
     },
 
@@ -46,7 +51,7 @@ const useStyles = makeStyles({
         fontStyle: 'normal',
         color: '#161A1B',
         marginBottom: '24px',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             fontSize: 24,
             lineHeight: "30.12px",
             textAlign: 'center'
@@ -66,9 +71,10 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         margin: "0px 7.2% 80px 7.2%",
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             margin: "0px 6.2% 48px 6.2%",
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
+            justifyContent: 'center',
         },
         borderRadius: 15,
     },
@@ -79,7 +85,7 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         marginTop: '30px',
         marginBottom: '80px',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             marginLeft: "6.2%",
             marginRight: "6.2%",
         }
@@ -94,7 +100,7 @@ const useStyles = makeStyles({
         color: '#161A1B',
         marginBottom: '79px',
         alignSelf: 'center',
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             fontSize: 20,
             lineHeight: "25.1px",
             marginBottom: 24
@@ -105,8 +111,9 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         margin: "0px 7.2%",
-        ['@media (max-width:600px)']: {
+        ['@media (max-width:850px)']: {
             flexWrap: 'wrap',
+            justifyContent: 'center',
         }
     },
 
@@ -115,7 +122,7 @@ const useStyles = makeStyles({
 function About() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
     const isLarge = useMediaQuery('(min-width:1200px)');
     const is1300 = useMediaQuery('(max-width:1300px)');
     const [currAbout, setCurrAbout] = useState(0);
@@ -129,8 +136,8 @@ function About() {
     };
     const cardTrust = () => {
         return (
-            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile ? 24 : '' }}>
-                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column' }}>
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', marginBottom: isMobile ? 24 : '', height:isMobile?'': "100%" }}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column',height: '-webkit-fill-available'}}>
                     <img src={TrustedVector} style={{ width: isMobile ? 72 : 120 }} />
                     <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: isMobile ? 600 : 'bold', lineHeight: isMobile ? "22.59px" : '25px' }}>
                         Trust And Assurance
@@ -154,8 +161,8 @@ function About() {
 
     const cardPoint = () => {
         return (
-            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, height: isMobile ? "" : "100%", display: 'flex', flexDirection: 'column', marginBottom: isMobile ? 24 : '' }}>
-                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40, flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, height: isMobile ? "" : "100%", display: 'flex', flexDirection: 'column', marginBottom: isMobile ? 24 : '' , height:isMobile?'': "100%"}}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40, flex: 1, display: 'flex', flexDirection: 'column',height: '-webkit-fill-available' }}>
                     <div style={{ height: isMobile ? 72 : 120 }}><img src={Group} style={{ width: isMobile ? 72 : 120, height: isMobile ? 72 : 120 }} /></div>
                     <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: 'bold', lineHeight: isMobile ? "22.59px" : '25px' }}>
                         One Point Access to all Markets
@@ -178,8 +185,8 @@ function About() {
 
     const cardSeamless = () => {
         return (
-            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center', }}>
-                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column'  }}>
+            <div style={{ backgroundColor: 'white', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, maxWidth: 389, display: 'flex', alignItems: 'center',height:isMobile?'': '100%' }}>
+                <div style={{ margin: isMobile ? "16px 16px 24px 16px" : 40,flex:1,display: 'flex', flexDirection: 'column',height: '-webkit-fill-available'  }}>
                     <img src={SeamlessVector} style={{ width: isMobile ? 72 : 120, }} />
                     <p style={{ marginTop: isMobile ? 24 : 42, color: '#161A1B', fontFamily: "Mulish", fontSize: isMobile ? 18 : 20, fontWeight: 'bold', lineHeight: isMobile ? "22.59px" : '25px' }} >
                         Seamless Trading
@@ -224,7 +231,7 @@ function About() {
 
     const aboutCard = (img, name, post, id) => {
         return (
-            <div style={{ marginRight:isMobile?0:is1300? 20:0, marginLeft:isMobile?0: (id == 0 && is1300) ? 20 : 0, backgroundColor: "white", width: 389, minHeight: 387, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile ? 32 : 0 }}>
+            <div style={{ marginRight:isMobile?0:is1300? 20:0, marginLeft:isMobile?0: (id == 0 && is1300) ? 20 : 0, backgroundColor: "white", width: 389, minHeight: 387, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)', borderRadius: 15, marginBottom: isMobile ? 32 : 0, marginLeft: isMobile?0:10,marginRight: isMobile?0:10 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: isMobile ? "24px 16px" : "48px 0px", flex: 1 }}>
                     <img src={img} style={{ width: isMobile ? 72 : 120, height: isMobile ? 72 : 120, borderRadius: "100%", }}></img>
                     <p style={{ marginTop: 24, color: '#161A1B', fontFamily: 'Mulish', fontSize: isMobile ? 18 : 20, lineHeight: isMobile ? "22.59px" : "25px", fontWeight: 'bold', }}>{name}</p>
@@ -270,7 +277,7 @@ function About() {
                 </div>
                 {!isMobile &&
                     <div className={classes.section1Image}>
-                        <img src={AboutTopImg} style={{ width: '90%' }} />
+                        <img src={AboutTopImg} style={{ width: '90%', height: "fit-content" }} />
                     </div>
                 }
             </div>

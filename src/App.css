@@ -33,3 +33,12 @@ p{
   background-color: #2584F4 !important;
   color: white !important;
 }
+
+.collapsible {
+  height: 0rem;
+  transition: height 0.25s linear;
+  border-radius: 0.25rem
+}
+.collapsible.active {
+  height: 156px;
+}

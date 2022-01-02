@@ -23,6 +23,12 @@ const useStyles = makeStyles({
         position: 'sticky',
         top: 0,
         padding: "0px 14.4%",
+        ['@media (max-width:1400px)']: {
+            padding: "0px 6.2%"
+        },
+        ['@media (max-width:1100px)']: {
+            padding: "0px 3.2%"
+        },
         zIndex: 1000,
     },
 
@@ -93,15 +99,15 @@ const useStyles = makeStyles({
         color: "#FFFFFF",
         height: 40,
         borderRadius: 8,
-        borderWidth: 2,
-        borderColor: "#2584F4",
         backgroundColor: "#2584F4",
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: "center",
         padding: '11 24',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        border: 'none',
+        outline: 'none'
     }
 
 });
@@ -110,7 +116,7 @@ const useStyles = makeStyles({
 export default function Navbar() {
     const history = useHistory();
     const classes = useStyles();
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:960px)');
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(false);
@@ -124,7 +130,10 @@ export default function Navbar() {
         setOpen(true);
         setAnchorEl(e.currentTarget)
     }
-
+    
+    const handleOpenAccount=()=>{
+        history.push("/demat");
+    }
     const loginMenu = () => {
         return (
             <Menu
@@ -201,7 +210,7 @@ export default function Navbar() {
                                 <p style={{ cursor: 'pointer', marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
                                     Circulars/ Bulletin
                                 </p>
-                                <p style={{ marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
+                                <p onClick={handleIpo} style={{ marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
                                     IPOs
                                 </p>
                             </div>
@@ -280,12 +289,15 @@ export default function Navbar() {
         )
     }
 
-    
-
+    const handleIpo=()=>{
+        handleMobileNavClose();
+        history.push("/IPO");
+    }
+    const handleMobileNavClose = () => {
+        setMobileNavOpen(false);
+    }
     const mobileNav = () => {
-        const handleMobileNavClose = () => {
-            setMobileNavOpen(false);
-        }
+        
 
         const handleOpenSignIn = () => {
             handleMobileNavClose();
@@ -305,12 +317,12 @@ export default function Navbar() {
                         <p onClick={handleOpenSignIn} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, }}>
                             Signup
                         </p>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, marginLeft: 72 }}>
+                        <p onClick={()=>{history.push("/services"); handleMobileNavClose();}} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, marginLeft: 72 }}>
                             Services
                         </p>
                     </div>
                     <div style={{ marginBottom: 16, display: 'flex' }}>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, }}>
+                        <p onClick={()=>{history.push("/"); handleMobileNavClose();}} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, }}>
                             Home
                         </p>
                         <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, marginLeft: 79 }}>
@@ -318,7 +330,7 @@ export default function Navbar() {
                         </p>
                     </div>
                     <div style={{ marginBottom: 16, display: 'flex' }}>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, }}>
+                        <p onClick={()=>{history.push("/about"); handleMobileNavClose();}} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, }}>
                             About Us
                         </p>
                         <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 400, marginLeft: 57 }}>
@@ -335,15 +347,15 @@ export default function Navbar() {
                         <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, }}>
                             Fund transfer
                         </p>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 62 }}>
+                        <p onClick={handleIpo} onClick={handleIpo} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 62 }}>
                             IPO
                         </p>
                     </div>
                     <div style={{ marginBottom: 32, display: 'flex', }}>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, }}>
+                        <p onClick={()=>{window.open("https://kyc.meon.space/kksecurities/rekyc","_blank")}} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, }}>
                             Re-KYC
                         </p>
-                        <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 100 }}>
+                        <p onClick={handleOpenAccount} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 100 }}>
                             open an account
                         </p>
                     </div>
@@ -390,11 +402,11 @@ export default function Navbar() {
     return (
         <React.Fragment >
             {isMobile &&
-                <div style={{ zIndex: 1000, padding: "0px 6.4%", display: 'flex', justifyContent: 'space-between', backgroundColor: "#0953AA", height: 45, alignItems: 'center' }}>
+                <div style={{position: 'sticky', top: 0, zIndex: 1000, padding: "0px 6.4%", display: 'flex', justifyContent: 'space-between', backgroundColor: "#0953AA", height: 45, alignItems: 'center' }}>
                     <p style={{ fontFamily: 'Mulish', fontWeight: 600, fontSize: 20, lineHeight: "25.1px", letterSpacing: "0.04em", color: "white" }}>
                         kk Securities
                     </p>
-                    <img onClick={() => { setMobileNavOpen(true) }} src={MenuSymbol} />
+                    <img style={{cursor: "pointer"}} onClick={() => { setMobileNavOpen(true) }} src={MenuSymbol} />
                     {mobileNav()}
                 </div>
             }
@@ -402,7 +414,7 @@ export default function Navbar() {
 
                 <div className={classes.root} >
                     <div className={classes.navLinks}>
-                        <p className={classes.navP}>
+                        <p onClick={handleOpenAccount} className={classes.navP}>
                             OPEN AN ACCOUNT
                         </p>
                         <p className={classes.navP}>
@@ -411,7 +423,7 @@ export default function Navbar() {
                         <p className={classes.navP}>
                             FUND TRANSFER
                         </p>
-                        <p className={classes.navP}>
+                        <p onClick={()=>{window.open("https://kyc.meon.space/kksecurities/rekyc","_blank")}} className={classes.navP}>
                             Re-KYC
                         </p>
                     </div>
