@@ -264,30 +264,32 @@ function BlogHome() {
                 <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: isMobile?'20px':'36px',lineHeight: '120%',}}>
                     Tutorial Videos
                 </div>
-                <div style={{paddingTop:'32px', display:'flex', flexDirection:isMobile?'column':'row', justifyContent:'space-between',overflow: 'auto' }}>
+                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between',overflow: 'auto', alignItems: isMobile? 'center':'' }}>
                     {tutorial.map((tut)=> (
-                        <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
+                        <div style={{display:'flex', flexDirection: isMobile?'':'column', marginRight:'16px'}}>
                             <div style={{height:isMobile?245:300, width: isMobile?327:400, borderRadius:'15px'}}><img src={tut.video} height="100%" width="100%"/></div>
                             <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px',display:isMobile?'none':''}}>{tut.text}</div>
                         </div>
                     ))}
-                    <div style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132,  marginRight:isMobile?"0px": "14.4%" }}>
-                        <img  src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
-                        <img  src = {RightArrow} style={{cursor: "pointer"}} />
-                    </div>
-                    
+                </div>
+                <div style={{display: isMobile? 'flex': 'none', paddingTop:'32.88px',  justifyContent:'end' ,marginRight:isMobile?"0px": "14.4%", alignSelf:'end' }}>
+                    <img  src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                    <img  src = {RightArrow} style={{cursor: "pointer"}} />
                 </div>
                 <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize:isMobile?'20px': '36px',lineHeight: '120%', paddingTop:'80px'}}>
                     Explainer Videos
                 </div>
-                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between' ,overflow: 'auto'}}>
+                <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between',overflow: 'auto', alignItems: isMobile? 'center':'' }}>
                     {explainer.map((tut)=> (
-                        <div style={{display:'flex', flexDirection:'column', marginRight:'16px'}}>
-                            <div style={{height:isMobile?245:300, width:isMobile?327:400, borderRadius:'15px'}}><img src={tut.video}/></div>
-                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px', display:isMobile?'none':''}}>{tut.text}</div>
+                        <div style={{display:'flex', flexDirection: isMobile?'':'column', marginRight:'16px'}}>
+                            <div style={{height:isMobile?245:300, width: isMobile?327:400, borderRadius:'15px'}}><img src={tut.video} height="100%" width="100%"/></div>
+                            <div style={{paddingTop:'24px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'20px', lineHeight:'32px',display:isMobile?'none':''}}>{tut.text}</div>
                         </div>
                     ))}
-                    
+                </div>
+                <div style={{display: isMobile? 'flex': 'none', paddingTop:'32.88px',  justifyContent:'end' ,marginRight:isMobile?"0px": "14.4%", alignSelf:'end' }}>
+                    <img  src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
+                    <img  src = {RightArrow} style={{cursor: "pointer"}} />
                 </div>
             </div>
         )

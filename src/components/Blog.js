@@ -12,6 +12,7 @@ import Blog6 from '../images/Blog/Blog6.png';
 import Blog7 from '../images/Blog/Blog7.png';
 import Blog8 from '../images/Blog/Blog8.png';
 import { useHistory } from 'react-router';
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 
 function CustomizedInputBase() {
@@ -86,8 +87,62 @@ const BlogData = [
 
 
 
+const mobileViewBlogData = [
+    createData(
+        Blog1,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog2,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog3,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog4,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog5,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog6,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog7,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+    createData(
+        Blog8,
+        'Immediate and fast transfer of securities...',
+        'Dividends are paid out when the company makes profits (if any). If the company has performed really well and is left with surplus cash, it may decide.',
+        '/blog/content'
+    ),
+]
+
+
+
 function Blog() {
     const history = useHistory();
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     const section1 = () => {
         return (
@@ -104,7 +159,7 @@ function Blog() {
                 <div style={{maxWidth:'712px', display:'flex', flexDirection:'column', flex:1}}>
                     {CustomizedInputBase()}
                 </div>
-                <div style={{marginLeft:'31px', display:'flex', alignSelf:'center',fontFamily:'Mulish', fontSize:'16px', fontStyle:'normal', fontWeight:'normal'}}>
+                <div style={{marginLeft:'31px', display:isMobile?'none':'flex', alignSelf:'center',fontFamily:'Mulish', fontSize:'16px', fontStyle:'normal', fontWeight:'normal'}}>
                     Filters <img src={Filter} style={{paddingLeft:'4px'}}/>
                 </div>
             </div>
@@ -114,26 +169,49 @@ function Blog() {
 
     const section3 = () => {
         return (
-            <div style={{marginTop:'119px', display:'flex', flexDirection:'column', marginBottom:'104px'}}>
-                {BlogData.map((blog)=> (
-                    <div style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap', paddingBottom:'56px'}}>
-                        <div style={{flex:1}}>
-                            <img src={blog.image}/>
-                        </div>
-                        <div style={{display:'flex', flexDirection:'column', flex:1}}>
-                            <div style={{fontFamily:'Mulish', fontWeight:'bold', fontSize:'24px', lineHeight:'32px', fontStyle:'normal'}}>
-                                {blog.heading}
+            <div>
+                <div style={{marginTop:'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'none':'flex'}}>
+                    {BlogData.map((blog)=> (
+                        <div style={{display:'flex', justifyContent:'space-between',  paddingBottom:'56px'}}>
+                            <div style={{flex:1}}>
+                                <img src={blog.image} style={{width:'100%', height:'auto'}}/>
                             </div>
-                            <div style={{paddingTop:'16px', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', fontStyle:'normal', color:'rgba(22, 26, 27, 0.7)'}}>
-                                {blog.content} 
-                                <button style={{border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} onClick={()=>history.push(blog.link)}>
-                                    Read more
-                                </button>
+                            <div style={{display:'flex', flexDirection:'column', flex:1,  paddingLeft:isMobile?'3%':'9.7%',}}>
+                                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontSize:isMobile?'12px':'24px', lineHeight:isMobile?'15px':'32px', fontStyle:'normal'}}>
+                                    {blog.heading}
+                                </div>
+                                <div style={{paddingTop:'16px',fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'18px':'26px', fontStyle:'normal', color:'rgba(22, 26, 27, 0.7)'}}>
+                                    {blog.content} 
+                                    <button style={{border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} onClick={()=>history.push(blog.link)}>
+                                        Read more
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-                
+                    ))}
+                </div>
+                <div style={{marginTop:'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'flex':'none'}}>
+                    {mobileViewBlogData.map((blog)=> (
+                        <div style={{display:'flex', justifyContent:'space-between',  paddingBottom:'56px'}}>
+                            <div style={{flex:1}}>
+                                <img src={blog.image} style={{width:'100%', height:'auto'}}/>
+                            </div>
+                            <div style={{display:'flex', flexDirection:'column', flex:1,  paddingLeft:isMobile?'10px':'',}}>
+                                <div style={{fontFamily:'Mulish', fontWeight:'bold', fontSize:isMobile?'12px':'24px', lineHeight:isMobile?'15px':'32px', fontStyle:'normal'}}>
+                                    {blog.heading}
+                                </div>
+                                <div style={{paddingTop:'16px',fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'18px':'26px', fontStyle:'normal', color:'rgba(22, 26, 27, 0.7)'}}>
+                                    {blog.content} 
+                                    <button style={{border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} onClick={()=>history.push(blog.link)}>
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    
+                </div>
+
             </div>
         )
     }
