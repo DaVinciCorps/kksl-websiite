@@ -77,12 +77,14 @@ const MobileViewBlogData = [
 
 function BlogHome() {
     const history = useHistory();
-    const isMobile = useMediaQuery('(max-width:600px)');
-    const isMac = useMediaQuery('(max-width:1170px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
+    // const isMac = useMediaQuery('(max-width:1170px)');
+
+
 
     const section1 = () => {
         return (
-            <div style={{display:'flex',flex:1, flexDirection:'column', marginRight:'40px'}}>
+            <div style={{display:'flex',flex:1, flexDirection:'column', marginRight:isMobile?0:'40px'}}>
                 <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold',paddingBottom: isMobile?'24px':'',fontSize:isMobile?'14px':'24px', lineHeight:isMobile?'18px':'32px'}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quisque aliquet risus diam aliquet senectus diam egestas volutpat.
                 </div>
@@ -93,13 +95,15 @@ function BlogHome() {
         )
     }
 
+
+
     const section2 = () => {
         return (
-            <div style={{flex:2, display:'flex', flexDirection:'column', marginRight:'24px'}}>
+            <div style={{flex:2, display:'flex', flexDirection:'column', marginRight:isMobile?0:'24px'}}>
                 <div style={{}}>
-                    <img src={MasterImage} />
+                    <img src={MasterImage} style={{width:'100%', height:'auto', maxWidth:'556px'}}/>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex', flexDirection:'column', maxWidth:'556px'}}>
                     <div style={{paddingTop:'24px', lineHeight:isMobile?'15px':'32px', fontFamily:'Mulish', fontSize:isMobile?'12px':'24px', fontStyle:'normal', fontWeight:'bold' }}>
                         Lorem ipsum dolor sit amet, ctetur scing elit ipsum.
                     </div>
@@ -107,7 +111,7 @@ function BlogHome() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit tempor eget sit etiam. Cras et pellentesque facilisis parturient nulla tristique. Semper sit ultrices nec diam. Cras erat dictum felis, proin habitasse. Porttitor blandit suscipit imperdiet pellentesque orci odio ac leo.
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex', flexDirection:'column', maxWidth:'556px'}}>
                     <div style={{paddingTop:'24px', lineHeight:isMobile?'15px':'32px', fontFamily:'Mulish', fontSize:isMobile?'12px':'24px', fontStyle:'normal', fontWeight:'bold' }}>
                         Lorem ipsum dolor sit amet, ctetur scing elit ipsum.
                     </div>
@@ -115,7 +119,7 @@ function BlogHome() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit tempor eget sit etiam. Cras et pellentesque facilisis parturient nulla tristique. Semper sit ultrices nec diam. Cras erat dictum felis, proin habitasse. Porttitor blandit suscipit imperdiet pellentesque orci odio ac leo.
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex', flexDirection:'column', maxWidth:'556px'}}>
                     <div style={{paddingTop:'24px', lineHeight:isMobile?'15px':'32px', fontFamily:'Mulish', fontSize:isMobile?'12px':'24px', fontStyle:'normal', fontWeight:'bold' }}>
                         Lorem ipsum dolor sit amet, ctetur scing elit ipsum.
                     </div>
@@ -123,7 +127,7 @@ function BlogHome() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit tempor eget sit etiam. Cras et pellentesque facilisis parturient nulla tristique. Semper sit ultrices nec diam. Cras erat dictum felis, proin habitasse. Porttitor blandit suscipit imperdiet pellentesque orci odio ac leo.
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex', flexDirection:'column', maxWidth:'556px'}}>
                     <div style={{paddingTop:'24px', lineHeight:isMobile?'15px':'32px', fontFamily:'Mulish', fontSize:isMobile?'12px':'24px', fontStyle:'normal', fontWeight:'bold' }}>
                         Lorem ipsum dolor sit amet, ctetur scing elit ipsum.
                     </div>
@@ -131,7 +135,7 @@ function BlogHome() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit tempor eget sit etiam. Cras et pellentesque facilisis parturient nulla tristique. Semper sit ultrices nec diam. Cras erat dictum felis, proin habitasse. Porttitor blandit suscipit imperdiet pellentesque orci odio ac leo.
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex', flexDirection:'column', maxWidth:'556px'}}>
                     <div style={{paddingTop:'24px', lineHeight:isMobile?'15px':'32px', fontFamily:'Mulish', fontSize:isMobile?'12px':'24px', fontStyle:'normal', fontWeight:'bold' }}>
                         Lorem ipsum dolor sit amet, ctetur scing elit ipsum.
                     </div>
@@ -143,12 +147,11 @@ function BlogHome() {
         )
     }
 
+
+
     const section3 = () => {
         return (
             <div style={{flex:1}}>
-                <div style={{paddingTop:'48px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'20px', lineHeight:'26px', paddingBottom:'24px', display:isMac?'':'none' }}>
-                    Related Blogs
-                </div>
                 {!isMobile && BlogData.map((blog)=> (
                     <div style={{display:'flex', justifyContent:'space-between', flexDirection:'column'}}>
                         <div style={{display:'flex', flexDirection:'row', paddingBottom:'16px',}}>
@@ -170,6 +173,17 @@ function BlogHome() {
                         <div style={{border: '1px solid rgba(0, 0, 0, 0.2)', marginBottom:'16px', height:0, display:isMobile?'none':''}} />
                     </div>
                 ))}
+            </div>
+        )
+    }
+
+
+    const mobileSection3 = () => {
+        return (
+            <div>
+                <div style={{paddingTop:'48px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'20px', lineHeight:'26px', paddingBottom:'24px', display:isMobile?'':'none' }}>
+                    Related Blogs
+                </div>
                 {isMobile && MobileViewBlogData.map((blog)=> (
                     <div style={{display:'flex', justifyContent:'space-between', flexDirection:'column'}}>
                         <div style={{display:'flex', flexDirection:'row', paddingBottom:'16px',}}>
@@ -204,10 +218,11 @@ function BlogHome() {
 
 
     return (
-        <div style={{margin:'auto', maxWidth:'1440px', marginTop:isMobile?'40px':'88px', display:'flex', marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
+        <div style={{margin:'auto', maxWidth:'1440px', marginTop:isMobile?'40px':'88px', display: isMobile?'':'flex', marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
             {section1()}
             {section2()}
-            {section3()}
+            {!isMobile && section3()}
+            {isMobile && mobileSection3()}
         </div>
     )
 }
