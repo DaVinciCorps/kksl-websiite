@@ -133,6 +133,9 @@ function BlogHome() {
                 <div style={{paddingTop:'40px', display:'flex', justifyContent:'space-between', paddingBottom:'56px', flexWrap:'wrap'}}>
                     <div style={{flex:1, paddingRight:16, display:isMobile?'none':''}}>
                         <img src={MasterImage} />
+                        <div style={{width: 400, height: 315, background: 'white'}}>
+                            
+                        </div>
                     </div>
                     <div style={{flex:1, display:'flex', flexDirection:'column'}}>
                         <div style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap', flexDirection:isMobile?'column':'row', alignItems:isMobile?'center':''}}>
@@ -264,7 +267,16 @@ function BlogHome() {
                 <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold', fontSize: isMobile?'20px':'36px',lineHeight: '120%',}}>
                     Tutorial Videos
                 </div>
+                <div style={{display: 'flex', justifyContent: 'space-between', margin: "0px -1.5%", postion: "relative", top: 300}}>
+                    <div style={{width: 100, height: 100, background: 'black',borderRadius: 100, color: 'white'}}>
+                            left
+                    </div>
+                    <div style={{width: 100, height: 100, background: 'black',borderRadius: 100, color: 'white'}}>
+                            right
+                    </div>
+                </div>
                 <div style={{paddingTop:'32px', display:'flex', flexDirection:'row', justifyContent:'space-between',overflow: 'auto', alignItems: isMobile? 'center':'' }}>
+                    
                     {tutorial.map((tut)=> (
                         <div style={{display:'flex', flexDirection: isMobile?'':'column', marginRight:'16px'}}>
                             <div style={{height:isMobile?245:300, width: isMobile?327:400, borderRadius:'15px'}}><img src={tut.video} height="100%" width="100%"/></div>

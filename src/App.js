@@ -22,6 +22,7 @@ import Blog from './components/Blog';
 import BlogContent from './components/BlogContent';
 import BlogHome from './components/BlogHome';
 import ScrollToTop from './components/ScrollToTop';
+import Tools from './components/Tools';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/blog/home"  ><BlogHome /></Route>
           <Route exact path="/blog"  ><Blog /></Route>
           <Route exact path="/blog/content"  ><BlogContent /></Route>
+          <Route exact path="/tools" ><Tools /></Route>
           <Route path="/" > <Home /></Route>
         </Switch>
         <Footer />
