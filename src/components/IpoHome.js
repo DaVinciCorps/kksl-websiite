@@ -148,6 +148,7 @@ function IpoHome() {
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
     const history = useHistory();
+    
     const handleApply=()=>{
         history.push('/IPO/apply')
     }
