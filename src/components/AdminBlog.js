@@ -41,6 +41,14 @@ export default function AdminBlog() {
     const vertical = "bottom";
     const horizontal = "center";
     const [message, setMessage] = useState();
+    const [image,setImage] = useState();
+    const [preview,setPreview] = useState();
+    useEffect(()=>{
+        if(image){
+            const objectUrl = URL.createObjectURL(image)
+            setPreview(objectUrl);
+        }
+    },[image])
     useEffect(() => {
         if (id) {
             axios({
@@ -84,6 +92,11 @@ export default function AdminBlog() {
             var formData = new FormData();
             formData.append("title", title);
             formData.append("category", category);
+            formData.append("time_to_read_min",timeToRead);
+            formData.append("content_para_1",para1);
+            formData.append("content_para_2",para1);
+            formData.append("content_para_3",para1);
+            formData.append("content_para_4",para1);
             axios({
                 method: "post",
                 url: url + "blog",
@@ -106,6 +119,11 @@ export default function AdminBlog() {
             formData.append("blogId", id);
             formData.append("title", title);
             formData.append("category", category);
+            formData.append("time_to_read_min",timeToRead);
+            formData.append("content_para_1",para1);
+            formData.append("content_para_2",para1);
+            formData.append("content_para_3",para1);
+            formData.append("content_para_4",para1);
             axios({
                 method: "post",
                 url: url + "blog/update_blog",
@@ -147,11 +165,17 @@ export default function AdminBlog() {
     const handleClose = () => {
         setOpen(false);
     }
+
+    const handleImage=(e)=>{
+        setImage(e.target.files[0]);
+    }
+
     return (
         <div>
 
             <div style={{ margin: "133px 14.4%", boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <p style={{ fontFamily: "Mulish", fontSize: 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
+                {preview && <img src={preview} style={{width: 500,height: 'auto', marginTop: 30}} />}
                 <TextField
                     label="Title"
                     className={classes.textField}
@@ -160,7 +184,15 @@ export default function AdminBlog() {
                     onChange={handleTitle}
                     style={{marginTop: 50}}
                 />
-
+                <div style={{display: 'flex', marginTop: '30px',justifyContent: 'space-between',}} className={classes.textField}>
+                    <input
+                        type = "file"
+                        onChange={handleImage}
+                    />
+                    <p style={{fontFamily: 'Mulish',}}>
+                        {image?image.name:""}
+                    </p>
+                </div>
                 <TextField
                     select
                     label="Category"
