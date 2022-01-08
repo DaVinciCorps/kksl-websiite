@@ -1,6 +1,7 @@
 const Video = require("../models/VideoModel.js");
 
 exports.create = (req, res) => {
+    console.log(req.body);
     const video = new Video({
         title: req.body.title,
         youtube_link: req.body.youtube_link,
@@ -49,7 +50,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    video.findById(req.params.VideoId)
+    Video.findById(req.params.videoId)
         .then(data => {
             if (!data) {
                 return res.status(404).send({
@@ -73,7 +74,7 @@ exports.update = async (req, res) => {
         })
     }
 
-    const video = await video.findById(videoId).exec();
+    const video = await Video.findById(videoId).exec();
     Video.findByIdAndUpdate(videoId, {
         title: req.body.title || video.title,
         category: req.body.category || video.category,

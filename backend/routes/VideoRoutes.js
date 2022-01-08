@@ -5,7 +5,7 @@ module.exports = (app) => {
 
     app.get('/video', video.findAll);
 
-    app.get('/video/:category', video.findCategory);
+    // app.get('/video/:category', video.findCategory);
 
     app.get('/video/:videoId', video.findOne);
 
