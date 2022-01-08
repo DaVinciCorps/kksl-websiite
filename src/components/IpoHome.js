@@ -86,28 +86,28 @@ function createData(name, calories, fat, carbs, address) {
       "To be announced",
       "-",
       "-",
-      "BUTTON HERE"
+      "View"
     ),
     createData(
       "Nidan Laboratories and Healthcare Limited IPO",
       "To be announced",
       "-",
       "-",
-      "BUTTON HERE"
+      "View"
     ),
     createData(
       "Paras Defence And Space Technologies Limited IPO",
       "To be announced",
       "-",
       "-",
-      "BUTTON HERE"
+      "View"
     ),
     createData(
       "Suyog Gurbaxani Funicular Ropeways Limited IPO",
       "To be announced",
       "-",
       "-",
-      "BUTTON HERE"
+      "View"
     )
   ];
 

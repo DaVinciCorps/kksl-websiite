@@ -1,7 +1,6 @@
 import React,{useState,useRef, useEffect} from 'react'
 import { makeStyles, } from '@mui/styles';
 import HeroSectionImage from '../images/HeroSection1.png'
-
 import Bar from "../images/BarChart.png";
 import Earth from "../images/Earth.png";
 import Person from "../images/Person1.png";
