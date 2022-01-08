@@ -1,11 +1,7 @@
 const Video = require("../models/VideoModel.js");
 
 exports.create = (req, res) => {
-<<<<<<< HEAD
     console.log(req.body);
-=======
-    // console.log('test')
->>>>>>> 5cab36ee0fcc52dcb0f10bfd9f0f652a74ed7205
     const video = new Video({
         title: req.body.title,
         youtube_link: req.body.youtube_link,
