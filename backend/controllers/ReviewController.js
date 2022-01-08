@@ -54,17 +54,18 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = async (req, res) => {
-    console.log(req.body);
     const fullUrl = req.protocol + '://' + req.get('host');
     const reviewId = req.body.reviewId;
+    console.log(reviewId);
     if (!reviewId) {
         return res.status(404).send({
             message: 'reviewId cannot be empty',
         })
     }
     const review = await Review.findById(reviewId).exec();
+    console.log(req.body.rating);
     Review.findByIdAndUpdate(reviewId, {
-        image: fullUrl + "/file/" + req.file.filename || review.image,
+        image: req.file?fullUrl + "/file/" + req.file.filename : review.image,
         rating: req.body.rating || review.rating,
         content: req.body.content || review.content,
         name: req.body.name || review.name,
@@ -79,6 +80,7 @@ exports.update = async (req, res) => {
             res.send(data);
         })
         .catch((err) => {
+            console.log(err);
             res.status(500).send({
                 message: err.message || "Some error occurred while fetching review"
             })

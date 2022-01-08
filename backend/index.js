@@ -8,8 +8,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors(corsOptions));
-app.use(upload.array()); 
-app.use(express.static('public'));
+// app.use(upload.array()); 
+// app.use(express.static('public'));
 
 var corsOptions = {
     origin: "http://localhost:3000"
@@ -17,9 +17,8 @@ var corsOptions = {
 
 const connection = require('./db');
 connection();
-
-require('./routes/BlogRoutes.js')(app);
 require('./routes/VideoRoutes.js')(app);
+require('./routes/BlogRoutes.js')(app);
 require('./routes/ReviewRoutes')(app);
 
 

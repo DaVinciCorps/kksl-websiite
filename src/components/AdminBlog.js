@@ -7,10 +7,18 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Snackbar from '@mui/material/Snackbar';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const useStyles = makeStyles({
     textField: {
-        width: 500,
+        width: "100%",
+        maxWidth: 800,
+        ['@media(max-width: 850px)']:{
+            width: "100%",
+            maxWidth: 500,
+            minWidth: 300
+        }
     },
     signInButton: {
         width: 150,
@@ -27,6 +35,7 @@ const useStyles = makeStyles({
 });
 
 export default function AdminBlog() {
+    const isMobile = useMediaQuery('(max-width:850px)');
     const history = useHistory();
     const classes = useStyles();
     const [title, setTitle] = useState("");
@@ -53,12 +62,19 @@ export default function AdminBlog() {
         if (id) {
             axios({
                 method: 'get',
-                url: url + "blog/" + id,
+                url: url + "blogs/" + id,
             })
                 .then(res => {
                     console.log(res);
                     setCategory(res.data.category);
                     setTitle(res.data.title);
+                    setPreview(res.data.image);
+                    setTimeToRead(res.data.time_to_read_min);
+                    setPara1(res.data.content_para_1);
+                    setPara2(res.data.content_para_2);
+                    setPara3(res.data.content_para_3);
+                    setPara4(res.data.content_para_4);
+                    
                 })
                 .catch(err => {
                     console.log(err);
@@ -88,45 +104,49 @@ export default function AdminBlog() {
     }
 
     const handleSubmit = () => {
-        if (title != "" && category != "" && !id) {
+        if (title != "" && category != "" && image && timeToRead && para1 && para2 && para3 && para4 && !id) {
             var formData = new FormData();
             formData.append("title", title);
             formData.append("category", category);
+            formData.append("file",image);
             formData.append("time_to_read_min",timeToRead);
             formData.append("content_para_1",para1);
-            formData.append("content_para_2",para1);
-            formData.append("content_para_3",para1);
-            formData.append("content_para_4",para1);
+            formData.append("content_para_2",para2);
+            formData.append("content_para_3",para3);
+            formData.append("content_para_4",para4);
             axios({
                 method: "post",
-                url: url + "blog",
+                url: url + "blogs",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })
                 .then(res => {
-
                     console.log(res);
                     setOpen(true);
                     setMessage("Blog created successfully.")
-                    history.push("/admin/blog/" + res.data._id);
+                    history.push("/admin/blog/" + res.data.data._id);
                 })
                 .catch(err => {
                     console.log(err);
                 })
         }
-        else if (title != "" && category != "" && id) {
+        else if (title != "" && category != "" && timeToRead && para1 && para2 && para3 && para4 && id) {
             var formData = new FormData();
             formData.append("blogId", id);
             formData.append("title", title);
+            if(image){
+                formData.append("file",image);
+            }
+            // 
             formData.append("category", category);
             formData.append("time_to_read_min",timeToRead);
             formData.append("content_para_1",para1);
-            formData.append("content_para_2",para1);
-            formData.append("content_para_3",para1);
-            formData.append("content_para_4",para1);
+            formData.append("content_para_2",para2);
+            formData.append("content_para_3",para3);
+            formData.append("content_para_4",para4);
             axios({
                 method: "post",
-                url: url + "blog/update_blog",
+                url: url + "blogs/update_blog",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })
@@ -146,7 +166,7 @@ export default function AdminBlog() {
         formData.append("blogId", id);
         axios({
             method: "delete",
-            url: url + "blog/" + id,
+            url: url + "blogs/" + id,
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -154,6 +174,13 @@ export default function AdminBlog() {
                 console.log(res);
                 setCategory('');
                 setTitle('');
+                setTimeToRead('');
+                setPara1('');
+                setPara2('');
+                setPara3('');
+                setPara4('');
+                setImage('');
+                setPreview('');
                 setOpen(true);
                 setMessage("Blog deleted successfully.")
                 history.push("/admin/blog");
@@ -173,9 +200,9 @@ export default function AdminBlog() {
     return (
         <div>
 
-            <div style={{ margin: "133px 14.4%", boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <p style={{ fontFamily: "Mulish", fontSize: 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
-                {preview && <img src={preview} style={{width: 500,height: 'auto', marginTop: 30}} />}
+            <div style={{ margin:isMobile?"0px 6.2%": "133px 14.4%", boxShadow:isMobile?"": "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <p style={{ fontFamily: "Mulish", fontSize:isMobile?24: 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
+                {preview && <img src={preview} style={{width:isMobile?300: 500,height: 'auto', marginTop: 30, border: '1px solid darkgrey'}} />}
                 <TextField
                     label="Title"
                     className={classes.textField}
@@ -185,6 +212,7 @@ export default function AdminBlog() {
                     style={{marginTop: 50}}
                 />
                 <div style={{display: 'flex', marginTop: '30px',justifyContent: 'space-between',}} className={classes.textField}>
+                    <p style={{marginRight: 20}}>Photo: </p>
                     <input
                         type = "file"
                         onChange={handleImage}
@@ -213,6 +241,7 @@ export default function AdminBlog() {
                     label="Time to read"
                     className={classes.textField}
                     variant="outlined"
+                    type = "number"
                     value={timeToRead}
                     onChange={handleTimeToRead}
                     style={{ marginTop: 30 }}
@@ -254,7 +283,7 @@ export default function AdminBlog() {
                     multiline
                 // rows={4}
                 />
-                <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (category && title) ? "#2584F4" : "" }}>
+                <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (title && category && timeToRead && para1 && para2 && para3 && para4 && preview ) ? "#2584F4" : "" }}>
                     {id ? "Update" : "Submit"}
                 </button>
                 {id &&

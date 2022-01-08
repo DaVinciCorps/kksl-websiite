@@ -1,7 +1,11 @@
 const Video = require("../models/VideoModel.js");
 
 exports.create = (req, res) => {
-    console.log(req.body);
+    if(!req.body.title){
+        return res.status(200).send({
+            message: "req.body empty"
+        })
+    }
     const video = new Video({
         title: req.body.title,
         youtube_link: req.body.youtube_link,
@@ -19,7 +23,7 @@ exports.create = (req, res) => {
 }
 
 exports.findCategory = (req, res) => {
-    const category = req.params.videoId;
+    const category = req.body.category;
     if (!category) {
         res.send({
             message: "Category cannot be empty"

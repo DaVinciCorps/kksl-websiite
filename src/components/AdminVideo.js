@@ -7,10 +7,17 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Snackbar from '@mui/material/Snackbar';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const useStyles = makeStyles({
     textField: {
-        width: 500,
+        width: "100%",
+        maxWidth: 800,
+        ['@media(max-width: 850px)']: {
+            width: "100%",
+            maxWidth: 500,
+            minWidth: 300
+        }
     },
     signInButton: {
         width: 150,
@@ -28,16 +35,17 @@ const useStyles = makeStyles({
 
 
 export default function AdminVideo() {
+    const isMobile = useMediaQuery('(max-width:850px)');
     const history = useHistory();
     const classes = useStyles();
     const [title, setTitle] = useState("");
     const [youtube, setYoutube] = useState("");
     const [category, setCategory] = useState("");
     const { id } = useParams();
-    const [open,setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     const vertical = "bottom";
     const horizontal = "center";
-    const [message,setMessage] = useState();
+    const [message, setMessage] = useState();
     useEffect(() => {
         if (id) {
             axios({
@@ -80,10 +88,12 @@ export default function AdminVideo() {
             })
                 .then(res => {
 
-                    console.log(res);
-                    setOpen(true);
-                    setMessage("Video created successfully.")
-                    history.push("/admin/video/" + res.data._id);
+                    console.log(res.data);
+                    if (res.data._id) {
+                        setOpen(true);
+                        setMessage("Video created successfully.")
+                        history.push("/admin/video/" + res.data._id);
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -134,20 +144,20 @@ export default function AdminVideo() {
                 console.log(err);
             })
     }
-    const handleClose=()=>{
+    const handleClose = () => {
         setOpen(false);
     }
     return (
         <div>
-            <div style={{ margin: "133px 14.4%", boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <p style={{ fontFamily: "Mulish", fontSize: 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
+            <div style={{ margin: isMobile ? "0px 6.2%" : "133px 14.4%", boxShadow: isMobile ? "" : "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <p style={{ fontFamily: "Mulish", fontSize: isMobile ? 24 : 32, }}>{id ? "Update a Video" : "Create a Video"}</p>
                 <TextField
                     label="Title"
                     className={classes.textField}
                     variant="outlined"
                     value={title}
                     onChange={handleTitle}
-                    style={{marginTop: 50}}
+                    style={{ marginTop: 50 }}
                 />
                 <TextField
                     label="Youtube Link"
@@ -188,7 +198,7 @@ export default function AdminVideo() {
                     onClose={handleClose}
                     message={message}
                     key={vertical + horizontal}
-                    style={{textAlign: 'center'}}
+                    style={{ textAlign: 'center' }}
                 />
             </div>
         </div>

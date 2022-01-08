@@ -6,7 +6,6 @@ const url = dbConfig.url;
 const mongoClient = new MongoClient(url);
 
 exports.create = async (req, res) => {
-    console.log(req.file);
     const fullUrl = req.protocol + '://' + req.get('host');
     const blog = new Blog({
         title: req.body.title,
@@ -97,7 +96,8 @@ exports.update = async (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    Blog.findByIdAndRemove(req.params.BlogId)
+    // console.log()
+    Blog.findByIdAndRemove(req.params.blogId)
         .then(Blog => {
             if (!Blog) {
                 return res.status(404).send({
