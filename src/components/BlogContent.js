@@ -218,11 +218,13 @@ function BlogHome() {
 
 
     return (
-        <div style={{margin:'auto', maxWidth:'1440px', marginTop:isMobile?'40px':'88px', display: isMobile?'':'flex', marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
-            {section1()}
-            {section2()}
-            {!isMobile && section3()}
-            {isMobile && mobileSection3()}
+        <div style={{display: 'flex', flexDirection:isMobile?'column':'row',alignItems:isMobile?'center':'',}}>
+            <div style={{ maxWidth:isMobile?'500px':'1440px', display:isMobile?'':'flex',marginTop:isMobile?'40px':'88px', marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
+                {section1()}
+                {section2()}
+                {!isMobile && section3()}
+                {isMobile && mobileSection3()}
+            </div>
         </div>
     )
 }

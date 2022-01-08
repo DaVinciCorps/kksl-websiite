@@ -142,11 +142,11 @@ const mobileViewBlogData = [
 
 function Blog() {
     const history = useHistory();
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const isMobile = useMediaQuery('(max-width:850px)');
 
     const section1 = () => {
         return (
-            <div style={{paddingTop:'88px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'36px', lineHeight:'120%', textAlign:'center'}}>
+            <div style={{paddingTop:isMobile?'40px':'88px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'36px', lineHeight:'120%', textAlign:'center'}}>
                 Blogs
             </div>
         )
@@ -170,7 +170,7 @@ function Blog() {
     const section3 = () => {
         return (
             <div>
-                <div style={{marginTop:'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'none':'flex'}}>
+                <div style={{marginTop:isMobile?'32px':'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'none':'flex'}}>
                     {BlogData.map((blog)=> (
                         <div style={{display:'flex', justifyContent:'space-between',  paddingBottom:'56px'}}>
                             <div style={{flex:1}}>
@@ -190,9 +190,9 @@ function Blog() {
                         </div>
                     ))}
                 </div>
-                <div style={{marginTop:'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'flex':'none'}}>
+                <div style={{marginTop:isMobile?'32px':'119px', flexDirection:'column', marginBottom:'104px', display:isMobile?'flex':'none'}}>
                     {mobileViewBlogData.map((blog)=> (
-                        <div style={{display:'flex', justifyContent:'space-between',  paddingBottom:'56px'}}>
+                        <div style={{display:'flex', justifyContent:'space-between',  paddingBottom:isMobile?'16px':'56px'}}>
                             <div style={{flex:1}}>
                                 <img src={blog.image} style={{width:'100%', height:'auto'}}/>
                             </div>
@@ -217,8 +217,8 @@ function Blog() {
     }
 
     return (
-        <div style={{margin:'auto', maxWidth:'1440px', }}>
-            <div style={{marginLeft:'7.2%', marginRight:'7.2%',}}>
+        <div style={{margin:'auto', display:'flex', flexDirection:'column', alignItems:'center' }}>
+            <div style={{maxWidth:isMobile?'500px':'1440px',marginLeft:'7.2%', marginRight:'7.2%',}}>
                 {section1()}
                 {section2()}
                 {section3()}
