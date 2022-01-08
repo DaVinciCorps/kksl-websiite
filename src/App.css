@@ -42,3 +42,8 @@ p{
 .collapsible.active {
   height: 156px;
 }
+
+.css-eg0mwd-MuiSlider-thumb{
+  background-color: white !important;
+  border: 3px solid !important;
+}
