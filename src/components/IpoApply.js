@@ -6,9 +6,11 @@ function IpoApply() {
     const isMobile = useMediaQuery('(max-width:850px)');
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
+
+
     const section1 = () => {
         return (
-            <div style={{display:'flex', paddingRight:'9.8%', paddingLeft:'9.8%', justifyContent:'space-between', marginTop: isMobile?'':is960?"88px":'133px', flexDirection: isMobile?'column':'row'}}>
+            <div style={{display:'flex', paddingRight:isMobile?0:'9.8%', paddingLeft:isMobile?0:'9.8%', justifyContent:'space-between', marginTop: isMobile?'':is960?"88px":'133px', flexDirection: isMobile?'column':'row'}}>
                 <div style={{display:'flex'}}>
                     <div style={{width:'80px', height:'80px', borderRadius:'15px', borderSizing:'border-box', border: '1px solid rgba(0, 0, 0, 0.1)', display:'flex', alignItems:'center', justifyContent:'center'}}>
                         <img src={PolicyBazar} alt="LOGO"/>
@@ -17,18 +19,18 @@ function IpoApply() {
                         <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'bold', fontSize:'24px', lineHeight:'120%'}}>
                             PolicyBazaar IPO
                         </div>
-                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingTop:'4px'}}>
+                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingTop:'4px', display:isMobile?'none':''}}>
                             PolicyBazaar
                         </div>
                     </div>
                 </div>
                 <div style={{display:'flex', flexDirection: isMobile? 'row':'column', justifyContent:isMobile?'space-between':'',paddingTop:isMobile? '24px':''}}>
-                    <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'bold', fontSize:'24px', lineHeight:'120%', display:'flex', flexDirection:'column'}}>
+                    <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'bold', fontSize:isMobile?'18px':'24px', lineHeight:'120%', display:'flex', flexDirection:'column'}}>
                         <div style={{display:'flex', flexDirection:'row'}}>
                         ₹ 14,100  
-                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingLeft:'16px'}}>/15 shares</div>
+                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'15px':'26px', paddingLeft:'16px'}}>/15 shares</div>
                         </div>
-                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingTop:'4px', alignSelf: isMobile?'':'end'}}>
+                        <div style={{fontStyle:'normal', fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'15px':'26px', paddingTop:'4px', alignSelf: isMobile?'':'end'}}>
                         Minimum Investment
                     </div>
                     </div>
@@ -46,7 +48,7 @@ function IpoApply() {
 
     const section2 = () => {
         return (
-            <div style={{marginTop:'80px', backgroundColor:'#E7F1FE', paddingRight:'9.8%', paddingLeft:'9.8%', paddingTop:'32px'}}>
+            <div style={{marginTop:'80px', backgroundColor:'#E7F1FE', paddingRight:'9.8%', paddingLeft:'9.8%', paddingTop:'32px',}}>
                 <div style={{fontWeight:'bold', fontStyle:'normal', fontFamily:'Mulish', fontSize:'24px', lineHeight:'120%'}}>
                     IPO Details
                 </div>
@@ -118,11 +120,11 @@ function IpoApply() {
 
     const section3 = () => {
         return (
-            <div style={{marginTop:'80px', paddingLeft:'9.8%', paddingRight:'9.8%'}}>
-                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold',fontSize: '36px',lineHeight: '120%',}}>
+            <div style={{marginTop:isMobile?'59px':'80px', paddingLeft: isMobile?0:'9.8%', paddingRight:isMobile?0:'9.8%'}}>
+                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold',fontSize: isMobile?'20px':'36px',lineHeight: '120%',}}>
                     About Company
                 </div>
-                <div style={{paddingTop:'24px', maxWidth:'820px', fontSize:'16px', lineHeight:'26px', fontWeight:'normal', fontStyle:'normal', fontFamily:'Mulish'}}>
+                <div style={{paddingTop:'24px', maxWidth:'820px', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'20px':'26px', fontWeight:'normal', fontStyle:'normal', fontFamily:'Mulish'}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, at condimentum ullamcorper vitae erat sollicitudin magna. Quam diam amet, quis nisi egestas amet, lorem habitasse convallis. Elementum, viverra turpis scelerisque tempor, egestas cum. Consectetur ridiculus et sit in. Viverra nulla varius diam porta euismod metus est tellus. Cursus adipiscing sed vel adipiscing. Eu tempus felis odio ut diam sed. Faucibus sit eu quis orci, risus odio nec. Ut senectus imperdiet auctor cras ornare eros, massa malesuada consequat. Vitae integer non urna, lacus rutrum. Egestas tortor, sed enim ullamcorper arcu vivamus suspendisse vestibulum iaculis. Sed est praesent placerat volutpat volutpat lectus turpis est facilisis. Egestas sit luctus tellus, arcu vitae. Curabitur dolor mollis feugiat sit pellentesque ut.
                 </div>
             </div>
@@ -132,11 +134,11 @@ function IpoApply() {
 
     const section4 = () => {
         return (
-            <div style={{marginTop:'80px', paddingLeft:'9.8%', paddingRight:'9.8%', paddingBottom:'80px'}}>
-                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold',fontSize: '36px',lineHeight: '120%',}}>
+            <div style={{marginTop:isMobile?'48px':'80px', paddingLeft: isMobile?0:'9.8%', paddingRight: isMobile?0:'9.8%', paddingBottom:isMobile?'48px':'80px'}}>
+                <div style={{fontFamily: 'Mulish',fontStyle: 'normal',fontWeight: 'bold',fontSize:  isMobile?'20px': '36px',lineHeight: '120%',}}>
                     Recommendations
                 </div>
-                <div style={{paddingTop:'24px', maxWidth:'820px', fontSize:'16px', lineHeight:'26px', fontWeight:'normal', fontStyle:'normal', fontFamily:'Mulish'}}>
+                <div style={{paddingTop:'24px', maxWidth:'820px', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'20px':'26px', fontWeight:'normal', fontStyle:'normal', fontFamily:'Mulish'}}>
                     <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, at condimentum ullamcorper vitae erat sollicitudin magna. Quam diam amet, quis nisi egestas amet, lorem habitasse convallis. Elementum, viverra turpis scelerisque tempor, egestas cum. Consectetur ridiculus et sit in. Viverra nulla varius diam porta euismod metus est tellus. Cursus adipiscing sed vel adipiscing. 
                     </p>

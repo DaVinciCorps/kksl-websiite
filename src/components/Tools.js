@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Slider from '@mui/material/Slider';
+import ToolsImage from '../images/toolsImage.png';
 
 
 export default function Tools() {
@@ -173,8 +174,48 @@ export default function Tools() {
 
     const section2 = () => {
         return (
-            <div style={{ margin: "120px 14.4% 108px 14.4%" }}>
+            <div style={{ margin: "120px 14.4% 108px 14.4%", display:'flex', justifyContent:'space-between'}}>
+                <div style={{flex:1}}>
+                    <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:600, fontSize:'24px', lineHeight:'30px'}}>
+                        SIP Calculator- Systematic Investment Plan Calculator
+                    </div>
+                    <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingTop:'16px', color:'rgba(22, 26, 27, 0.6)'}}>
+                        Investors may think that SIPs and mutual funds are identical. However, Systematic Investment Plan or SIP is the method of investing a fixed sum of money in mutual funds at regular intervals. SIPs generally allows investing invest weekly, quarterly, or monthly. 
+                    </div>
+                    <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:600, fontSize:'24px', lineHeight:'30px', paddingTop:'24px'}}>
+                        What is SIP Calculator?
+                    </div>
+                    <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:'16px', lineHeight:'26px', paddingTop:'16px', color:'rgba(22, 26, 27, 0.6)'}}>
+                        An SIP calculator is a tool that assists in determining the returns on mutual fund investments made through SIP. These have become one of the most popular investment options for millennials lately.  The calculators are intended to provide investors an estimate on their mutual fund investments. They do not clarify the exit load and expense ratio (if any), rather it calculates the wealth gain and expected returns for your monthly SIP investment.
+                    </div>
+                </div>
+                <div style={{flex:1, paddingLeft:'2%', alignSelf:'center'}}>
+                    <img src={ToolsImage} style={{width:'100%', height:'auto'}}/>
+                </div>
+            </div>
+        )
+    }
 
+
+    const section2Mobile = () => {
+        return (
+            <div style={{ margin: "48px 6.4% 48px 6.4%", display:'flex', flexDirection:'column'}}>
+                <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:600, fontSize:isMobile?'20px':'24px', lineHeight:'30px'}}>
+                    SIP Calculator- Systematic Investment Plan Calculator
+                </div>
+                <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:'26px', paddingTop:'16px', color:'rgba(22, 26, 27, 0.6)'}}>
+                    Investors may think that SIPs and mutual funds are identical. However, Systematic Investment Plan or SIP is the method of investing a fixed sum of money in mutual funds at regular intervals. SIPs generally allows investing invest weekly, quarterly, or monthly. 
+                </div>
+                <div style={{flex:1, paddingTop:'24px'}}>
+                    <img src={ToolsImage} style={{width:'100%', height:'auto'}}/>
+                </div>
+                <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:600, fontSize:isMobile?'20px':'24px', lineHeight:'30px', paddingTop:'24px'}}>
+                    What is SIP Calculator?
+                </div>
+                <div style={{fontFamily:'Mulish', fontStyle:'normal', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:'26px', paddingTop:'16px', color:'rgba(22, 26, 27, 0.6)'}}>
+                    An SIP calculator is a tool that assists in determining the returns on mutual fund investments made through SIP. These have become one of the most popular investment options for millennials lately.  The calculators are intended to provide investors an estimate on their mutual fund investments. They do not clarify the exit load and expense ratio (if any), rather it calculates the wealth gain and expected returns for your monthly SIP investment.
+                </div>
+                
             </div>
         )
     }
@@ -182,7 +223,8 @@ export default function Tools() {
     return (
         <div>
             {section1()}
-            {section2()}
+            {!isMobile && section2()}
+            {isMobile && section2Mobile()}
         </div>
     )
 }
