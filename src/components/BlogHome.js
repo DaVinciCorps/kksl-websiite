@@ -346,11 +346,11 @@ function BlogHome() {
                         <div ref={scrollRefBlog} id='blog' style={{ display: 'flex', justifyContent: 'space-between', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '' }}>
                             {blogs.map(i =>
                                 <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 : 16, marginRight: isMobile ? 0 : 16, }}>
-                                    <div style={{ flex: 1 }}>
-                                        <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 296, }} />
+                                    <div style={{ flex: 1, height:'167px' }}>
+                                        <img src={i.image} style={{ width: "100%", height: "inherit", maxWidth: 296, }} />
                                     </div>
                                     <div style={{ padding: 16, paddingBottom: 0, fontFamily: 'Mulish', fontWeight: 'bold', fontStyle: 'normal', fontSize: '18px', lineHeight: '24px', height: "48px" }}>
-                                        {i.title}
+                                        {i.title.substring(0, 40)}{i.content_para_1.length > 40 ? "..." : ""}
                                     </div>
                                     <div style={{ height: "60px", padding: 16, paddingBottom: 0, paddingTop: 8, fontFamily: 'Mulish', fontWeight: 'normal', fontStyle: 'normal', fontSize: '14px', lineHeight: '20px' }}>
                                         {i.content_para_1.substring(0, 90)}{i.content_para_1.length > 90 ? "..." : ""}
@@ -359,7 +359,7 @@ function BlogHome() {
                                         <div style={{ paddingLeft: 20, fontFamily: 'Mulish', fontSize: 12, fontStyle: 'normal', fontWeight: 'normal', bottom: 13 }}>
                                             {i.time_to_read_min} Min Read
                                         </div>
-                                        <button onClick={() => history.push('/blog/content')} style={{cursor:'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
+                                        <button onClick={() => history.push('/blog/'+i._id)} style={{cursor:'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
                                             <img src={Arrow} />
                                         </button>
                                     </div>
