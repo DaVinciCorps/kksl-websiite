@@ -50,9 +50,9 @@ function App() {
           <Route exact path="/mutual-funds"  ><MutualFunds /></Route>
           <Route exact path="/trading"  ><Trading /></Route>
           <Route exact path="/login"  ><Login /></Route>
-          <Route exact path="/blog/home"  ><BlogHome /></Route>
-          <Route exact path="/blog"  ><Blog /></Route>
-          <Route exact path="/blog/content"  ><BlogContent /></Route>
+          <Route exact path="/blog/"  ><BlogHome /></Route>
+          <Route exact path="/blog/all"  ><Blog /></Route>
+          <Route exact path="/blog/:id"  ><BlogContent /></Route>
           <Route exact path="/tools" ><Tools /></Route>
           <Route exact path="/admin/review" ><AdminReview /></Route>
           <Route exact path="/admin/review/:id" ><AdminReview /></Route>

@@ -12,7 +12,8 @@ const useStyles = makeStyles({
 		position: 'fixed',
 		top: 70,
 		width: "100%",
-		transition: "top 0.4s"
+		transition: "top 0.4s",
+		zIndex: 100,
 	},
 	link: {
 		fontFamily: 'Mulish',
@@ -145,7 +146,7 @@ function Header() {
 							}
 						</div>
 						<div >
-							<p className={classes.link} onClick={() => { handleNavigate("/blog/home") }} style={{ color: value == 6 ? "#161A1B" : "rgba(22, 26, 27, 0.6)", fontWeight: value == 6 ? 'bold' : 400 }}>
+							<p className={classes.link} onClick={() => { handleNavigate("/blog") }} style={{ color: value == 6 ? "#161A1B" : "rgba(22, 26, 27, 0.6)", fontWeight: value == 6 ? 'bold' : 400 }}>
 								Blogs/Videos
 							</p>
 							{value == 6 &&

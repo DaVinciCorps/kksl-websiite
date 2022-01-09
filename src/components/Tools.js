@@ -14,8 +14,8 @@ export default function Tools() {
     const [time, setTime] = useState();
     const [annual, setAnnual] = useState();
     const [sliderMonth, setSliderMonth] = useState(0);
-    const [sliderTime, setSliderTime] = useState();
-    const [sliderAnnual, setSliderAnnual] = useState();
+    const [sliderTime, setSliderTime] = useState(0);
+    const [sliderAnnual, setSliderAnnual] = useState(0);
     const [radioValue, setRadioValue] = useState("Interest");
     const section1 = () => {
 
@@ -25,24 +25,24 @@ export default function Tools() {
 
         const tabs = () => {
             return (
-                <div style={{ display: 'flex', justifyContent: 'center', }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 30, }}>
-                        <p onClick={() => { handleSelect(0) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize: 18, lineHeight: "22.59px", fontWeight: isSelected == 0 ? 'bold' : 'normal', color: isSelected == 0 ? '#0953AA' : "#042349", padding: "0px 12px" }}>
-                            SIP Calculator
+                <div style={{ display: 'flex', justifyContent: 'center',margin:isMobile?"0px 54px":'' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight:isMobile?16: 30, }}>
+                        <p onClick={() => { handleSelect(0) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize:isMobile?14: 18, lineHeight:isMobile?"17.57px": "22.59px", fontWeight: isSelected == 0 ? 'bold' : 'normal', color: isSelected == 0 ? '#0953AA' : "#042349", padding:isMobile?"0px 8px": "0px 12px" }}>
+                            {isMobile?"SIP":"SIP Calculator"}
                         </p>
-                        {isSelected == 0 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop: 8 }} />}
+                        {isSelected == 0 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop: isMobile?4:8 }} />}
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 30, }}>
-                        <p onClick={() => { handleSelect(1) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize: 18, lineHeight: "22.59px", fontWeight: isSelected == 1 ? 'bold' : 'normal', color: isSelected == 1 ? '#0953AA' : "#042349", padding: "0px 12px" }}>
-                            Margin Calculator
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight:isMobile?16: 30, }}>
+                        <p onClick={() => { handleSelect(1) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize:isMobile?14: 18, lineHeight:isMobile?"17.57px": "22.59px", fontWeight: isSelected == 1 ? 'bold' : 'normal', color: isSelected == 1 ? '#0953AA' : "#042349", padding:isMobile?"0px 8px": "0px 12px" }}>
+                            {isMobile?"Margin":"Margin Calculator"}
                         </p>
-                        {isSelected == 1 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop: 8 }} />}
+                        {isSelected == 1 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop:isMobile?4: 8 }} />}
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 40, }}>
-                        <p onClick={() => { handleSelect(2) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize: 18, lineHeight: "22.59px", fontWeight: isSelected == 2 ? 'bold' : 'normal', color: isSelected == 2 ? '#0953AA' : "#042349", padding: "0px 12px" }}>
-                            Brokerage Calculator
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight:isMobile?0: 40, }}>
+                        <p onClick={() => { handleSelect(2) }} style={{ cursor: 'pointer', fontFamily: "Mulish", fontSize:isMobile?14: 18, lineHeight:isMobile?"17.57px": "22.59px", fontWeight: isSelected == 2 ? 'bold' : 'normal', color: isSelected == 2 ? '#0953AA' : "#042349", padding:isMobile?"0px 8px": "0px 12px" }}>
+                            {isMobile?"Brokerage":"Brokerage Calculator"}
                         </p>
-                        {isSelected == 2 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop: 8 }} />}
+                        {isSelected == 2 && <div style={{ height: 4, backgroundColor: "#0953AA", width: "100%", marginTop:isMobile?4: 8 }} />}
                     </div>
                 </div>
             )
@@ -84,78 +84,108 @@ export default function Tools() {
 
             const handleTimeChange = (e) => {
                 const value = (e.target.value);
-                if(!value){
+                if (!value) {
                     setTime("");
                     setSliderTime(0);
                 }
-                else{
+                else {
                     setTime(value);
+                    console.log(value);
                     setSliderTime(parseInt(value * 2));
+                    // setSliderTime(100);
                 }
-                
+
             }
 
             const handleSliderTime = (event, value) => {
                 setSliderTime(value);
                 const x = {
                     target: {
-                        value: value /2,
+                        value: value / 2,
                     }
                 }
                 handleTimeChange(x);
             }
 
             const handleAnnualChange = (e) => {
+                const value = String(e.target.value);
 
+                if (value == "") {
+                    setAnnual("");
+                    setSliderAnnual(0);
+                }
+                if (value) {
+                    const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
+                    setAnnual(formattedValue);
+                    const arr = formattedValue.split(',');
+                    var val = "";
+                    arr.map((i) => { val += i });
+                    setSliderAnnual(parseInt(parseInt(val) / 3000));
+                }
+                return null;
+            };
+            const handleSliderAnnual = (event, value) => {
+                setSliderAnnual(value);
+                const x = {
+                    target: {
+                        value: value * 3000,
+                    }
+                }
+                handleAnnualChange(x);
             }
 
             return (
-                <div style={{ marginTop: 48, display: 'flex', justifyContent: 'space-between' }}>
-                    <div style={{ marginRight: 50, flex: 1 }}>
-                        <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B' }}>
+                <div style={{ marginTop:isMobile?24: 48, display: 'flex', justifyContent: 'space-between', flexWrap: isMobile?'wrap':'',  }}>
+                    <div style={{ marginRight:isMobile?0: 50, flex: 1 }}>
+                        <p style={{ textAlign:isMobile?'center':'left',fontSize:isMobile?12: 16, lineHeight:isMobile?"16px": "20.08px", fontFamily: 'Mulish', color: '#161A1B' }}>
                             Calculate and view the monthly mortgage for an apartment.
                         </p>
 
                         <div style={{ marginTop: 32, }}>
-                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
+                            <p style={{ fontSize:isMobile?14: 16, lineHeight:isMobile?"17.57px": "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
                                 Monthly Investment
                             </p>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile?'wrap':'' }}>
                                 <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
-                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
+                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", minWidth: isMobile?240:"" }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
                                 </div>
-                                <Slider style={{ marginLeft: 16, width: "100%" }} aria-label="Volume" value={sliderMonth} onChange={handleSliderMonth} />
+                                <Slider style={{ marginLeft:isMobile?10: 16, width: "100%" }} aria-label="Volume" value={sliderMonth} onChange={handleSliderMonth} />
                             </div>
                         </div>
-                        <div style={{ marginTop: 32, }}>
-                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
+                        <div style={{ marginTop:isMobile?16: 32, }}>
+                            <p style={{ fontSize:isMobile?14: 16, lineHeight:isMobile?"17.57px": "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
                                 Time Period
                             </p>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center',flexWrap: isMobile?'wrap':''  }}>
                                 <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
                                     <input value={time} onChange={handleTimeChange} type="number" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>Years</p>
                                 </div>
-                                <Slider style={{ marginLeft: 16, width: "100%" }} aria-label="Volume" value={sliderTime} onChange={handleSliderTime} />
+                                <Slider style={{ marginLeft: isMobile?10:16, width: "100%" }} value={sliderTime} onChange={handleSliderTime} />
                             </div>
                         </div>
-                        <div style={{ marginTop: 32, }}>
-                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
+                        <div style={{ marginTop:isMobile?16: 32, }}>
+                            <p style={{ fontSize:isMobile?14: 16, lineHeight:isMobile?"17.57px": "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
                                 Annual Return
                             </p>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center',flexWrap: isMobile?'wrap':''  }}>
                                 <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
                                     <input value={annual} onChange={handleAnnualChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
                                 </div>
-                                <Slider style={{ marginLeft: 16, width: "100%" }} aria-label="Volume" value={sliderMonth} onChange={handleSliderMonth} />
+                                <Slider style={{ marginLeft:isMobile?10: 16, width: "100%" }} aria-label="Volume" value={sliderAnnual} onChange={handleSliderAnnual} />
                             </div>
+                        </div>
+                        <div style={{ marginTop:isMobile?16: 64 }}>
+                            <button style={{ border: 'none', outline: "none", background: "#2584F4", width:isMobile?"100%": "53%", height: 48, fontWeight: 700, fontFamily: 'Mulish', color: "white",borderRadius: "8px", cursor: 'pointer',fontSize: 16, lineHeight: "20.08px" }}>
+                                Calculate
+                            </button>
                         </div>
 
                     </div>
-                    <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <div style={{ flex: 1 ,marginTop: isMobile?36:0,}}>
+                        <div style={{ display: 'flex', justifyContent:isMobile?"center": 'flex-end' }}>
                             <div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <div style={{ width: 24, height: 12, background: '#1ECF9A', borderRadius: 40 }}></div>
@@ -164,14 +194,14 @@ export default function Tools() {
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', marginTop: 13 }}>
-                                    <div style={{ width: 24, height: 12, background: '#1ECF9A', borderRadius: 40 }}></div>
+                                    <div style={{ width: 24, height: 12, background: '#2584F4', borderRadius: 40 }}></div>
                                     <p style={{ marginBottom: 3, marginLeft: 10, fontFamily: 'Mulish', fontSize: 16, color: "#161A1B", fontWeight: 400, lineHeight: "20.08px" }}>
                                         Lorem Ipsum
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column',marginTop: isMobile?16:0 }}>
                             <div style={{ width: 180, height: 180, border: "40px solid #1ECF9A", borderRadius: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <div>
                                     <p style={{ fontFamily: 'Mulish', fontSize: 32, color: "#00D09C", fontWeight: 700, lineHeight: "40.16px" }}>
@@ -182,23 +212,23 @@ export default function Tools() {
                                     </p>
                                 </div>
                             </div>
-                            <p style={{ marginTop: 30, fontFamily: 'Mulish', fontSize: 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: "30.12px" }}>
+                            <p style={{ marginTop:isMobile?40: 30, fontFamily: 'Mulish', fontSize:isMobile?16: 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight:isMobile?"20.08px": "30.12px" }}>
                                 Total Loan Amount
                             </p>
-                            <p style={{ marginTop: 8, fontFamily: 'Mulish', fontSize: 32, color: "#161A1B", fontWeight: 700, lineHeight: "40.16px" }}>
+                            <p style={{ marginTop: 8, fontFamily: 'Mulish', fontSize:isMobile?20: 32, color: "#161A1B", fontWeight: 700, lineHeight:isMobile?"25.1px": "40.16px" }}>
                                 ₹306,285
                             </p>
-                            <p style={{ marginTop: 32, fontFamily: 'Mulish', fontSize: 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: "30.12px" }}>
+                            <p style={{ marginTop:isMobile?24: 32, fontFamily: 'Mulish', fontSize:isMobile?16: 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile?"20.08px":"30.12px" }}>
                                 Payment Breakdown
                             </p>
-                            <div style={{ display: 'flex', marginTop: 12, justifyContent: 'flex-start', marginLeft: 15 }}>
+                            <div style={{ display: 'flex', marginTop:isMobile?8: 12, justifyContent: 'flex-start', marginLeft: 15 }}>
                                 <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
-                                    <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Interest" value={"Interest"} name={"radio"} onClick={handleRadio} />
-                                    <label style={{ marginLeft: 8, fontSize: 16, lineHeight: "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Interest"}>Interest</label>
+                                    <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Interest" value={"Interest"} name={"radio"} onClick={handleRadio} checked={radioValue == "Interest"} />
+                                    <label style={{ marginLeft: 8, fontSize:isMobile?12: 16, lineHeight:isMobile?"15.06px": "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Interest"} >Interest</label>
                                 </div>
                                 <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
                                     <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Principal" value={"Principal"} name={"radio"} onClick={handleRadio} />
-                                    <label style={{ marginLeft: 8, fontSize: 16, lineHeight: "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Principal"}>Principal</label>
+                                    <label style={{ marginLeft: 8, fontSize:isMobile?12: 16, lineHeight:isMobile?"15.06px": "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Principal"}>Principal</label>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +238,7 @@ export default function Tools() {
         }
 
         return (
-            <div style={{ margin: isTab ? "88px 7.2% 0px" : "133px 7.2% 0px", boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1), 0px 8px 40px rgba(0, 0, 0, 0.2)', padding: "40px 4.3% 82px 9.2%", }}>
+            <div style={{ margin:isMobile?"24px 6.4% 0px": isTab ? "88px 7.2% 0px" : "133px 7.2% 0px", boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1), 0px 8px 40px rgba(0, 0, 0, 0.2)', padding:isMobile?"24px 16px": "40px 4.3% 82px 9.2%",borderRadius:isMobile?15:0 }}>
                 {tabs()}
                 {tabContent()}
             </div>
@@ -264,7 +294,8 @@ export default function Tools() {
     }
 
     return (
-        <div>
+        <div style={{background: 'white'}}>
+            {isMobile && <p style={{marginTop: 40,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize:"24px", lineHeight: '30px', paddingTop: '16px', color: '#161A1B', textAlign: "center"}}>Calculate</p>}
             {section1()}
             {!isMobile && section2()}
             {isMobile && section2Mobile()}
