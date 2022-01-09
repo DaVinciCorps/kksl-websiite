@@ -10,16 +10,29 @@ import ArrowRight from "../images/round right-arrow 1.png";
 import { url } from "./Helper";
 import axios from 'axios';
 
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    blog:{
+        justifyContent: 'space-between',
+        ['@media(max-width: 1037px)']:{
+            justifyContent: 'space-around'
+        }
+    }
+});
+
 
 
 
 function BlogHome() {
+    const classes = useStyles();
     const history = useHistory();
     const scrollRef = useRef();
     const scrollRefBlog = useRef();
     const scrollRefExplainer = useRef();
     const isMobile = useMediaQuery('(max-width:850px)');
-    const isLarge = useMediaQuery('(max-width:1400px)');
+    const is960 = useMediaQuery('(max-width:960px)');
+    const isLarge = useMediaQuery('(max-width:1440px)');
     const [leftArrowActive, setLeftArrowActive] = useState(false);
     const [rightArrowActive, setRightArrowActive] = useState(true);
     const [leftArrowActiveBlog, setLeftArrowActiveBlog] = useState(false);
@@ -321,12 +334,12 @@ function BlogHome() {
 
     const section1 = () => {
         return (
-            <div style={{ marginTop: isMobile ? 0 : '88px', backgroundColor: '#F7F7F7', paddingLeft: '7.2%', paddingRight: '7.2%' }}>
-                <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile ? 'center' : '' }}>
+            <div style={{ marginTop: isMobile ? 0 :is960?"88px": '133px', backgroundColor: '#F7F7F7', paddingLeft: '7.2%', paddingRight: '7.2%' }}>
+                <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile||isLarge ? 'center' : '' }}>
                     Blogs
                 </div>
                 <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px', flexWrap: 'wrap' }}>
-                    <div style={{ flex: 1, paddingRight: 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ flex: 1, paddingRight:isLarge?0: 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <img src={MasterImage} />
                         <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth: 320 }}>
                             <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '32px' }}>
@@ -342,10 +355,10 @@ function BlogHome() {
                             </div>
                         </div>
                     </div>
-                    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <div ref={scrollRefBlog} id='blog' style={{ display: 'flex', justifyContent: 'space-between', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '' }}>
-                            {blogs.map(i =>
-                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 : 16, marginRight: isMobile ? 0 : 16, }}>
+                    <div style={{ flex:isLarge?"": 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '' }}>
+                            {blogs.slice(0, 4).map((i,index) =>
+                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 :isLarge?32: 16, marginRight: isMobile ? 0 :isLarge?"0px":index%2!=0?0: 16, }}>
                                     <div style={{ flex: 1 }}>
                                         <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 296, }} />
                                     </div>
