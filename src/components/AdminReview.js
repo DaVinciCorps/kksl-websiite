@@ -107,7 +107,7 @@ export default function AdminReview() {
                     console.log(res);
                     setOpen(true);
                     setMessage("Review created successfully.")
-                    history.push("/admin/review/" + res.data.data._id);
+                    window.open("/admin/review/" + res.data.data._id, "_self");
                 })
                 .catch(err => {
                     console.log(err);

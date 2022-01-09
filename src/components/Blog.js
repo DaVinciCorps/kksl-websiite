@@ -36,6 +36,7 @@ function CustomizedInputBase() {
 function Blog() {
     const history = useHistory();
     const isMobile = useMediaQuery('(max-width:850px)');
+    const is960 = useMediaQuery('(max-width:960px)');
     const [blogs, setBlogs] = useState([]);
 
     useEffect(()=>{
@@ -55,7 +56,7 @@ function Blog() {
 
     const section1 = () => {
         return (
-            <div style={{paddingTop:isMobile?'40px':'88px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'36px', lineHeight:'120%', textAlign:'center'}}>
+            <div style={{paddingTop:isMobile?'40px':is960?"88px":'133px', fontFamily:'Mulish', fontStyle:'normal', fontWeight:'bold', fontSize:'36px', lineHeight:'120%', textAlign:'center'}}>
                 Blogs
             </div>
         )

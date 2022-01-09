@@ -499,8 +499,8 @@ export default function Home() {
                             <img src={star} style={{paddingRight:'12px'}}></img>
                             <img src={star} ></img>
                         </div>
-                        <p style={{fontFamily: 'Mulish', fontSize: 12, lineHeight:isMobile?"20px": "24px", color: 'black',marginTop: 24, maxWidth:isMobile?263: 356}}>
-                            {data.content}
+                        <p style={{fontFamily: 'Mulish', fontSize: 12, lineHeight:isMobile?"20px": "24px", color: 'black',marginTop: 24, maxWidth:isMobile?263: 356,height:isMobile?80:73}}>
+                            {data.content.substring(0,170)}{data.content.length>170?"...":''}
                         </p>
                         <p style={{fontFamily: 'Mulish', fontSize: 16,fontWeight: 700, lineHeight:isMobile?"20.8px": "24px", color: 'black',marginTop: 16}} >
                             {data.name}
@@ -551,8 +551,6 @@ export default function Home() {
                         )}
                     </div>
                     <div onScroll={handleActiveArrows} style={{display: 'flex',paddingBottom:isMobile?"56.88px": 132, justifyContent: 'end', marginRight:isMobile?"0px": "14.4%" }}>
-                        {/* <img onClick={handleScroll_left} src = {LeftArrow} style={{marginRight:isMobile?32: 40, cursor: "pointer"}}/>
-                        <img onClick={handleScroll} src = {RightArrow} style={{cursor: "pointer"}} /> */}
                         
                         {leftArrowActive? leftActive():leftInActive()}
                         {rightArrowActive? rightActive(): rightInActive()}

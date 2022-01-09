@@ -82,7 +82,7 @@ const MobileViewBlogData = [
 function BlogHome() {
     const history = useHistory();
     const isMobile = useMediaQuery('(max-width:850px)');
-    // const isMac = useMediaQuery('(max-width:1170px)');
+    const is960 = useMediaQuery('(max-width:960px)');
     const { id } = useParams();
     const [blog, setBlog] = useState();
     const [blogs, setBlogs] = useState([]);
@@ -246,7 +246,7 @@ function BlogHome() {
 
     return (
         <div style={{display: 'flex', flexDirection:isMobile?'column':'row',alignItems:isMobile?'center':'',}}>
-            <div style={{ maxWidth:isMobile?'500px':'1440px', display:isMobile?'':'flex',marginTop:isMobile?'40px':'88px', marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
+            <div style={{ maxWidth:isMobile?'500px':'1440px', display:isMobile?'':'flex',marginTop:isMobile?'40px':is960?'88px':"133px", marginLeft:'7.2%', marginRight:'7.2%', flexWrap:'wrap', paddingBottom:isMobile?'45px':'160px'}}>
                 {section1()}
                 {section2()}
                 {!isMobile && section3()}
