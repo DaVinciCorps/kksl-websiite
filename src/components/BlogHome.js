@@ -19,6 +19,8 @@ import RightArrow from "../images/Vector (11).png";
 import LeftArrow from "../images/Vector (12).png";
 import ArrowLeft from '../images/BlogHome/arrowLeft.png';
 import ArrowRight from "../images/BlogHome/arrowRight.png";
+import { url } from "./Helper";
+import axios from 'axios';
 
 
 
@@ -95,12 +97,33 @@ function BlogHome() {
     const [rightArrowActiveBlog,setRightArrowActiveBlog] = useState(true);
     const [leftArrowActiveExplainer,setLeftArrowActiveExplainer] = useState(false);
     const [rightArrowActiveExplainer,setRightArrowActiveExplainer] = useState(true);
+    const [blogs, setBlogs] = useState([])
 
     useEffect(()=>{
         document.getElementById("tutorial").addEventListener("scroll",handleActiveArrows)
         document.getElementById("explainer").addEventListener("scroll",handleActiveArrowsExplainer)
         document.getElementById("blog").addEventListener("scroll",handleActiveArrowsBlog)
     })
+
+    useEffect(()=>{
+        axios({
+            method: 'get',
+            url: url + "blogs/",
+        })
+        .then(res=>{
+            console.log(res.data);
+            setBlogs(res.data);
+            // console.log()
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    },[])
+
+
+    useEffect(()=>{
+        console.log({blogs})
+    },[blogs])
 
 
     const handleActiveArrows=()=>{
@@ -356,7 +379,7 @@ function BlogHome() {
                                 From an investor point of view, IPO gives a chance to buy shares of a company, directly from the company....
                             </div>
                             <div style={{paddingTop:'32px'}}>
-                            <button style={{width: isMobile?120:'100%',color: "#FFFFFF",height: isMobile?44: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:isMobile?14:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
+                            <button onClick={()=>history.push('/blog/content')} style={{width: isMobile?120:'100%',color: "#FFFFFF",height: isMobile?44: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:isMobile?14:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
                                 Read More
                             </button>
                             </div>
@@ -364,26 +387,29 @@ function BlogHome() {
                     </div>
                     <div style={{flex:1, display:'flex', flexDirection:'column', alignItems:'center'}}>
                         <div ref={scrollRefBlog} id='blog' style={{display:'flex', justifyContent:'space-between', flexWrap: isMobile?'':'wrap', flexDirection:isMobile?'':'row', alignItems:isMobile?'center':''}}>
-                            <div style={{backgroundColor:'white', width:296, height:359, marginBottom:isMobile?0:16}}>
-                                <div style={{height:167}}>
-                                    <img src={Blog1} width="100%"/>
-                                </div>
-                                <div style={{padding:16, paddingBottom:0, fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize:'18px', lineHeight:'24px'}}>
-                                    Meet long-term goals, More price transparency
-                                </div>
-                                <div style={{padding:16, paddingBottom:0, paddingTop:8, fontFamily:'Mulish', fontWeight:'normal', fontStyle:'normal', fontSize:'14px', lineHeight:'20px'}}>
-                                    Laoreet senectus taciti felis quam class a pellentesque. Netus himenaeos diam litora...
-                                </div>
-                                <div style={{marginTop:12, display:'flex', alignItems:'center', justifyContent:'space-between',height:'48px'}}>
-                                    <div style={{paddingLeft:20, fontFamily:'Mulish', fontSize:12, fontStyle:'normal', fontWeight:'normal', bottom:13}}>
-                                        2 min read
+                            {blogs.map((i)=>{
+                                <div style={{backgroundColor:'white', width:296, height:359, marginBottom:isMobile?0:16}}>
+                                    <div style={{height:167}}>
+                                        <img src={i.image} width="100%"/>
                                     </div>
-                                    <button style={{height:'48px', width:'48px', backgroundColor:'#2584F4', display:'flex', alignItems:'center', justifyContent:'center', border:0}}>
-                                        <img src={Arrow} />
-                                    </button>
+                                    <div style={{padding:16, paddingBottom:0, fontFamily:'Mulish', fontWeight:'bold', fontStyle:'normal', fontSize:'18px', lineHeight:'24px'}}>
+                                        {i.title}
+                                    </div>
+                                    <div style={{padding:16, paddingBottom:0, paddingTop:8, fontFamily:'Mulish', fontWeight:'normal', fontStyle:'normal', fontSize:'14px', lineHeight:'20px'}}>
+                                        {i.content_para_1}
+                                    </div>
+                                    <div style={{marginTop:12, display:'flex', alignItems:'center', justifyContent:'space-between',height:'48px'}}>
+                                        <div style={{paddingLeft:20, fontFamily:'Mulish', fontSize:12, fontStyle:'normal', fontWeight:'normal', bottom:13}}>
+                                            {i.time_to_read_min}
+                                        </div>
+                                        <button onClick={()=>history.push('/blog/content')} style={{height:'48px', width:'48px', backgroundColor:'#2584F4', display:'flex', alignItems:'center', justifyContent:'center', border:0}}>
+                                            <img src={Arrow} />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
+                            })}
+                            
+                            {/* <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
                                 <div style={{height:167}}>
                                     <img src={Blog2} width="100%"/>
                                 </div>
@@ -401,8 +427,8 @@ function BlogHome() {
                                         <img src={Arrow} />
                                     </button>
                                 </div>
-                            </div>
-                            <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
+                            </div> */}
+                            {/* <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
                                 <div style={{height:167}}>
                                     <img src={Blog3} width="100%"/>
                                 </div>
@@ -420,8 +446,8 @@ function BlogHome() {
                                         <img src={Arrow} />
                                     </button>
                                 </div>
-                            </div>
-                            <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
+                            </div> */}
+                            {/* <div style={{backgroundColor:'white', width:296, height:359, marginBottom:16}}>
                                 <div style={{height:167}}>
                                     <img src={Blog4} width="100%"/>
                                 </div>
@@ -439,7 +465,7 @@ function BlogHome() {
                                         <img src={Arrow} />
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div onScroll={handleActiveArrowsBlog} style={{display: isMobile? 'flex': 'none', paddingTop:'32.88px',  justifyContent:'end' ,marginRight:isMobile?"0px": "14.4%", alignSelf:'end' }}>
@@ -450,7 +476,7 @@ function BlogHome() {
                         </div>
                         
                         <div style={{alignSelf:'center', paddingTop: isMobile?'26.88px':16, }}>
-                            <button style={{width: isMobile?120:257,color: "#FFFFFF",height: isMobile?44: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:isMobile?14:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
+                            <button onClick={()=>history.push('/blog')} style={{width: isMobile?120:257,color: "#FFFFFF",height: isMobile?44: 56,borderRadius: 8,borderWidth: 2,fontFamily:'Poppins', fontSize:isMobile?14:18, lineHeight:'27px', fontStyle:'normal', fontWeight:'normal',borderColor: "#2584F4",backgroundColor: "#2584F4",display: 'flex',flexDirection: 'row',justifyContent: 'center',alignItems: "center",padding: '11 24',cursor: 'pointer'}}>
                                 View All
                             </button>
                         </div>

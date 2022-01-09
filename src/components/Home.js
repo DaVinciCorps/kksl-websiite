@@ -28,6 +28,9 @@ import Pattern from "../images/Pattern.png";
 import Vector1 from "../images/Vector (13).png";
 import Vector2 from "../images/Vector (14).png";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import star from '../images/star.png'
+import axios from 'axios';
+import { url } from "./Helper";
 
 
 
@@ -99,10 +102,25 @@ export default function Home() {
     });
     const [leftArrowActive,setLeftArrowActive] = useState(false);
     const [rightArrowActive,setRightArrowActive] = useState(true);
+    const [reviews, setReviews] = useState([]);
 
     useEffect(()=>{
         document.getElementById("cont").addEventListener("scroll",handleActiveArrows)
     })
+
+    useEffect(()=>{
+        axios({
+            method: 'get',
+            url: url + "review/",
+        })
+        .then(res => {
+            console.log(res);
+            setReviews(res.data);
+        })
+        .catch(err=> {
+            console.log(err);
+        })
+    },[])
     
     const section1=()=>{
         return(
@@ -455,18 +473,40 @@ export default function Home() {
             return(
                 <div id={`card-${index}`} style={{zIndex: 100,backgroundColor: "#E7F1FE",boxShadow: "0px 20px 26px rgba(54, 53, 53, 0.3)",borderRadius: 15, margin:isMobile?"96px 20px 40.88px 20px": "138px 120px 78px 25px",minWidth:isMobile?327: 420}}>
                     <div style={{margin: "0px 32px 32px 32px", }}>
-                        <img src={data.img} style={{position: "relative", borderRadius: "100%",bottom: 56 }} />
-                        <div style={{marginTop: -40}}>
-                            <img src={Stars} ></img>
+                        <img src={data.image} style={{position: "relative", borderRadius: "100%",bottom: 56, width:'112px', height:'112px' }} />
+                        <div style={{marginTop: -35, display:data.rating===1 ? '':'none',}}>
+                            <img src={star} ></img>
+                        </div>
+                        <div style={{marginTop: -35, display:data.rating===2 ? '':'none', }}>
+                            <img src={star} style={{paddingRight:'12px'}}></img> 
+                            <img src={star} ></img>
+                        </div>
+                        <div style={{marginTop: -35, display:data.rating===3 ? '':'none', }}>
+                            <img src={star} style={{paddingRight:'12px'}}></img> 
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} ></img>
+                        </div>
+                        <div style={{marginTop: -35, display:data.rating===4 ? '':'none', }}>
+                            <img src={star} style={{paddingRight:'12px'}}></img> 
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} ></img>
+                        </div>
+                        <div style={{marginTop: -35, display:data.rating===5 ? '':'none', }}>
+                            <img src={star} style={{paddingRight:'12px'}}></img> 
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} style={{paddingRight:'12px'}}></img>
+                            <img src={star} ></img>
                         </div>
                         <p style={{fontFamily: 'Mulish', fontSize: 12, lineHeight:isMobile?"20px": "24px", color: 'black',marginTop: 24, maxWidth:isMobile?263: 356}}>
-                            {data.text}
+                            {data.content}
                         </p>
                         <p style={{fontFamily: 'Mulish', fontSize: 16,fontWeight: 700, lineHeight:isMobile?"20.8px": "24px", color: 'black',marginTop: 16}} >
                             {data.name}
                         </p>
                         <p style={{fontFamily: 'Mulish', fontSize:isMobile?12: 14,fontWeight: 500, lineHeight:isMobile?"15.06px": "21px", color: 'black',marginTop: isMobile?4:8}} >
-                            {data.profession}
+                            {data.designation}
                         </p>
                     </div>
                 </div>
@@ -506,7 +546,7 @@ export default function Home() {
                         </p>
                     </div>
                     <div ref={scrollRef} id="cont" style={{display: 'flex', overflowX:'auto',margin:isMobile? '0px -6.2%':0}}>
-                        {data.map((i,index)=>
+                        {reviews.map((i,index)=>
                             feedbackCard(i,index)    
                         )}
                     </div>
