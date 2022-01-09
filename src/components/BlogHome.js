@@ -13,9 +13,9 @@ import axios from 'axios';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
-    blog:{
+    blog: {
         justifyContent: 'space-between',
-        ['@media(max-width: 1037px)']:{
+        ['@media(max-width: 1037px)']: {
             justifyContent: 'space-around'
         }
     }
@@ -261,20 +261,20 @@ function BlogHome() {
     const handleScrollBlog = () => {
         var dist;
         if (isMobile) {
-            dist = 0.94 * window.innerWidth;
+            dist = 347;
         }
         else {
-            dist = window.innerWidth;
+            dist = 296;
         }
         sideScrollBlog('right', 25, dist, 30);
     }
     const handleScroll_leftBlog = () => {
         var dist;
         if (isMobile) {
-            dist = window.innerWidth;
+            dist = 347;
         }
         else {
-            dist = 0.9 * window.innerWidth;
+            dist = 296;
         }
         sideScrollBlog('left', 25, dist, 30);
     }
@@ -334,12 +334,12 @@ function BlogHome() {
 
     const section1 = () => {
         return (
-            <div style={{ marginTop: isMobile ? 0 :is960?"88px": '133px', backgroundColor: '#F7F7F7', paddingLeft: '7.2%', paddingRight: '7.2%' }}>
-                <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile||isLarge ? 'center' : '' }}>
+            <div style={{ marginTop: isMobile ? 0 : is960 ? "88px" : '133px', backgroundColor: '#F7F7F7', paddingLeft: '7.2%', paddingRight: '7.2%' }}>
+                <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile || isLarge ? 'center' : '' }}>
                     Blogs
                 </div>
                 <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px', flexWrap: 'wrap' }}>
-                    <div style={{ flex: 1, paddingRight:isLarge?0: 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ flex: 1, paddingRight: isLarge ? 0 : 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <img src={MasterImage} />
                         <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth: 320 }}>
                             <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '32px' }}>
@@ -349,21 +349,21 @@ function BlogHome() {
                                 From an investor point of view, IPO gives a chance to buy shares of a company, directly from the company....
                             </div>
                             <div style={{ paddingTop: '32px' }}>
-                                <button onClick={() => history.push('/blog/content')} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer',border:"none",outline: 'none' }}>
+                                <button onClick={() => history.push('/blog/content')} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
                                     Read More
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div style={{ flex:isLarge?"": 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ flex: isLarge ? "" : 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '' }}>
-                            {blogs.slice(0, 4).map((i,index) =>
-                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 :isLarge?32: 16, marginRight: isMobile ? 0 :isLarge?"0px":index%2!=0?0: 16, }}>
+                            {blogs.slice(0, 4).map((i, index) =>
+                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 : isLarge ? 32 : 16, marginRight: isMobile ? 0 : isLarge ? "0px" : index % 2 != 0 ? 0 : 16, }}>
                                     <div style={{ flex: 1 }}>
                                         <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 296, }} />
                                     </div>
                                     <div style={{ padding: 16, paddingBottom: 0, fontFamily: 'Mulish', fontWeight: 'bold', fontStyle: 'normal', fontSize: '18px', lineHeight: '24px', height: "48px" }}>
-                                        {i.title.substring(0, 40)}{i.content_para_1.length > 40 ? "..." : ""}
+                                        {i.title.substring(0, 40)}{i.title.length > 40 ? "..." : ""}
                                     </div>
                                     <div style={{ height: "60px", padding: 16, paddingBottom: 0, paddingTop: 8, fontFamily: 'Mulish', fontWeight: 'normal', fontStyle: 'normal', fontSize: '14px', lineHeight: '20px' }}>
                                         {i.content_para_1.substring(0, 90)}{i.content_para_1.length > 90 ? "..." : ""}
@@ -372,14 +372,14 @@ function BlogHome() {
                                         <div style={{ paddingLeft: 20, fontFamily: 'Mulish', fontSize: 12, fontStyle: 'normal', fontWeight: 'normal', bottom: 13 }}>
                                             {i.time_to_read_min} Min Read
                                         </div>
-                                        <button onClick={() => history.push('/blog/'+i._id)} style={{cursor:'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
+                                        <button onClick={() => history.push('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
                                             <img src={Arrow} />
                                         </button>
                                     </div>
                                 </div>
                             )}
 
-                            
+
                         </div>
 
                         <div onScroll={handleActiveArrowsBlog} style={{ display: isMobile ? 'flex' : 'none', paddingTop: '32.88px', justifyContent: 'end', marginRight: isMobile ? "0px" : "14.4%", alignSelf: 'end' }}>
@@ -388,11 +388,53 @@ function BlogHome() {
                         </div>
 
                         <div style={{ alignSelf: 'center', paddingTop: isMobile ? '26.88px' : 16, }}>
-                            <button onClick={() => history.push('/blog/all')} style={{ width: isMobile ? 120 : 257, color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer',border:"none",outline: 'none'  }}>
+                            <button onClick={() => history.push('/blog/all')} style={{ width: isMobile ? 120 : 257, color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
                                 View All
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        )
+    }
+
+    const section1Mobile = () => {
+        return (
+            <div style={{ padding: "0px 6.4%", background: "#F7F7F7" }}>
+                <div style={{ paddingTop: '40px', fontFamily: 'Mulish', fontSize: '24px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '26px', textAlign: 'center' }}>
+                    Blogs
+                </div>
+                <div ref={scrollRefBlog} style={{ marginTop: 24, display: 'flex', overflow: 'auto' }} id="blog">
+                    {blogs.slice(0, 4).map((i, index) =>
+                        <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', minWidth: 327, marginRight: 24, }}>
+                            <div style={{ flex: 1 }}>
+                                <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 327, }} />
+                            </div>
+                            <div style={{ padding: 16, paddingBottom: 0, fontFamily: 'Mulish', fontWeight: 'bold', fontStyle: 'normal', fontSize: '18px', lineHeight: '24px', height: "48px" }}>
+                                {i.title.substring(0, 40)}{i.title.length > 40 ? "..." : ""}
+                            </div>
+                            <div style={{ height: "60px", padding: 16, paddingBottom: 0, paddingTop: 8, fontFamily: 'Mulish', fontWeight: 'normal', fontStyle: 'normal', fontSize: '14px', lineHeight: '20px' }}>
+                                {i.content_para_1.substring(0, 90)}{i.content_para_1.length > 90 ? "..." : ""}
+                            </div>
+                            <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '48px' }}>
+                                <div style={{ paddingLeft: 20, fontFamily: 'Mulish', fontSize: 12, fontStyle: 'normal', fontWeight: 'normal', bottom: 13 }}>
+                                    {i.time_to_read_min} Min Read
+                                </div>
+                                <button onClick={() => history.push('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
+                                    <img src={Arrow} />
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <div onScroll={handleActiveArrowsBlog} style={{ display: isMobile ? 'flex' : 'none', paddingTop: '32.88px', justifyContent: 'end', marginRight: isMobile ? "0px" : "14.4%", alignSelf: 'end' }}>
+                    {leftArrowActiveBlog ? leftActiveBlog() : leftInActiveBlog()}
+                    {rightArrowActiveBlog ? rightActiveBlog() : rightInActiveBlog()}
+                </div>
+                <div style={{ display: 'flex',justifyContent: 'center', paddingTop: isMobile ? '26.88px' : 16,paddingBottom: 40 }}>
+                    <button onClick={() => history.push('/blog/all')} style={{ width: isMobile ? 120 : 257, color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
+                        View All
+                    </button>
                 </div>
             </div>
         )
@@ -433,63 +475,61 @@ function BlogHome() {
 
     const section3 = () => {
 
-        const leftActiveExplainerWeb=()=>{
-            return(
+        const leftActiveExplainerWeb = () => {
+            return (
                 <img src={ArrowRight} onClick={handleScroll_leftExplainer} style={{ width: 72, height: 72, WebkitTransform: "scaleX(-1)", transform: "scaleX(-1)" }} />
             )
         }
-        const leftInActiveExplainerWeb=()=>{
-            return(
+        const leftInActiveExplainerWeb = () => {
+            return (
                 <img src={ArrowLeft} onClick={handleScroll_leftExplainer} style={{ width: 72, height: 72 }} />
             )
         }
-        const rightActiveExplainerWeb=()=>{
-            return(
+        const rightActiveExplainerWeb = () => {
+            return (
                 <img src={ArrowRight} onClick={handleScrollExplainer} style={{ width: 72, height: 72 }} />
             )
         }
-        const rightInActiveExplainerWeb=()=>{
-            return(
+        const rightInActiveExplainerWeb = () => {
+            return (
                 <img src={ArrowLeft} onClick={handleScrollExplainer} style={{ width: 72, height: 72, WebkitTransform: "scaleX(-1)", transform: "scaleX(-1)" }} />
             )
         }
-        const leftActiveWeb=()=>{
-            return(
+        const leftActiveWeb = () => {
+            return (
                 <img src={ArrowRight} onClick={handleScroll_left} style={{ width: 72, height: 72, WebkitTransform: "scaleX(-1)", transform: "scaleX(-1)" }} />
             )
         }
-        const leftInActiveWeb=()=>{
-            return(
+        const leftInActiveWeb = () => {
+            return (
                 <img src={ArrowLeft} onClick={handleScroll_left} style={{ width: 72, height: 72 }} />
             )
         }
-        const rightActiveWeb=()=>{
-            return(
+        const rightActiveWeb = () => {
+            return (
                 <img src={ArrowRight} onClick={handleScroll} style={{ width: 72, height: 72 }} />
             )
         }
-        const rightInActiveWeb=()=>{
-            return(
+        const rightInActiveWeb = () => {
+            return (
                 <img src={ArrowLeft} onClick={handleScroll} style={{ width: 72, height: 72, WebkitTransform: "scaleX(-1)", transform: "scaleX(-1)" }} />
             )
         }
 
         return (
-            <div style={{ paddingLeft: '7.2%', paddingRight: '7.2%', backgroundColor: '#F7F7F7', paddingTop: '56px', marginBottom: '160px', paddingBottom: '56px' }}>
+            <div style={{ paddingLeft: '7.2%', paddingRight: '7.2%', backgroundColor: isMobile?"white":'#F7F7F7', paddingTop: '56px', marginBottom:isMobile?0: '160px', paddingBottom: '56px' }}>
                 <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: isMobile ? '20px' : '36px', lineHeight: '120%', }}>
                     Tutorial Videos
                 </div>
-                <div style={{cursor: "pointer", display: isMobile ? 'none' : 'flex', justifyContent: 'space-between', margin: "0px -3.5%", position: "relative", top: 150, height: 0 }}>
-                        {/* <img src={ArrowLeft} onClick={handleScroll_left} style={{ width: 72, height: 72 }} />
-                        <img src={ArrowRight} onClick={handleScroll} style={{ width: 72, height: 72,borderRadius: 100 }} /> */}
-                        {leftArrowActive ? leftActiveWeb() : leftInActiveWeb()}
-                        {rightArrowActive ? rightActiveWeb() : rightInActiveWeb()}
+                <div style={{ cursor: "pointer", display: isMobile ? 'none' : 'flex', justifyContent: 'space-between', margin: "0px -3.5%", position: "relative", top: 150, height: 0 }}>
+                    {leftArrowActive ? leftActiveWeb() : leftInActiveWeb()}
+                    {rightArrowActive ? rightActiveWeb() : rightInActiveWeb()}
                 </div>
                 <div ref={scrollRef} id="tutorial" style={{ paddingTop: '32px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', overflow: 'auto', alignItems: isMobile ? 'center' : '' }}>
                     {tutorialVideo.map((tut) => (
                         <div style={{ display: 'flex', flexDirection: isMobile ? '' : 'column', marginRight: '16px' }}>
-                            <div style={{ }}>
-                                <iframe width={isMobile?"320px":"400"} height={isMobile?"300px":"300"} src={tut.youtube_link} style={{ borderRadius: 15, border:'none' }} />
+                            <div style={{}}>
+                                <iframe width={isMobile ? "320px" : "400"} height={isMobile ? "300px" : "300"} src={tut.youtube_link} style={{ borderRadius: 15, border: 'none' }} />
                             </div>
                             <div style={{ marginTop: '24px', fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '20px', lineHeight: '32px', display: isMobile ? 'none' : '' }}>{tut.title}</div>
                         </div>
@@ -502,15 +542,15 @@ function BlogHome() {
                 <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: isMobile ? '20px' : '36px', lineHeight: '120%', paddingTop: '80px' }}>
                     Explainer Videos
                 </div>
-                <div style={{cursor: "pointer", display: isMobile ? 'none' : 'flex', justifyContent: 'space-between', margin: "0px -3.5%", position: "relative", top: 150, height: 0 }}>
-                        {leftArrowActiveExplainer ? leftActiveExplainerWeb() : leftInActiveExplainerWeb()}
-                        {rightArrowActiveExplainer ? rightActiveExplainerWeb() : rightInActiveExplainerWeb()}
+                <div style={{ cursor: "pointer", display: isMobile ? 'none' : 'flex', justifyContent: 'space-between', margin: "0px -3.5%", position: "relative", top: 150, height: 0 }}>
+                    {leftArrowActiveExplainer ? leftActiveExplainerWeb() : leftInActiveExplainerWeb()}
+                    {rightArrowActiveExplainer ? rightActiveExplainerWeb() : rightInActiveExplainerWeb()}
                 </div>
                 <div ref={scrollRefExplainer} id='explainer' style={{ paddingTop: '32px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', overflow: 'auto', alignItems: isMobile ? 'center' : '' }}>
                     {explainerVideo.map((tut) => (
                         <div style={{ display: 'flex', flexDirection: isMobile ? '' : 'column', marginRight: '16px' }}>
-                             <div style={{ }}>
-                                <iframe width={isMobile?"320px":"400"} height={isMobile?"300px":"300"} src={tut.youtube_link} style={{ borderRadius: 15, border:'none' }} />
+                            <div style={{}}>
+                                <iframe width={isMobile ? "320px" : "400"} height={isMobile ? "300px" : "300"} src={tut.youtube_link} style={{ borderRadius: 15, border: 'none' }} />
                             </div>
                             <div style={{ paddingTop: '24px', fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '20px', lineHeight: '32px', display: isMobile ? 'none' : '' }}>{tut.title}</div>
                         </div>
@@ -527,7 +567,8 @@ function BlogHome() {
     return (
         <div style={{}}>
             <div style={{}}>
-                {section1()}
+                {!isMobile && section1()}
+                {isMobile && section1Mobile()}
                 {section2()}
                 {section3()}
             </div>
