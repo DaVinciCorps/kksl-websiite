@@ -7,13 +7,14 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(cors(corsOptions));
-// app.use(upload.array()); 
-// app.use(express.static('public'));
-
 var corsOptions = {
     origin: "http://localhost:3000"
 };
+app.use(cors());
+// app.use(upload.array()); 
+// app.use(express.static('public'));
+
+
 
 const connection = require('./db');
 connection();

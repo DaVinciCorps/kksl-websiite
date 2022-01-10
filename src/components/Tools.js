@@ -190,16 +190,16 @@ export default function Tools() {
 
                 return (
                     <div>
-                        <div style={{ margin: 0, position: 'relative', top: 102,display: 'flex', alignItems: 'center', flexDirection :"column" }}>
+                        {/* <div style={{ margin: 0, position: 'relative', top: 102,display: 'flex', alignItems: 'center', flexDirection :"column" }}>
                             <p style={{ fontFamily: 'Mulish', fontSize: 32, color: "#00D09C", fontWeight: 700, lineHeight: "40.16px" }}>
                                 {parseInt(data.amount - data.principal)}
                             </p>
                             <p style={{ fontFamily: 'Mulish', fontSize: 16, color: "#00D09C", fontWeight: 400, lineHeight: "20.08px" }}>
                                 interest
                             </p>
-                        </div>
+                        </div> */}
 
-                        <div style={{ WebkitTransform: "rotate(-90deg)", width: 'min-content', height: 'min-content', marginTop: "-60px" }}>
+                        <div style={{ WebkitTransform: "rotate(-90deg)", width: 'min-content', height: 'min-content', marginTop: "0px" }}>
 
                             <PieChart
                                 style={{ width: 260, height: 260 }}

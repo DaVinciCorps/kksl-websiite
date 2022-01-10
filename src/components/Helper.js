@@ -1,1 +1,1 @@
-export const url = "http://localhost:4000/";
+export const url = "http://104.208.74.188:4000/";
