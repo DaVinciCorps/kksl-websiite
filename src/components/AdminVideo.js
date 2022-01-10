@@ -151,6 +151,15 @@ export default function AdminVideo() {
         <div>
             <div style={{ margin: isMobile ? "0px 6.2%" : "133px 14.4%", boxShadow: isMobile ? "" : "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <p style={{ fontFamily: "Mulish", fontSize: isMobile ? 24 : 32, }}>{id ? "Update a Video" : "Create a Video"}</p>
+
+                {youtube.includes("youtube.com/embed") && 
+                    <div style={{ display: 'flex', marginTop: 30 }}>
+                        <div style={{}}>
+                            <iframe width={isMobile ? "320px" : "400"} height={isMobile ? "300px" : "300"} src={youtube} style={{ borderRadius: 15, border: 'none' }} />
+                        </div>
+                    </div>
+                }
+
                 <TextField
                     label="Title"
                     className={classes.textField}

@@ -26,6 +26,10 @@ import Tools from './components/Tools';
 import AdminReview from './components/AdminReview';
 import AdminBlog from './components/AdminBlog';
 import AdminVideo from './components/AdminVideo';
+import Admin from './components/Admin';
+import AdminBlogList from './components/AdminBlogList';
+import AdminReviewList from './components/AdminReviewList';
+import AdminVideoList from './components/AdminVideoList';
 
 
 function App() {
@@ -54,6 +58,10 @@ function App() {
           <Route exact path="/blog/all"  ><Blog /></Route>
           <Route exact path="/blog/:id"  ><BlogContent /></Route>
           <Route exact path="/tools" ><Tools /></Route>
+          <Route exact path="/admin/" ><Admin /></Route>
+          <Route exact path="/admin/bloglist" ><AdminBlogList /></Route>
+          <Route exact path="/admin/reviewlist" ><AdminReviewList /></Route>
+          <Route exact path="/admin/videolist" ><AdminVideoList /></Route>
           <Route exact path="/admin/review" ><AdminReview /></Route>
           <Route exact path="/admin/review/:id" ><AdminReview /></Route>
           <Route exact path="/admin/blog" ><AdminBlog /></Route>

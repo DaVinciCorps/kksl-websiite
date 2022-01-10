@@ -18,10 +18,6 @@ import Arrow1 from '../images/Arrow 1 (1).png'
 import Android from '../images/ic_baseline-phone-android.png'
 import Iphone from '../images/fluent_phone-12-regular.png'
 import Laptop from '../images/bx_bx-laptop.png';
-import Person1 from "../images/Ellipse 7.png";
-import Person2 from "../images/Ellipse 8.png";
-import Person3 from "../images/Ellipse 9.png";
-import Stars from  "../images/Group 3.png";
 import RightArrow from "../images/Vector (11).png";
 import LeftArrow from "../images/Vector (12).png";
 import Pattern from "../images/Pattern.png";
@@ -388,47 +384,7 @@ export default function Home() {
         }
     }
     const section6=()=>{
-        const data = [
-            {
-                img: Person1,
-                name: "Jane Cooper",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-            {
-                img: Person2,
-                name: "Eleanor Pena",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-            {
-                img: Person3,
-                name: "Kathryn Murphy",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-            {
-                img: Person1,
-                name: "Jane Cooper",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-            {
-                img: Person2,
-                name: "Eleanor Pena",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-            {
-                img: Person3,
-                name: "Kathryn Murphy",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam vitae libero, risus interdum neque arcu. Morbi mi leo maecenas magna nibh euismod purus tempus. ",
-                profession: "Student",
-            },
-        ]
 
-        
-        
         const handleScroll=()=>{
             
             var dist;
