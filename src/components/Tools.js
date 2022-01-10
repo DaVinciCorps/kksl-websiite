@@ -18,8 +18,34 @@ export default function Tools() {
     const [sliderTime, setSliderTime] = useState(0);
     const [sliderAnnual, setSliderAnnual] = useState(0);
     const [radioValue, setRadioValue] = useState("Interest");
+    const [monthly,setMonthly] = useState(0);
+    const [totalAmt,setTotalAmt] = useState(0);
+    const [data,setData] = useState({
+        principal: 1,
+        amount: 1,
+    });
     const section1 = () => {
 
+        const calculateSIP=()=>{
+            if(!time || !month || !annual){
+                return;
+            }
+            console.log(time,month,annual);
+            var arr = month.split(',');
+            var val = "";
+            arr.map((i) => { val += i });
+            val = parseInt(val);
+            var time1 = parseInt(time);
+            var annual1 = parseInt(annual);
+            var rate = (annual1/100)/12;
+            var amount = val*(Math.pow(1+rate,time1*12) - 1)*(1+rate)/rate;
+            setTotalAmt(amount);
+            setData({
+                principal: val*12*time1,
+                amount: amount
+            })
+            console.log(amount)
+        }
         const handleSelect = (e) => {
             setSelected(e);
         }
@@ -64,6 +90,7 @@ export default function Tools() {
                     const arr = formattedValue.split(',');
                     var val = "";
                     arr.map((i) => { val += i });
+                    setMonthly(parseInt(val));
                     setSliderMonth(parseInt(parseInt(val) / 3000));
                 }
                 return null;
@@ -108,54 +135,67 @@ export default function Tools() {
             }
 
             const handleAnnualChange = (e) => {
-                const value = String(e.target.value);
+                // const value = String(e.target.value);
 
-                if (value == "") {
+                // if (value == "") {
+                //     setAnnual("");
+                //     setSliderAnnual(0);
+                // }
+                // if (value) {
+                //     const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
+                //     setAnnual(formattedValue);
+                //     const arr = formattedValue.split(',');
+                //     var val = "";
+                //     arr.map((i) => { val += i });
+                //     setSliderAnnual(parseInt(parseInt(val) / 3000));
+                // }
+                // return null;
+                var value = (e.target.value);
+                if(value>100){
+                    value = 100;
+                }
+                if (!value) {
                     setAnnual("");
                     setSliderAnnual(0);
                 }
-                if (value) {
-                    const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
-                    setAnnual(formattedValue);
-                    const arr = formattedValue.split(',');
-                    var val = "";
-                    arr.map((i) => { val += i });
-                    setSliderAnnual(parseInt(parseInt(val) / 3000));
+                else {
+                    setAnnual(value);
+                    console.log(value);
+                    setSliderAnnual(parseInt(value * 2));
                 }
-                return null;
             };
             const handleSliderAnnual = (event, value) => {
                 setSliderAnnual(value);
                 const x = {
                     target: {
-                        value: value * 3000,
+                        value: value/2,
                     }
                 }
                 handleAnnualChange(x);
             }
 
             const chart = () => {
-                const data = [
+                const data1 = [
                     {
-                        title: 'Investment',
-                        value: 20,
+                        title: 'Return',
+                        value: parseInt(data.amount),
                         color: '#2584F4'
                     },
                     {
-                        title: "Return",
-                        value: 20,
+                        title: "Investment",
+                        value: parseInt(data.principal),
                         color: "#1ECF9A"
                     },
                 ]
 
                 return (
                     <div>
-                        <div style={{ margin: 0, position: 'relative', top: 102, left: "35%" }}>
+                        <div style={{ margin: 0, position: 'relative', top: 102,display: 'flex', alignItems: 'center', flexDirection :"column" }}>
                             <p style={{ fontFamily: 'Mulish', fontSize: 32, color: "#00D09C", fontWeight: 700, lineHeight: "40.16px" }}>
-                                1020
+                                {parseInt(data.amount - data.principal)}
                             </p>
                             <p style={{ fontFamily: 'Mulish', fontSize: 16, color: "#00D09C", fontWeight: 400, lineHeight: "20.08px" }}>
-                                per month
+                                interest
                             </p>
                         </div>
 
@@ -164,7 +204,7 @@ export default function Tools() {
                             <PieChart
                                 style={{ width: 260, height: 260 }}
                                 lineWidth={40}
-                                data={data}
+                                data={data1}
                             />
                         </div>
                     </div>
@@ -208,14 +248,14 @@ export default function Tools() {
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
                                 <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
-                                    <input value={annual} onChange={handleAnnualChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
-                                    <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
+                                    <input value={annual} type="number" onChange={handleAnnualChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
+                                    <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>%</p>
                                 </div>
                                 <Slider style={{ marginLeft: isMobile ? 10 : 16, width: "100%" }} aria-label="Volume" value={sliderAnnual} onChange={handleSliderAnnual} />
                             </div>
                         </div>
                         <div style={{ marginTop: isMobile ? 16 : 64 }}>
-                            <button style={{ border: 'none', outline: "none", background: "#2584F4", width: isMobile ? "100%" : "53%", height: 48, fontWeight: 700, fontFamily: 'Mulish', color: "white", borderRadius: "8px", cursor: 'pointer', fontSize: 16, lineHeight: "20.08px" }}>
+                            <button onClick={calculateSIP} style={{ border: 'none', outline: "none", background: "#2584F4", width: isMobile ? "100%" : "53%", height: 48, fontWeight: 700, fontFamily: 'Mulish', color: "white", borderRadius: "8px", cursor: 'pointer', fontSize: 16, lineHeight: "20.08px" }}>
                                 Calculate
                             </button>
                         </div>
@@ -227,13 +267,13 @@ export default function Tools() {
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <div style={{ width: 24, height: 12, background: '#1ECF9A', borderRadius: 40 }}></div>
                                     <p style={{ marginBottom: 3, marginLeft: 10, fontFamily: 'Mulish', fontSize: 16, color: "#161A1B", fontWeight: 400, lineHeight: "20.08px" }}>
-                                        Lorem Ipsum
+                                        Investment
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', marginTop: 13 }}>
                                     <div style={{ width: 24, height: 12, background: '#2584F4', borderRadius: 40 }}></div>
                                     <p style={{ marginBottom: 3, marginLeft: 10, fontFamily: 'Mulish', fontSize: 16, color: "#161A1B", fontWeight: 400, lineHeight: "20.08px" }}>
-                                        Lorem Ipsum
+                                        Return
                                     </p>
                                 </div>
                             </div>
@@ -241,10 +281,10 @@ export default function Tools() {
                         <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginTop: isMobile ? 16 : 0 }}>
                             {chart()}
                             <p style={{ marginTop: isMobile ? 40 : 30, fontFamily: 'Mulish', fontSize: isMobile ? 16 : 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "20.08px" : "30.12px" }}>
-                                Total Loan Amount
+                                Total Amount
                             </p>
                             <p style={{ marginTop: 8, fontFamily: 'Mulish', fontSize: isMobile ? 20 : 32, color: "#161A1B", fontWeight: 700, lineHeight: isMobile ? "25.1px" : "40.16px" }}>
-                                ₹306,285
+                                ₹ {parseInt(totalAmt)}
                             </p>
                             <p style={{ marginTop: isMobile ? 24 : 32, fontFamily: 'Mulish', fontSize: isMobile ? 16 : 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "20.08px" : "30.12px" }}>
                                 Payment Breakdown
