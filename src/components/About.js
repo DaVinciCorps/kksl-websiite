@@ -149,11 +149,11 @@ function About() {
                             <li>Experience one of the lowest brokerage fees in the market.</li>
                         </ul>
                     </div>
-                    {!isMobile &&
+                    {/* {!isMobile &&
                         <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
-                    }
+                    } */}
                 </div>
             </div>
         )
@@ -173,11 +173,11 @@ function About() {
                             <li> Find large avenues of investment solutions and financial services all under one roof.</li>
                         </ul>
                     </div>
-                    {!isMobile &&
+                    {/* {!isMobile &&
                         <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
-                    }
+                    } */}
                 </div>
             </div>
         )
@@ -198,11 +198,11 @@ function About() {
                             <li> Gain control on your transactions like never before.</li>
                         </ul>
                     </div>
-                    {!isMobile &&
+                    {/* {!isMobile &&
                         <button onClick={() => { handleClickOpen(0) }} style={{ border: '1px solid #2584F4', width: 160, height: 56, borderRadius: 8, color: '#2584F4', fontSize: 16, backgroundColor: 'white', cursor: 'pointer' }}>
                             Read More
                         </button>
-                    }
+                    } */}
                 </div>
             </div>
         )

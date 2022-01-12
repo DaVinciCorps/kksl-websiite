@@ -8,44 +8,57 @@ import { PieChart } from 'react-minimal-pie-chart';
 export default function Tools() {
 
     const isMobile = useMediaQuery('(max-width:850px)');
+    const isSmall = useMediaQuery('(max-width:450px)');
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
     const [isSelected, setSelected] = useState(0);
-    const [month, setMonth] = useState();
-    const [time, setTime] = useState();
-    const [annual, setAnnual] = useState();
-    const [sliderMonth, setSliderMonth] = useState(0);
-    const [sliderTime, setSliderTime] = useState(0);
-    const [sliderAnnual, setSliderAnnual] = useState(0);
+    const [month, setMonth] = useState("500");
+    const [time, setTime] = useState(1);
+    const [annual, setAnnual] = useState(1);
+    const [sliderMonth, setSliderMonth] = useState(0.5);
+    const [sliderTime, setSliderTime] = useState(2);
+    const [sliderAnnual, setSliderAnnual] = useState(2);
     const [radioValue, setRadioValue] = useState("Interest");
-    const [monthly,setMonthly] = useState(0);
-    const [totalAmt,setTotalAmt] = useState(0);
-    const [data,setData] = useState({
+    const [monthly, setMonthly] = useState(0);
+    const [totalAmt, setTotalAmt] = useState(0);
+    const [data, setData] = useState({
         principal: 1,
         amount: 1,
     });
+
+    useEffect(() => {
+        if (month && time && annual && time != 0 && annual != 0) {
+            calculateSIP();
+        }
+    }, [month, time, annual])
+
+
+    const calculateSIP = () => {
+        if (!time || !month || !annual || time == 0 || annual == 0 || time < 1 || annual < 1) {
+            return;
+        }
+        var arr = month.split(',');
+        var val = "";
+        arr.map((i) => { val += i });
+        val = parseInt(val);
+        if (val < 500) {
+            return;
+        }
+        var time1 = parseInt(time);
+        var annual1 = parseInt(annual);
+        var rate = (annual1 / 100) / 12;
+        var amount = val * (Math.pow(1 + rate, time1 * 12) - 1) * (1 + rate) / rate;
+        setTotalAmt(amount);
+        setData({
+            principal: val * 12 * time1,
+            amount: amount
+        })
+        console.log(amount)
+    }
+
     const section1 = () => {
 
-        const calculateSIP=()=>{
-            if(!time || !month || !annual){
-                return;
-            }
-            console.log(time,month,annual);
-            var arr = month.split(',');
-            var val = "";
-            arr.map((i) => { val += i });
-            val = parseInt(val);
-            var time1 = parseInt(time);
-            var annual1 = parseInt(annual);
-            var rate = (annual1/100)/12;
-            var amount = val*(Math.pow(1+rate,time1*12) - 1)*(1+rate)/rate;
-            setTotalAmt(amount);
-            setData({
-                principal: val*12*time1,
-                amount: amount
-            })
-            console.log(amount)
-        }
+
         const handleSelect = (e) => {
             setSelected(e);
         }
@@ -91,15 +104,18 @@ export default function Tools() {
                     var val = "";
                     arr.map((i) => { val += i });
                     setMonthly(parseInt(val));
-                    setSliderMonth(parseInt(parseInt(val) / 3000));
+                    setSliderMonth(parseInt(parseInt(val) / 1000));
                 }
                 return null;
             };
             const handleSliderMonth = (event, value) => {
                 setSliderMonth(value);
+                if (value < 0.5) {
+                    value = 0.5;
+                }
                 const x = {
                     target: {
-                        value: value * 3000,
+                        value: value * 1000,
                     }
                 }
                 handleMonthChange(x);
@@ -125,6 +141,9 @@ export default function Tools() {
             }
 
             const handleSliderTime = (event, value) => {
+                if (value < 1) {
+                    return;
+                }
                 setSliderTime(value);
                 const x = {
                     target: {
@@ -135,23 +154,8 @@ export default function Tools() {
             }
 
             const handleAnnualChange = (e) => {
-                // const value = String(e.target.value);
-
-                // if (value == "") {
-                //     setAnnual("");
-                //     setSliderAnnual(0);
-                // }
-                // if (value) {
-                //     const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
-                //     setAnnual(formattedValue);
-                //     const arr = formattedValue.split(',');
-                //     var val = "";
-                //     arr.map((i) => { val += i });
-                //     setSliderAnnual(parseInt(parseInt(val) / 3000));
-                // }
-                // return null;
                 var value = (e.target.value);
-                if(value>100){
+                if (value > 100) {
                     value = 100;
                 }
                 if (!value) {
@@ -165,10 +169,14 @@ export default function Tools() {
                 }
             };
             const handleSliderAnnual = (event, value) => {
+                console.log({ value });
+                if (value < 1) {
+                    return;
+                }
                 setSliderAnnual(value);
                 const x = {
                     target: {
-                        value: value/2,
+                        value: value / 2,
                     }
                 }
                 handleAnnualChange(x);
@@ -190,14 +198,6 @@ export default function Tools() {
 
                 return (
                     <div>
-                        {/* <div style={{ margin: 0, position: 'relative', top: 102,display: 'flex', alignItems: 'center', flexDirection :"column" }}>
-                            <p style={{ fontFamily: 'Mulish', fontSize: 32, color: "#00D09C", fontWeight: 700, lineHeight: "40.16px" }}>
-                                {parseInt(data.amount - data.principal)}
-                            </p>
-                            <p style={{ fontFamily: 'Mulish', fontSize: 16, color: "#00D09C", fontWeight: 400, lineHeight: "20.08px" }}>
-                                interest
-                            </p>
-                        </div> */}
 
                         <div style={{ WebkitTransform: "rotate(-90deg)", width: 'min-content', height: 'min-content', marginTop: "0px" }}>
 
@@ -223,11 +223,21 @@ export default function Tools() {
                                 Monthly Investment
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
-                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", minWidth: isMobile ? 240 : "" }}></input>
+                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
+                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%",  }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
                                 </div>
-                                <Slider style={{ marginLeft: isMobile ? 10 : 16, width: "100%" }} aria-label="Volume" value={sliderMonth} onChange={handleSliderMonth} />
+                                <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isSmall?"": isMobile ? 240 : "" }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            500
+                                        </p>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            100,000
+                                        </p>
+                                    </div>
+                                    <Slider style={{ marginLeft: 0, width: "100%" }} aria-label="Volume" value={sliderMonth} onChange={handleSliderMonth} />
+                                </div>
                             </div>
                         </div>
                         <div style={{ marginTop: isMobile ? 16 : 32, }}>
@@ -235,11 +245,21 @@ export default function Tools() {
                                 Time Period
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
-                                    <input value={time} onChange={handleTimeChange} type="number" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
+                                <div style={{ display: 'flex', flex: 1, border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "" : isMobile ? 300 : "" }} >
+                                    <input value={time} onChange={handleTimeChange} type="number" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>Years</p>
                                 </div>
-                                <Slider style={{ marginLeft: isMobile ? 10 : 16, width: "100%" }} value={sliderTime} onChange={handleSliderTime} />
+                                <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isMobile ? 240 : "" }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            1
+                                        </p>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            50
+                                        </p>
+                                    </div>
+                                    <Slider style={{ width: "100%" }} value={sliderTime} onChange={handleSliderTime} />
+                                </div>
                             </div>
                         </div>
                         <div style={{ marginTop: isMobile ? 16 : 32, }}>
@@ -247,11 +267,21 @@ export default function Tools() {
                                 Annual Return
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", }} >
-                                    <input value={annual} type="number" onChange={handleAnnualChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%" }}></input>
+                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
+                                    <input value={annual} type="number" onChange={handleAnnualChange} style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%",}}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>%</p>
                                 </div>
-                                <Slider style={{ marginLeft: isMobile ? 10 : 16, width: "100%" }} aria-label="Volume" value={sliderAnnual} onChange={handleSliderAnnual} />
+                                <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isMobile ? 240 : "" }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            1
+                                        </p>
+                                        <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
+                                            50
+                                        </p>
+                                    </div>
+                                    <Slider style={{ width: "100%" }} aria-label="Volume" value={sliderAnnual} onChange={handleSliderAnnual} />
+                                </div>
                             </div>
                         </div>
                         <div style={{ marginTop: isMobile ? 16 : 64 }}>
@@ -289,14 +319,38 @@ export default function Tools() {
                             <p style={{ marginTop: isMobile ? 24 : 32, fontFamily: 'Mulish', fontSize: isMobile ? 16 : 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "20.08px" : "30.12px" }}>
                                 Payment Breakdown
                             </p>
-                            <div style={{ display: 'flex', marginTop: isMobile ? 8 : 12, justifyContent: 'flex-start', marginLeft: 15 }}>
-                                <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
+                            <div style={{ display: 'flex', marginTop: isMobile ? 8 : 12, justifyContent: 'flex-start', flexDirection: 'column', width: "72%" }}>
+                                {/* <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
                                     <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Interest" value={"Interest"} name={"radio"} onClick={handleRadio} checked={radioValue == "Interest"} />
                                     <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Interest"} >Interest</label>
                                 </div>
                                 <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
                                     <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Principal" value={"Principal"} name={"radio"} onClick={handleRadio} />
                                     <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Principal"}>Principal</label>
+                                </div> */}
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: isMobile ? 6 : 12 }}>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        Invested Amount
+                                    </p>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        ₹ {data.principal}
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        Est. Returns
+                                    </p>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        ₹ {parseInt(data.amount - data.principal)}
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        Invested Amount
+                                    </p>
+                                    <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
+                                        ₹ {parseInt(data.amount)}
+                                    </p>
                                 </div>
                             </div>
                         </div>
