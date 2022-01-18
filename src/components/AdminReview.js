@@ -186,6 +186,7 @@ export default function AdminReview() {
                         label="Rating"
                         className={classes.textField}
                         type="number"
+                        onWheel={(e) => e.target.blur()}
                         variant="outlined"
                         value={rating}
                         onChange={handleRating}

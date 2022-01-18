@@ -93,7 +93,7 @@ function Blog() {
                                 <div style={{paddingTop:'16px',fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'18px':'26px', fontStyle:'normal', color:'rgba(22, 26, 27, 0.7)'}}>
                                     {blog.content_para_1.substring(0, 400)}{blog.content_para_1.length > 400 ? "..." : ""} 
                                     {/* {console.log(blog._id)} */}
-                                    <button onClick={()=>history.push('/blog/'+blog._id)} style={{cursor:'pointer',border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} >
+                                    <button onClick={()=>window.open('/blog/'+blog._id)} style={{cursor:'pointer',border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} >
                                         Read more
                                     </button>
                                 </div>
@@ -113,7 +113,7 @@ function Blog() {
                                 </div>
                                 <div style={{paddingTop:'16px',fontFamily:'Mulish', fontWeight:'normal', fontSize:isMobile?'12px':'16px', lineHeight:isMobile?'18px':'26px', fontStyle:'normal', color:'rgba(22, 26, 27, 0.7)'}}>
                                     {blog.content_para_1.substring(0, 150)}{blog.content_para_1.length > 400 ? "..." : ""} 
-                                    <button onClick={()=>history.push('/blog/'+blog._id)} style={{cursor:'pointer',border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} >
+                                    <button onClick={()=>window.open('/blog/'+blog._id)} style={{cursor:'pointer',border:0, backgroundColor:'white', color:'blue', fontFamily:'Mulish', fontWeight:'normal', fontSize:'16px',}} >
                                         Read more
                                     </button>
                                 </div>

@@ -1,5 +1,6 @@
 const Video = require("../models/VideoModel.js");
 
+
 exports.create = (req, res) => {
     if(!req.body.title){
         return res.status(200).send({
@@ -41,7 +42,7 @@ exports.findCategory = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-
+    
     Video.find()
         .then(video => {
             res.send(video)

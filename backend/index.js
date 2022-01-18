@@ -21,6 +21,8 @@ connection();
 require('./routes/VideoRoutes.js')(app);
 require('./routes/BlogRoutes.js')(app);
 require('./routes/ReviewRoutes')(app);
+require('./routes/DataRoutes')(app);
+require('./routes/IpoRoutes')(app);
 
 
 app.listen(4000, () => {

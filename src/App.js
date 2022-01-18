@@ -30,6 +30,7 @@ import Admin from './components/Admin';
 import AdminBlogList from './components/AdminBlogList';
 import AdminReviewList from './components/AdminReviewList';
 import AdminVideoList from './components/AdminVideoList';
+import AdminIpo from "./components/AdminIpo";
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
           <Route exact path="/demat"  ><Demat /></Route>
           <Route exact path="/IPO"  ><Ipo /></Route>
           <Route exact path="/IPO/home"  ><IpoHome /></Route>
-          <Route exact path="/IPO/apply"  ><IpoApply /></Route>
+          <Route exact path="/IPO/apply/:id"  ><IpoApply /></Route>
           <Route exact path="/international-investments"  ><InternationalInvestment /></Route>
           <Route exact path="/unlisted-equity"  ><UnlistedEquity /></Route>
           <Route exact path="/mutual-funds"  ><MutualFunds /></Route>
@@ -68,6 +69,8 @@ function App() {
           <Route exact path="/admin/blog/:id" ><AdminBlog /></Route>
           <Route exact path="/admin/video" ><AdminVideo /></Route>
           <Route exact path="/admin/video/:id" ><AdminVideo /></Route>
+          <Route exact path="/admin/ipo" ><AdminIpo /></Route>
+          <Route exact path="/admin/ipo/:id" ><AdminIpo /></Route>
           <Route path="/" > <Home /></Route>
         </Switch>
         <Footer />

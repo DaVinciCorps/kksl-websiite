@@ -3,10 +3,22 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Slider from '@mui/material/Slider';
 import ToolsImage from '../images/toolsImage.png';
 import { PieChart } from 'react-minimal-pie-chart';
+import { makeStyles } from '@mui/styles';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Expand from 'react-expand-animated';
 
+
+const useStyles = makeStyles({
+    brokerageDetail: {
+        ["@media(max-width: 1180px)"]: {
+            marginRight: 60
+        }
+    }
+})
 
 export default function Tools() {
-
+    const classes = useStyles();
     const isMobile = useMediaQuery('(max-width:850px)');
     const isSmall = useMediaQuery('(max-width:450px)');
     const is960 = useMediaQuery('(max-width:960px)');
@@ -18,21 +30,42 @@ export default function Tools() {
     const [sliderMonth, setSliderMonth] = useState(0.5);
     const [sliderTime, setSliderTime] = useState(2);
     const [sliderAnnual, setSliderAnnual] = useState(2);
-    const [radioValue, setRadioValue] = useState("Interest");
+    const [radioValue, setRadioValue] = useState("Buy");
     const [monthly, setMonthly] = useState(0);
     const [totalAmt, setTotalAmt] = useState(0);
+    const [shares, setShares] = useState(1);
+    const [price, setPrice] = useState(0);
     const [data, setData] = useState({
         principal: 1,
         amount: 1,
     });
+    const [show, setShow] = useState(true);
+    const [breakdown,setBreakdown] = useState({
+        charges: 0,
+        brokerage: 0,
+        stt: 0,
+        exchange: 0,
+        sebi: 0,
+        gst: 0,
+        stamp: 0
+    });
+    const [total,setTotal] = useState({
+        totalOrder: 0,
+        totalCharge: 0,
+        netVal: 0,
+    })
 
     useEffect(() => {
         if (month && time && annual && time != 0 && annual != 0) {
             calculateSIP();
         }
     }, [month, time, annual])
-
-
+    useEffect(()=>{
+        calculateBrokerage();
+    },[shares,price, radioValue])
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const calculateSIP = () => {
         if (!time || !month || !annual || time == 0 || annual == 0 || time < 1 || annual < 1) {
             return;
@@ -54,6 +87,88 @@ export default function Tools() {
             amount: amount
         })
         console.log(amount)
+    }
+
+    const calculateBrokerage=()=>{
+        if(shares == 0 || price==0){
+            return;
+        }
+        var sh="";
+        var pr="";
+        var arr = shares.split(",");
+        arr.map(i=>{sh+=i});
+        arr = price.split(",");
+        arr.map(i=>{pr+=i});
+        sh = parseInt(sh);
+        pr = parseInt(pr);
+        const tot = sh*pr;
+        console.log(sh,pr);
+        if(radioValue=="Intraday"){
+            var bro = tot*0.01/100;
+            var stt = tot*0.025/100;
+            var exchange = tot*0.00345/100;
+            var sebi = tot*0.0001/100;
+            var stamp = tot*0.003/100;
+            var gst = 18*(stt+exchange+bro)/100;
+            setBreakdown({
+                charges: bro + stt + exchange + sebi + stamp + gst,
+                brokerage: bro,
+                stt: stt,
+                exchange: exchange,
+                sebi: sebi,
+                gst: gst,
+                stamp: stamp
+            });
+            setTotal({
+                totalOrder: tot,
+                totalCharge: bro + stt + exchange + sebi + stamp + gst,
+                netVal: tot + bro + stt + exchange + sebi + stamp + gst,
+            })
+        }
+        else if(radioValue=="Buy"){
+            var bro = tot*0.1/100;
+            var stt = tot*0.1/100;
+            var exchange = tot*0.00345/100;
+            var sebi = tot*0.0001/100;
+            var stamp = tot*0.015/100;
+            var gst = 18*(stt+exchange+bro)/100;
+            setBreakdown({
+                charges: bro + stt + exchange + sebi + stamp + gst,
+                brokerage: bro,
+                stt: stt,
+                exchange: exchange,
+                sebi: sebi,
+                gst: gst,
+                stamp: stamp
+            });
+            setTotal({
+                totalOrder: tot,
+                totalCharge: bro + stt + exchange + sebi + stamp + gst,
+                netVal: tot + bro + stt + exchange + sebi + stamp + gst,
+            })
+        }
+        else if(radioValue=="Sell"){
+            var bro = tot*0.1/100;
+            var stt = tot*0.1/100;
+            var exchange = tot*0.00345/100;
+            var sebi = tot*0.0001/100;
+            var stamp = tot*0/100;
+            var gst = 18*(stt+exchange+bro)/100;
+            setBreakdown({
+                charges: bro + stt + exchange + sebi + stamp + gst,
+                brokerage: bro,
+                stt: stt,
+                exchange: exchange,
+                sebi: sebi,
+                gst: gst,
+                stamp: stamp
+            });
+            setTotal({
+                totalOrder: tot,
+                totalCharge: bro + stt + exchange + sebi + stamp + gst,
+                netVal: tot + bro + stt + exchange + sebi + stamp + gst,
+            })
+        }
     }
 
     const section1 = () => {
@@ -88,7 +203,7 @@ export default function Tools() {
             )
         }
 
-        const tabContent = () => {
+        const sipCalculator = () => {
 
             const handleMonthChange = (e) => {
                 const value = String(e.target.value);
@@ -121,10 +236,7 @@ export default function Tools() {
                 handleMonthChange(x);
             }
 
-            const handleRadio = (e) => {
-                console.log(e.target.value);
-                setRadioValue(e.target.value);
-            }
+
 
             const handleTimeChange = (e) => {
                 const value = (e.target.value);
@@ -223,11 +335,11 @@ export default function Tools() {
                                 Monthly Investment
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
-                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%",  }}></input>
+                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
+                                    <input value={month} onChange={handleMonthChange} type="text" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
                                 </div>
-                                <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isSmall?"": isMobile ? 240 : "" }}>
+                                <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isSmall ? "" : isMobile ? 240 : "" }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 14 : 16, lineHeight: "20.08px", }}>
                                             500
@@ -245,7 +357,7 @@ export default function Tools() {
                                 Time Period
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ display: 'flex', flex: 1, border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "" : isMobile ? 300 : "" }} >
+                                <div style={{ display: 'flex', flex: 1, border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", minWidth: isSmall ? "" : isMobile ? 300 : "" }} >
                                     <input value={time} onChange={handleTimeChange} type="number" style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>Years</p>
                                 </div>
@@ -267,8 +379,8 @@ export default function Tools() {
                                 Annual Return
                             </p>
                             <div style={{ display: 'flex', alignItems: 'center', flexWrap: isMobile ? 'wrap' : '' }}>
-                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px",minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
-                                    <input value={annual} type="number" onChange={handleAnnualChange} style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%",}}></input>
+                                <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", minWidth: isSmall ? "240px" : isMobile ? 300 : "" }} >
+                                    <input value={annual} type="number" onWheel={(e) => e.target.blur()} onChange={handleAnnualChange} style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
                                     <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>%</p>
                                 </div>
                                 <div style={{ margin: 0, flex: 1, marginLeft: isMobile ? 10 : 16, minWidth: isMobile ? 240 : "" }}>
@@ -314,26 +426,18 @@ export default function Tools() {
                                 Total Amount
                             </p>
                             <p style={{ marginTop: 8, fontFamily: 'Mulish', fontSize: isMobile ? 20 : 32, color: "#161A1B", fontWeight: 700, lineHeight: isMobile ? "25.1px" : "40.16px" }}>
-                                ₹ {parseInt(totalAmt)}
+                                ₹ {numberWithCommas(parseInt(totalAmt))}
                             </p>
                             <p style={{ marginTop: isMobile ? 24 : 32, fontFamily: 'Mulish', fontSize: isMobile ? 16 : 24, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "20.08px" : "30.12px" }}>
                                 Payment Breakdown
                             </p>
                             <div style={{ display: 'flex', marginTop: isMobile ? 8 : 12, justifyContent: 'flex-start', flexDirection: 'column', width: "72%" }}>
-                                {/* <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
-                                    <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Interest" value={"Interest"} name={"radio"} onClick={handleRadio} checked={radioValue == "Interest"} />
-                                    <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Interest"} >Interest</label>
-                                </div>
-                                <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', }}>
-                                    <input style={{ width: 24, height: 24, margin: 0 }} type="radio" id="Principal" value={"Principal"} name={"radio"} onClick={handleRadio} />
-                                    <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Principal"}>Principal</label>
-                                </div> */}
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: isMobile ? 6 : 12 }}>
                                     <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgba(22, 26, 27, 0.6)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
                                         Invested Amount
                                     </p>
                                     <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
-                                        ₹ {data.principal}
+                                        ₹ {numberWithCommas(data.principal)}
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
@@ -341,7 +445,7 @@ export default function Tools() {
                                         Est. Returns
                                     </p>
                                     <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
-                                        ₹ {parseInt(data.amount - data.principal)}
+                                        ₹ {numberWithCommas(parseInt(data.amount - data.principal))}
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
@@ -349,7 +453,7 @@ export default function Tools() {
                                         Invested Amount
                                     </p>
                                     <p style={{ fontFamily: 'Mulish', fontSize: isMobile ? 12 : 18, color: "rgb(22, 26, 27)", fontWeight: 600, lineHeight: isMobile ? "26.08px" : "20.12px" }}>
-                                        ₹ {parseInt(data.amount)}
+                                        ₹ {numberWithCommas(parseInt(data.amount))}
                                     </p>
                                 </div>
                             </div>
@@ -359,10 +463,179 @@ export default function Tools() {
             )
         }
 
+        const brokerageCalc = () => {
+
+            const handleRadio = (e) => {
+                console.log(e.target.value);
+                setRadioValue(e.target.value);
+            }
+
+            const handleSharesChange = (e) => {
+                const value = String(e.target.value);
+
+                if (value == "") {
+                    setShares("");
+                }
+                if (value) {
+                    const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
+                    setShares(formattedValue);
+
+                }
+                return null;
+            }
+
+            const handlePriceChange = (e) => {
+                const value = String(e.target.value);
+
+                if (value == "") {
+                    setPrice("");
+                }
+                if (value) {
+                    const formattedValue = (Number(value.replace(/\D/g, '')) || '').toLocaleString();
+                    setPrice(formattedValue);
+
+                }
+                return null;
+            }
+
+            return (
+                <div style={{ marginTop: 42, }}>
+                    <div style={{ display: 'flex', }}>
+                        <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                            <input style={{ width: 24, height: 24, margin: 0, cursor: 'pointer' }} type="radio" id="Buy" value={"Buy"} name={"radio"} onClick={handleRadio} checked={radioValue == "Buy"} />
+                            <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish", cursor: 'pointer' }} for={"Buy"} >Equity Delivery- Buy</label>
+                        </div>
+                        <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                            <input style={{ width: 24, height: 24, margin: 0, cursor: 'pointer' }} type="radio" id="Sell" value={"Sell"} name={"radio"} onClick={handleRadio} />
+                            <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, cursor: 'pointer', lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Sell"}>Equity Delivery- Sell</label>
+                        </div>
+                        <div style={{ marginRight: 32, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                            <input style={{ width: 24, height: 24, margin: 0, cursor: 'pointer' }} type="radio" id="Intraday" value={"Intraday"} name={"radio"} onClick={handleRadio} />
+                            <label style={{ marginLeft: 8, fontSize: isMobile ? 12 : 16, cursor: 'pointer', lineHeight: isMobile ? "15.06px" : "20.08px", fontWeight: 600, color: '#161A1B', fontFamily: "Mulish" }} for={"Intraday"}>Intraday</label>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <div style={{ marginTop: 80, flex: 1, marginRight: 30, }}>
+                            <p style={{ fontSize: isMobile ? 14 : 16, lineHeight: isMobile ? "17.57px" : "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
+                                Shares to Buy NSE
+                            </p>
+                            <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", minWidth: isSmall ? "240px" : isMobile ? 300 : "", maxWidth: 319, minWidth: 319 }} >
+                                <input value={shares} type="text" onChange={handleSharesChange} style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
+                            </div>
+                            <p style={{ marginTop: 32, fontSize: isMobile ? 14 : 16, lineHeight: isMobile ? "17.57px" : "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 600 }}>
+                                Price
+                            </p>
+                            <div style={{ flex: 1, display: 'flex', border: "1px solid #161A1B", borderRadius: 8, width: "100%", marginTop: 6, padding: "14px 20px", minWidth: isSmall ? "240px" : isMobile ? 300 : "", maxWidth: 319, minWidth: 319 }} >
+                                <input value={price} type="text" onChange={handlePriceChange} style={{ border: 'none', fontSize: 16, lineHeight: "20.08px", color: "#161A1B", outline: 'none', fontFamily: 'Mulish', width: "100%", }}></input>
+                                <p style={{ marginLeft: 30, fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 400 }}>₹</p>
+                            </div>
+                        </div>
+                        <div className={classes.brokerageDetail} style={{ flex: 1, marginTop: 30, backgroundColor: "#E5E5E5", padding: "32px 58px 75px 58px", minWidth: 442, }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div>
+                                    <p style={{ fontSize: 18, lineHeight: "22.59px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 600 }}>Total Order Value</p>
+                                    <p style={{ fontSize: 24, lineHeight: "30px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 700, marginTop: 15 }}> ₹{numberWithCommas(parseInt(total.totalOrder))}</p>
+                                </div>
+                                <div>
+                                    <p style={{ fontSize: 18, lineHeight: "22.59px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 600 }}>Total Charges</p>
+                                    <p style={{ fontSize: 24, lineHeight: "30px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 700, marginTop: 15 }}> ₹{numberWithCommas(parseInt(total.totalCharge))}</p>
+                                </div>
+                                <div>
+                                    <p style={{ fontSize: 18, lineHeight: "22.59px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 600 }}>Net Value</p>
+                                    <p style={{ fontSize: 24, lineHeight: "30px", fontFamily: 'Mulish', color: '#161A1B', fontWeight: 700, marginTop: 15 }}> ₹{numberWithCommas(parseInt(total.netVal))}</p>
+                                </div>
+                            </div>
+                            <div style={{ border: "1px solid rgba(0, 0, 0, 0.3)", margin: "32px -34px 0px -34px" }} />
+                            <div style={{ marginTop: 32, }}>
+                                <div style={{ display: 'flex', alignItems: 'center', }}>
+                                    <p style={{ fontSize: 24, lineHeight: "30px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 700 }}>
+                                        Charges Breakup
+                                    </p>
+                                    {!show &&
+                                        <div style={{ cursor: 'pointer', marginLeft: 8 }} onClick={() => { setShow(!show) }}>
+                                            <KeyboardArrowDownIcon />
+                                        </div>
+                                    }
+                                    {show &&
+                                        <div style={{ cursor: 'pointer', marginLeft: 8 }} onClick={() => { setShow(!show) }}>
+                                            <KeyboardArrowUpIcon />
+                                        </div>
+                                    }
+                                </div>
+                                <Expand open={show}>
+                                    <div style={{ marginTop: 8 }}>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                Charges
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.charges))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                Brokerage
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.brokerage))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                STT Charges
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.stt))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                Exchange Txn Charges (0.00345%)
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.exchange))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                SEBI Charges(0.0001%)
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.sebi))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                GST(18%)
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.gst))}
+                                            </p>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: "space-between", marginTop: 16, }}>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                Stamp Duty ({radioValue=="Buy"? "0.015":radioValue=="Sell"?"0":"0.003"})%
+                                            </p>
+                                            <p style={{ fontSize: 16, lineHeight: "20.08px", fontFamily: 'Mulish', color: 'rgba(22, 26, 27, 0.6)', fontWeight: 500 }}>
+                                                ₹{numberWithCommas(parseInt(breakdown.stamp))}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Expand>
+                            </div>
+                        </div>
+                    </div>
+                </div >
+            )
+        }
+
+
         return (
-            <div style={{ margin: isMobile ? "24px 6.4% 0px" : isTab ? "88px 7.2% 0px" : "133px 7.2% 0px", boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1), 0px 8px 40px rgba(0, 0, 0, 0.2)', padding: isMobile ? "24px 16px" : "40px 4.3% 82px 9.2%", borderRadius: isMobile ? 15 : 0 }}>
+            <div style={{ margin: isMobile ? "24px 6.4% 0px" : isTab ? "88px 7.2% 0px" : "133px 7.2% 0px", boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1), 0px 8px 40px rgba(0, 0, 0, 0.2)', padding: isSelected == 0 ? isMobile ? "24px 16px" : "40px 4.3% 82px 9.2%" : isSelected == 2 ? "40px 0px 0px 60px" : isMobile ? "24px 16px" : "40px 4.3% 82px 9.2%", borderRadius: isMobile ? 15 : 0 }}>
                 {tabs()}
-                {tabContent()}
+                {isSelected == 0 && sipCalculator()}
+                {isSelected == 1 && sipCalculator()}
+                {isSelected == 2 && brokerageCalc()}
             </div>
         )
     }

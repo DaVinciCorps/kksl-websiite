@@ -41,6 +41,7 @@ export default function AdminVideo() {
     const [title, setTitle] = useState("");
     const [youtube, setYoutube] = useState("");
     const [category, setCategory] = useState("");
+    const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
     const [open, setOpen] = useState(false);
     const vertical = "bottom";
@@ -57,6 +58,7 @@ export default function AdminVideo() {
                     setCategory(res.data.category);
                     setTitle(res.data.title);
                     setYoutube(res.data.youtube_link);
+                    setLoaded(true);
                 })
                 .catch(err => {
                     console.log(err);
@@ -149,67 +151,69 @@ export default function AdminVideo() {
     }
     return (
         <div>
-            <div style={{ margin: isMobile ? "0px 6.2%" : "133px 14.4%", boxShadow: isMobile ? "" : "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <p style={{ fontFamily: "Mulish", fontSize: isMobile ? 24 : 32, }}>{id ? "Update a Video" : "Create a Video"}</p>
+            {((id && loaded) || (!id)) &&
+                <div style={{ margin: isMobile ? "0px 6.2%" : "133px 14.4%", boxShadow: isMobile ? "" : "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <p style={{ fontFamily: "Mulish", fontSize: isMobile ? 24 : 32, }}>{id ? "Update a Video" : "Create a Video"}</p>
 
-                {youtube.includes("youtube.com/embed") && 
-                    <div style={{ display: 'flex', marginTop: 30 }}>
-                        <div style={{}}>
-                            <iframe width={isMobile ? "320px" : "400"} height={isMobile ? "300px" : "300"} src={youtube} style={{ borderRadius: 15, border: 'none' }} />
+                    {youtube.includes("youtube.com/embed") &&
+                        <div style={{ display: 'flex', marginTop: 30 }}>
+                            <div style={{}}>
+                                <iframe width={isMobile ? "320px" : "400"} height={isMobile ? "300px" : "300"} src={youtube} style={{ borderRadius: 15, border: 'none' }} />
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
 
-                <TextField
-                    label="Title"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={title}
-                    onChange={handleTitle}
-                    style={{ marginTop: 50 }}
-                />
-                <TextField
-                    label="Youtube Link"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={youtube}
-                    onChange={handleYoutube}
-                    style={{ marginTop: 30 }}
-                />
+                    <TextField
+                        label="Title"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={title}
+                        onChange={handleTitle}
+                        style={{ marginTop: 50 }}
+                    />
+                    <TextField
+                        label="Youtube Link"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={youtube}
+                        onChange={handleYoutube}
+                        style={{ marginTop: 30 }}
+                    />
 
-                <TextField
-                    select
-                    label="Category"
-                    value={category}
-                    onChange={handleCategory}
-                    variant="outlined"
-                    className={classes.textField}
-                    style={{ marginTop: 30 }}
-                >
-                    <MenuItem key={"Tutorial"} value={"Tutorial"}>
-                        Tutorial
-                    </MenuItem>
-                    <MenuItem key={"Explainer"} value={"Explainer"}>
-                        Explainer
-                    </MenuItem>
-                </TextField>
-                <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (category && youtube && title) ? "#2584F4" : "" }}>
-                    {id ? "Update" : "Submit"}
-                </button>
-                {id &&
-                    <button onClick={handleDelete} className={classes.signInButton} style={{ backgroundColor: "#2584F4" }}>
-                        Delete
+                    <TextField
+                        select
+                        label="Category"
+                        value={category}
+                        onChange={handleCategory}
+                        variant="outlined"
+                        className={classes.textField}
+                        style={{ marginTop: 30 }}
+                    >
+                        <MenuItem key={"Tutorial"} value={"Tutorial"}>
+                            Tutorial
+                        </MenuItem>
+                        <MenuItem key={"Explainer"} value={"Explainer"}>
+                            Explainer
+                        </MenuItem>
+                    </TextField>
+                    <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (category && youtube && title) ? "#2584F4" : "" }}>
+                        {id ? "Update" : "Submit"}
                     </button>
-                }
-                <Snackbar
-                    anchorOrigin={{ vertical, horizontal }}
-                    open={open}
-                    onClose={handleClose}
-                    message={message}
-                    key={vertical + horizontal}
-                    style={{ textAlign: 'center' }}
-                />
-            </div>
+                    {id &&
+                        <button onClick={handleDelete} className={classes.signInButton} style={{ backgroundColor: "#2584F4" }}>
+                            Delete
+                        </button>
+                    }
+                    <Snackbar
+                        anchorOrigin={{ vertical, horizontal }}
+                        open={open}
+                        onClose={handleClose}
+                        message={message}
+                        key={vertical + horizontal}
+                        style={{ textAlign: 'center' }}
+                    />
+                </div>
+            }
         </div>
     )
 }

@@ -7,6 +7,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import LoginSignupModal from '../LoginSignupModal';
+import Expand from 'react-expand-animated';
 
 
 function Demat() {
@@ -16,10 +18,10 @@ function Demat() {
     const isTab = useMediaQuery('(max-width:1100px)');
     const [selected, setSelected] = useState();
     const [selectedPara, setSelectedPara] = useState();
-    const data = {
-        heading: "Debt",
-        para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit.Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
-    };
+    const [loginOpen,setLoginOpen] = useState(false);
+    const loginClose=()=>{
+        setLoginOpen(false);
+    }
     const handleIpoOpen=()=>{
         history.push("/IPO/home")
     }
@@ -201,10 +203,15 @@ function Demat() {
                         <p onClick={() => { handleSelect(id) }} style={{ fontWeight: 400, marginTop: 0, fontSize: isMobile ? 12 : 18, color: '#161A1B', lineHeight: isMobile ? "18px" : "24px", fontFamily: 'Mulish', cursor: 'pointer' }}>
                             {ques}
                         </p>
-                        <div id={id} className={'collapsible' + (selected == id ? ' active' : '')}>
-                            <p id={"p" + id} style={{ display: selectedPara != id && "none", fontWeight: 400, marginRight: isMobile ? "-34px" : 0, fontSize: isMobile ? 12 : 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', marginTop: isMobile ? 12 : 25, }}>
-                                {ans}
-                            </p>
+                        <div >
+                            <Expand
+                                open={selected == id}
+                                duration={400}
+                            >
+                                <p id={"p" + id} style={{ fontWeight: 400, marginRight: isMobile ? "-34px" : 0, fontSize: isMobile ? 12 : 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', marginTop: isMobile ? 12 : 25, }}>
+                                    {ans}
+                                </p>
+                            </Expand>
                         </div>
                     </div>
                     {selected !== id &&
@@ -222,33 +229,12 @@ function Demat() {
         }
 
         const handleSelect = (e) => {
-            document.getElementById(e).style.height = "156px";
-            setSelectedPara();
-            if (selected === e) {
+            if (selected == e) {
                 setSelected();
             }
             else {
-                if (selected != null) {
-                    document.getElementById(selected).style.height = "0em";
-                }
-
                 setSelected(e);
             }
-            if (selectedPara == e) {
-                setSelectedPara();
-                document.getElementById(e).style.height = "0em";
-            }
-            else {
-                setTimeout(() => {
-                    setSelectedPara(e);
-                }, 250);
-                setTimeout(() => {
-                    var height = document.getElementById("p" + e).offsetHeight;
-                    console.log({ height })
-                    document.getElementById(e).style.height = height + "px";
-                }, 250)
-            }
-
         }
 
         return (
@@ -286,7 +272,7 @@ function Demat() {
                         <p style={{ color: 'white', marginTop: isMobile ? 16 : 25, fontFamily: 'Mulish', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", maxWidth: 350 }}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque faucibus elementum
                         </p>
-                        <button style={{ width: isMobile ? 160 : 240, marginTop: 25, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+                        <button onClick={()=>{setLoginOpen(true)}} style={{ width: isMobile ? 160 : 240, marginTop: 25, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
                             Start Investing
                         </button>
                     </div>
@@ -307,6 +293,7 @@ function Demat() {
             {howItWorks()}
             {faq()}
             {investInStocks()}
+            <LoginSignupModal open={loginOpen} handleClose={loginClose} />
         </div>
 
     );

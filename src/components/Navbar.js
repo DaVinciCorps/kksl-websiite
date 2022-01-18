@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         ['@media (max-width:1100px)']: {
             padding: "0px 3.2%"
         },
-        zIndex: 1000,
+        zIndex: 10000,
     },
 
     navLinks: {

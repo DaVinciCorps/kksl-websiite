@@ -7,7 +7,9 @@ import Tick from "../../images/Debt/Tick.png";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import {CSSTransition} from 'react-transition-group';
+import LoginSignupModal from '../LoginSignupModal';
+import Expand from 'react-expand-animated';
+
 
 
 function Trading() {
@@ -19,6 +21,11 @@ function Trading() {
     const isTab = useMediaQuery('(max-width:1100px)');
     const is960 = useMediaQuery('(max-width:960px)');
     const isLarge = useMediaQuery('(min-width:1440px)');
+    const [loginOpen,setLoginOpen] = useState(false);
+    const loginClose=()=>{
+        setLoginOpen(false);
+    }
+
     const heading = () => {
         return (
             <div style={{ maxWidth:isMobile?500: 1440, margin: isMobile ? "40px 6.2% 0px 6.2%" :is960?"88px 7.4% 0px 7.4%":isTab?"133px 7.4% 0px 7.4%": "133px 14.4% 0px 14.4%" }}>
@@ -163,7 +170,7 @@ function Trading() {
                                 </div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: isMobile ? "center" : "" }}>
-                                <button style={{ marginTop: isMobile ? 24 : 66, marginLeft: isMobile ? "0" : 72, width: isMobile ? 120 : 257, height: isMobile ? 44 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 14 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+                                <button onClick={()=>{setLoginOpen(true)}} style={{ marginTop: isMobile ? 24 : 66, marginLeft: isMobile ? "0" : 72, width: isMobile ? 120 : 257, height: isMobile ? 44 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 14 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
                                     Get Started
                                 </button>
                             </div>
@@ -185,11 +192,16 @@ function Trading() {
                         <p onClick={() => { handleSelect(id) }} style={{ fontWeight: 400, marginTop: 0, fontSize: isMobile ? 12 : 18, color: '#161A1B', lineHeight: isMobile ? "18px" : "24px", fontFamily: 'Mulish', cursor: 'pointer' }}>
                             {ques}
                         </p>
-                            <div id={id} className={'collapsible' + (selected==id? ' active': '')}>
-                                <p id={"p"+id} style={{display: selectedPara!=id && "none", fontWeight: 400, marginRight: isMobile ? "-34px" : 0, fontSize: isMobile ? 12 : 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', marginTop: isMobile ? 12 : 25, }}>
+                        <div >
+                            <Expand
+                                open={selected == id}
+                                duration={400}
+                            >
+                                <p id={"p" + id} style={{ fontWeight: 400, marginRight: isMobile ? "-34px" : 0, fontSize: isMobile ? 12 : 16, color: 'rgba(22, 26, 27, 0.6)', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', marginTop: isMobile ? 12 : 25, }}>
                                     {ans}
                                 </p>
-                            </div>
+                            </Expand>
+                        </div>
                     </div>
                     {selected !== id &&
                         <div style={{ cursor: 'pointer' }} onClick={() => { handleSelect(id) }}>
@@ -206,35 +218,16 @@ function Trading() {
         }
 
         const handleSelect = (e) => {
-            document.getElementById(e).style.height = "156px";
-            setSelectedPara();
-            if (selected === e) {
+            if (selected == e) {
                 setSelected();
             }
             else {
-                if (selected != null) {
-                    document.getElementById(selected).style.height = "0em";
-                }
-
                 setSelected(e);
             }
-            if (selectedPara == e) {
-                setSelectedPara();
-                document.getElementById(e).style.height = "0em";
-            }
-            else {
-                setTimeout(() => {
-                    setSelectedPara(e);
-                }, 250);
-                setTimeout(() => {
-                    var height = document.getElementById("p" + e).offsetHeight;
-                    console.log({ height })
-                    document.getElementById(e).style.height = height + "px";
-                }, 250)
-            }
         }
+
         return (
-            <div style={{ maxWidth:isMobile?500: 1440, margin: isMobile ? "48px 6.2%" :isTab?"160px 7.4% 0px 7.4%": '160px 14.2% 0px 14.2%' }}>
+            <div style={{ maxWidth: isMobile ? 500 : 1440, margin: isMobile ? "48px 6.2%" : isTab ? "160px 7.4% 0px 7.4%" : '160px 14.2% 0px 14.2%' }}>
                 <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish', textAlign: 'center' }}>
                     Frequently Asked Questions
                 </p>
@@ -268,7 +261,7 @@ function Trading() {
                         <p style={{ fontWeight: 400, marginTop: 16, fontSize: 16, color: '#161A1B', lineHeight: "26px", fontFamily: 'Mulish', maxWidth: 477 }}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque faucibus elementum nuncegestas ut condimentum lobortis sed. Et auctor neque ut sit morbi ornare massa elit mauris.
                         </p>
-                        <button style={{ marginTop: 40, width: 240, height: 56, backgroundColor: '#2584F4', color: 'white', fontSize: 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+                        <button onClick={()=>{setLoginOpen(true)}} style={{ marginTop: 40, width: 240, height: 56, backgroundColor: '#2584F4', color: 'white', fontSize: 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
                             Open Account Now
                         </button>
                     </div>
@@ -284,6 +277,7 @@ function Trading() {
             {makeYourMove()}
             {faq()}
             {!isMobile && openAccount()}
+            <LoginSignupModal open={loginOpen} handleClose={loginClose} />
         </div>
     )
 }

@@ -14,10 +14,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
     blog: {
-        justifyContent: 'space-between',
-        ['@media(max-width: 1037px)']: {
-            justifyContent: 'space-around'
-        }
+        justifyContent: 'flex-end',
+        ['@media(max-width: 1100px)']: {
+            justifyContent: 'flex-start'
+        },
     }
 });
 
@@ -32,6 +32,8 @@ function BlogHome() {
     const scrollRefExplainer = useRef();
     const isMobile = useMediaQuery('(max-width:850px)');
     const is960 = useMediaQuery('(max-width:960px)');
+    const is1100 = useMediaQuery('(max-width:1100px)');
+    const is1200 = useMediaQuery('(max-width:1200px)');
     const isLarge = useMediaQuery('(max-width:1440px)');
     const [leftArrowActive, setLeftArrowActive] = useState(false);
     const [rightArrowActive, setRightArrowActive] = useState(true);
@@ -334,14 +336,14 @@ function BlogHome() {
 
     const section1 = () => {
         return (
-            <div style={{ marginTop: isMobile ? 0 : is960 ? "88px" : '133px', backgroundColor: '#F7F7F7', paddingLeft: '7.2%', paddingRight: '7.2%' }}>
+            <div style={{ marginTop: isMobile ? 0 : is960 ? "88px" : '133px', backgroundColor: '#F7F7F7', paddingLeft:is1200?"6.2%": '7.2%', paddingRight:is1200?"6.2%": '7.2%' }}>
                 <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile || isLarge ? 'center' : '' }}>
                     Blogs
                 </div>
-                <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px', flexWrap: 'wrap' }}>
-                    <div style={{ flex: 1, paddingRight: isLarge ? 0 : 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <img src={MasterImage} />
-                        <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth: 320 }}>
+                <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px',flexWrap:is1100?'wrap':"" }}>
+                    <div style={{paddingRight: isLarge ? 0 : 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', flex: isMobile?"" :is1100?1:"" }}>
+                        <img src={MasterImage} style={{margin: 0,width:is1100?"": isLarge?"110%":"100%", marginRight: 0}} />
+                        <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth:is1100?"320px":isLarge?220: 320 }}>
                             <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '32px' }}>
                                 A Reader in here, is a Leader out there: The (r)Evolution of Market
                             </div>
@@ -349,16 +351,16 @@ function BlogHome() {
                                 From an investor point of view, IPO gives a chance to buy shares of a company, directly from the company....
                             </div>
                             <div style={{ paddingTop: '32px' }}>
-                                <button onClick={() => history.push('/blog/content')} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
+                                <button onClick={() => window.open('/blog/content')} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
                                     Read More
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div style={{ flex: isLarge ? "" : 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '' }}>
+                    <div style={{ flex: isLarge ? "" : 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: is1100?624:"", marginLeft:'auto', marginRight: 'auto' }}>
+                        <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '',  }}>
                             {blogs.slice(0, 4).map((i, index) =>
-                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 : isLarge ? 32 : 16, marginRight: isMobile ? 0 : isLarge ? "0px" : index % 2 != 0 ? 0 : 16, }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile?0:16, marginRight:isMobile?0:(index%2==0 || is1100)? 16:0 }}>
                                     <div style={{ flex: 1 }}>
                                         <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 296, }} />
                                     </div>
@@ -372,7 +374,7 @@ function BlogHome() {
                                         <div style={{ paddingLeft: 20, fontFamily: 'Mulish', fontSize: 12, fontStyle: 'normal', fontWeight: 'normal', bottom: 13 }}>
                                             {i.time_to_read_min} Min Read
                                         </div>
-                                        <button onClick={() => history.push('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
+                                        <button onClick={() => window.open('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
                                             <img src={Arrow} />
                                         </button>
                                     </div>
@@ -420,7 +422,7 @@ function BlogHome() {
                                 <div style={{ paddingLeft: 20, fontFamily: 'Mulish', fontSize: 12, fontStyle: 'normal', fontWeight: 'normal', bottom: 13 }}>
                                     {i.time_to_read_min} Min Read
                                 </div>
-                                <button onClick={() => history.push('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
+                                <button onClick={() => window.open('/blog/' + i._id)} style={{ cursor: 'pointer', height: '48px', width: '48px', backgroundColor: '#2584F4', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 0 }}>
                                     <img src={Arrow} />
                                 </button>
                             </div>

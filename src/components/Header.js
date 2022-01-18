@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 		top: 70,
 		width: "100%",
 		transition: "top 0.4s",
-		zIndex: 100,
+		zIndex: 1000,
 	},
 	link: {
 		fontFamily: 'Mulish',

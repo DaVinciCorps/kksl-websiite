@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     textField: {
         width: "100%",
         maxWidth: 800,
-        ['@media(max-width: 850px)']:{
+        ['@media(max-width: 850px)']: {
             width: "100%",
             maxWidth: 500,
             minWidth: 300
@@ -40,6 +40,7 @@ export default function AdminBlog() {
     const classes = useStyles();
     const [title, setTitle] = useState("");
     const [timeToRead, setTimeToRead] = useState();
+    const [loaded, setLoaded] = useState(false);
     const [para1, setPara1] = useState();
     const [para2, setPara2] = useState();
     const [para3, setPara3] = useState();
@@ -50,14 +51,14 @@ export default function AdminBlog() {
     const vertical = "bottom";
     const horizontal = "center";
     const [message, setMessage] = useState();
-    const [image,setImage] = useState();
-    const [preview,setPreview] = useState();
-    useEffect(()=>{
-        if(image){
+    const [image, setImage] = useState();
+    const [preview, setPreview] = useState();
+    useEffect(() => {
+        if (image) {
             const objectUrl = URL.createObjectURL(image)
             setPreview(objectUrl);
         }
-    },[image])
+    }, [image])
     useEffect(() => {
         if (id) {
             axios({
@@ -74,7 +75,8 @@ export default function AdminBlog() {
                     setPara2(res.data.content_para_2);
                     setPara3(res.data.content_para_3);
                     setPara4(res.data.content_para_4);
-                    
+                    setLoaded(true);
+
                 })
                 .catch(err => {
                     console.log(err);
@@ -108,12 +110,12 @@ export default function AdminBlog() {
             var formData = new FormData();
             formData.append("title", title);
             formData.append("category", category);
-            formData.append("file",image);
-            formData.append("time_to_read_min",timeToRead);
-            formData.append("content_para_1",para1);
-            formData.append("content_para_2",para2);
-            formData.append("content_para_3",para3);
-            formData.append("content_para_4",para4);
+            formData.append("file", image);
+            formData.append("time_to_read_min", timeToRead);
+            formData.append("content_para_1", para1);
+            formData.append("content_para_2", para2);
+            formData.append("content_para_3", para3);
+            formData.append("content_para_4", para4);
             axios({
                 method: "post",
                 url: url + "blogs",
@@ -134,16 +136,16 @@ export default function AdminBlog() {
             var formData = new FormData();
             formData.append("blogId", id);
             formData.append("title", title);
-            if(image){
-                formData.append("file",image);
+            if (image) {
+                formData.append("file", image);
             }
             // 
             formData.append("category", category);
-            formData.append("time_to_read_min",timeToRead);
-            formData.append("content_para_1",para1);
-            formData.append("content_para_2",para2);
-            formData.append("content_para_3",para3);
-            formData.append("content_para_4",para4);
+            formData.append("time_to_read_min", timeToRead);
+            formData.append("content_para_1", para1);
+            formData.append("content_para_2", para2);
+            formData.append("content_para_3", para3);
+            formData.append("content_para_4", para4);
             axios({
                 method: "post",
                 url: url + "blogs/update_blog",
@@ -193,113 +195,115 @@ export default function AdminBlog() {
         setOpen(false);
     }
 
-    const handleImage=(e)=>{
+    const handleImage = (e) => {
         setImage(e.target.files[0]);
     }
 
     return (
         <div>
-
-            <div style={{ margin:isMobile?"0px 6.2%": "133px 14.4%", boxShadow:isMobile?"": "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <p style={{ fontFamily: "Mulish", fontSize:isMobile?24: 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
-                {preview && <img src={preview} style={{width:isMobile?300: 500,height: 'auto', marginTop: 30, border: '1px solid darkgrey'}} />}
-                <TextField
-                    label="Title"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={title}
-                    onChange={handleTitle}
-                    style={{marginTop: 50}}
-                />
-                <div style={{display: 'flex', marginTop: '30px',justifyContent: 'space-between',}} className={classes.textField}>
-                    <p style={{marginRight: 20}}>Photo: </p>
-                    <input
-                        type = "file"
-                        onChange={handleImage}
+            {((id && loaded) || (!id)) &&
+                <div style={{ margin: isMobile ? "0px 6.2%" : "133px 14.4%", boxShadow: isMobile ? "" : "0px 20px 26px rgba(54, 53, 53, 0.3)", padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <p style={{ fontFamily: "Mulish", fontSize: isMobile ? 24 : 32, }}>{id ? "Update a Blog" : "Create a Blog"}</p>
+                    {preview && <img src={preview} style={{ width: isMobile ? 300 : 500, height: 'auto', marginTop: 30, border: '1px solid darkgrey' }} />}
+                    <TextField
+                        label="Title"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={title}
+                        onChange={handleTitle}
+                        style={{ marginTop: 50 }}
                     />
-                    <p style={{fontFamily: 'Mulish',}}>
-                        {image?image.name:""}
-                    </p>
-                </div>
-                <TextField
-                    select
-                    label="Category"
-                    value={category}
-                    onChange={handleCategory}
-                    variant="outlined"
-                    className={classes.textField}
-                    style={{ marginTop: 30 }}
-                >
-                    <MenuItem key={"Tutorial"} value={"Tutorial"}>
-                        Tutorial
-                    </MenuItem>
-                    <MenuItem key={"Explainer"} value={"Explainer"}>
-                        Explainer
-                    </MenuItem>
-                </TextField>
-                <TextField
-                    label="Time to read"
-                    className={classes.textField}
-                    variant="outlined"
-                    type = "number"
-                    value={timeToRead}
-                    onChange={handleTimeToRead}
-                    style={{ marginTop: 30 }}
-                />
-                <TextField
-                    label="Content para 1"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={para1}
-                    onChange={handlePara1}
-                    style={{ marginTop: 30 }}
-                    multiline
-                />
-                <TextField
-                    label="Content para 2"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={para2}
-                    onChange={handlePara2}
-                    style={{ marginTop: 30 }}
-                    multiline
-                />
-                <TextField
-                    label="Content para 3"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={para3}
-                    onChange={handlePara3}
-                    style={{ marginTop: 30 }}
-                    multiline
-                />
-                <TextField
-                    label="Content para 4"
-                    className={classes.textField}
-                    variant="outlined"
-                    value={para4}
-                    onChange={handlePara4}
-                    style={{ marginTop: 30 }}
-                    multiline
-                // rows={4}
-                />
-                <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (title && category && timeToRead && para1 && para2 && para3 && para4 && preview ) ? "#2584F4" : "" }}>
-                    {id ? "Update" : "Submit"}
-                </button>
-                {id &&
-                    <button onClick={handleDelete} className={classes.signInButton} style={{ backgroundColor: "#2584F4" }}>
-                        Delete
+                    <div style={{ display: 'flex', marginTop: '30px', justifyContent: 'space-between', }} className={classes.textField}>
+                        <p style={{ marginRight: 20 }}>Photo: </p>
+                        <input
+                            type="file"
+                            onChange={handleImage}
+                        />
+                        <p style={{ fontFamily: 'Mulish', }}>
+                            {image ? image.name : ""}
+                        </p>
+                    </div>
+                    <TextField
+                        select
+                        label="Category"
+                        value={category}
+                        onChange={handleCategory}
+                        variant="outlined"
+                        className={classes.textField}
+                        style={{ marginTop: 30 }}
+                    >
+                        <MenuItem key={"Tutorial"} value={"Tutorial"}>
+                            Tutorial
+                        </MenuItem>
+                        <MenuItem key={"Explainer"} value={"Explainer"}>
+                            Explainer
+                        </MenuItem>
+                    </TextField>
+                    <TextField
+                        label="Time to read"
+                        className={classes.textField}
+                        variant="outlined"
+                        type="number"
+                        onWheel={(e) => e.target.blur()}
+                        value={timeToRead}
+                        onChange={handleTimeToRead}
+                        style={{ marginTop: 30 }}
+                    />
+                    <TextField
+                        label="Content para 1"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={para1}
+                        onChange={handlePara1}
+                        style={{ marginTop: 30 }}
+                        multiline
+                    />
+                    <TextField
+                        label="Content para 2"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={para2}
+                        onChange={handlePara2}
+                        style={{ marginTop: 30 }}
+                        multiline
+                    />
+                    <TextField
+                        label="Content para 3"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={para3}
+                        onChange={handlePara3}
+                        style={{ marginTop: 30 }}
+                        multiline
+                    />
+                    <TextField
+                        label="Content para 4"
+                        className={classes.textField}
+                        variant="outlined"
+                        value={para4}
+                        onChange={handlePara4}
+                        style={{ marginTop: 30 }}
+                        multiline
+                    // rows={4}
+                    />
+                    <button onClick={handleSubmit} className={classes.signInButton} style={{ backgroundColor: (title && category && timeToRead && para1 && para2 && para3 && para4 && preview) ? "#2584F4" : "" }}>
+                        {id ? "Update" : "Submit"}
                     </button>
-                }
-                <Snackbar
-                    anchorOrigin={{ vertical, horizontal }}
-                    open={open}
-                    onClose={handleClose}
-                    message={message}
-                    key={vertical + horizontal}
-                    style={{ textAlign: 'center' }}
-                />
-            </div>
+                    {id &&
+                        <button onClick={handleDelete} className={classes.signInButton} style={{ backgroundColor: "#2584F4" }}>
+                            Delete
+                        </button>
+                    }
+                    <Snackbar
+                        anchorOrigin={{ vertical, horizontal }}
+                        open={open}
+                        onClose={handleClose}
+                        message={message}
+                        key={vertical + horizontal}
+                        style={{ textAlign: 'center' }}
+                    />
+                </div>
+            }
         </div>
     )
 }

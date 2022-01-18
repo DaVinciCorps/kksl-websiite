@@ -64,6 +64,14 @@ export default function Admin() {
                     Video
                 </button>
             </div>
+            <div style={{display: 'flex', justifyContent: 'space-between',marginTop: 35, alignItems: "center" }}>
+                <p style={style}>
+                    Create an IPO
+                </p>
+                <button onClick={()=>{handleRedirect('/admin/ipo')}} style={{cursor: 'pointer',width: 150, height: 48, background: "#2584F4", outline: "none", border:'none', fontFamily: 'Mulish', fontSize: 16,borderRadius: "15px", color: 'white'}}>
+                    IPO
+                </button>
+            </div>
         </div>
     )
 }
