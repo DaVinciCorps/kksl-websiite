@@ -1,7 +1,7 @@
 import React from 'react'
-import laptop from "../images/Product/Group 626252.png"
-import stock from "../images/Product/Group 626253.png"
-import Desktop from "../images/Product/Group 626254.png"
+import laptop from "../images/laptop.svg"
+import stock from "../images/stocks.svg"
+import Desktop from "../images/desk.svg"
 import apple from "../images/Product/appstore-badge.png"
 import google from "../images/Product/google-play-badge.png"
 import {useHistory } from 'react-router-dom';

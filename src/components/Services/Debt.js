@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import cuate from "../../images/Debt/cuate.png"
-import service1 from "../../images/Services/service5.png"
+import service1 from "../../images/dbt.svg"
 import Tick from "../../images/Debt/Tick.png"
 import 'react-dropdown/style.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -36,7 +36,7 @@ function Demat() {
                     <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 24 : 36, color: '#161A1B', lineHeight: isMobile ? "30.12px" : "43.2px", fontFamily: 'Mulish', textAlign: isMobile ? '' : "" }}>
                         Debt
                     </p>
-                    <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? '' : '' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est.</p>
+                    <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? '' : '' }}>The major markets where you invest to earn more, via profits. Market being open for Debt Funds at all times, – from 1 day (overnight funds) to 7+ years (long duration funds), you can invest as per your horizon and financial goals.</p>
                     {!isMobile &&
                         <div style={{ display: "flex", justifyContent: isMobile ? 'center' : "" }}>
                             <button style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
@@ -63,8 +63,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Paperless account opening</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Fixed Return</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Debt funds essentially are investments in securities that yield fixed-interest, thus returns from them are generally guaranteed.</p>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
@@ -72,8 +72,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>High Liquidity</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Liquid Funds are typically categorized under debt funds which have proved to deliver optimal returns in the short run over the years. One may redeem the units as per one’s convenience.</p>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +83,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Easy analysis of mutual funds</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Diversity</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Talking about investment, it is advised to plan your investment portfolio as diverse as possible so as to cater to effective risk mitigation.  Thus, one should invest in a fund with diverse allocation.</p>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
@@ -92,8 +92,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Lower Fees</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Debt funds have lower transaction fees compared to equity and other mutual funds.</p>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ function Demat() {
                 </p>
                 <div style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
                     <p style={{ fontWeight: 400, marginTop: 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: 'center', maxWidth: 498 }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Here’s how you can get hold of your Debt Fund investments in no time. Make investments, keep track, update and manage them, all at one place.
                     </p>
                 </div>
                 <div style={{ marginTop: isMobile ? 32 : 56, display: 'flex', justifyContent: 'space-between', flexWrap: isMobile ? 'wrap' : '' }}>
@@ -122,12 +122,12 @@ function Demat() {
                                 1
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Create/Log-in to Account
                             </p>
                         </div>
                         <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            The first and foremost step is to create an investment account and calculate the risk tolerance/capacity.
                             </p>
                         </div>
                     </div>
@@ -138,12 +138,12 @@ function Demat() {
                                 2
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Fill Required Details
                             </p>
                         </div>
                         <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            Fill all the essential details and information required for you to invest in Debt funds.
                             </p>
                         </div>
                     </div>
@@ -154,12 +154,12 @@ function Demat() {
                                 3
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Complete KYC
                             </p>
                         </div>
                         <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            The imperative step towards investment is to complete the KYC either offline or via e-KYC. The process usually does not take much time.
                             </p>
                         </div>
                     </div>
@@ -170,12 +170,12 @@ function Demat() {
                                 4
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Choose Investment
                             </p>
                         </div>
                         <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            The final step is a crucial one. Take a careful look at the Debt fund schemes and assess the various factors like your financial goals, budget, risk capacity, etc. Finally, invest in the funds that are right for you.
                             </p>
                         </div>
                     </div>
@@ -187,8 +187,6 @@ function Demat() {
 
 
     const faq = () => {
-        const ques = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa lorem lacus, sed orci hendrerit?";
-        const ans = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc velit quam sollicitudin augue non aliquet faucibus. At faucibus amet mattis nunc. Magnis augue cras massa bibendum massa in feugiat. Ullamcorper morbi eu id non interdum dictumst. At faucibus ut sit elit egestas vel, risus nibh amet. Facilisi faucibus a morbi id risus vel sed. Pellentesque vitae orci aliquet sed fringilla molestie. Vitae ipsum mattis amet nisl. Fringilla diam eu lectus nulla neque bibendum bibendum."
         const faqCard = (ques, ans, id) => {
             return (
                 <div style={{ backgroundColor: '#F7F7F7', border: '1px solid #E0E0E0', borderRadius: 8, padding: isMobile ? "12px" : "24px 32px", display: 'flex' }} >
@@ -236,19 +234,19 @@ function Demat() {
                     Frequently Asked Questions
                 </p>
                 <div style={{ marginTop: isMobile ? 24 : 48 }}  >
-                    {faqCard(ques, ans, 0)}
+                    {faqCard('What is a debt fund?', 'A debt fund is a mutual fund scheme that invests in fixed-interest generating securities, such as Corporate and Government Bonds, corporate debt securities, and money market instruments. The essential reason for investing in debt funds is to earn a steady interest income and capital appreciation.', 0)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }}>
-                    {faqCard(ques, ans, 1)}
+                    {faqCard('Who should invest in a debt fund?', 'Debt funds are ideal for investors who want regular income, but have low risk appetite. Debt funds try to optimise returns by investing across all classes of securities, and are thus less volatile and, hence, less risky than equity funds. This enables debt funds to earn decent returns.', 1)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }}>
-                    {faqCard(ques, ans, 2)}
+                    {faqCard('What are the types of Debt Funds available?', 'There are various types of debt mutual funds, suiting diverse investors. The fundamental differentiating factor between debt funds is the maturity period of the instruments that they invest in. To name some of the types: Liquid, Money Market, Dynamic Bond, Floater, Short/Medium/Long Duration, Credit Risk and many more types of funds are available to invest in. ', 2)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }} >
-                    {faqCard(ques, ans, 3)}
+                    {faqCard('Why invest in Debt Funds?', 'A few major advantages of investing in debt funds are post tax-return, returns are stable, high liquidity , low structural cost, and comparatively low risk factor.', 3)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }} >
-                    {faqCard(ques, ans, 4)}
+                    {faqCard('How to pick the right Debt Fund? ', 'There are various factors to consider while picking the right Debt fund in accordance with your financial goal, like cost-return, risk, and investment horizon. Analysing each factor and aligning it to your financial goal along with considering the securities and plans, will help you pick the right Debt fund for you.', 4)}
                 </div>
             </div>
         )
@@ -258,14 +256,14 @@ function Demat() {
         return (
             <div style={{ margin: isMobile ? "48px 6.2% " : isTab ? "160px 7.4%" : "160px 14.4% 160px 14.4%", maxWidth: isMobile ? 500 : 1440, }}>
                 <div style={{ backgroundColor: "#0953AA", borderRadius: 15, display: 'flex', justifyContent: "space-between", padding: isMobile ? "40px 6.2%" : "125px 82px 100px 104px", flexWrap: isMobile ? "wrap" : '', backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile ? "25%" : "" }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
                         <p style={{ color: "white", fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile ? 20 : 40, lineHeight: isMobile ? "25.1px" : "52px", letterSpacing: "0.005em" }}>
-                            Invest in Stocks
+                        Summon us Anywhere, <br />Anytime
                         </p>
                         <p style={{ color: 'white', marginTop: isMobile ? 16 : 25, fontFamily: 'Mulish', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", maxWidth: 350 }}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque faucibus elementum
+                        Our service is just one-click away.  From clearing your doubts to guiding you through your investment portfolio, we are present at every step.
                         </p>
-                        <button onClick={() => { setLoginOpen(true) }} style={{ width: isMobile ? 160 : 240, marginTop: 25, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+                        <button onClick={()=>{setLoginOpen(true)}} style={{ width: isMobile ? 160 : 240, marginTop: 25, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
                             Start Investing
                         </button>
                     </div>

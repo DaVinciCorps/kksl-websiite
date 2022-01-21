@@ -1,12 +1,12 @@
 import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useHistory } from "react-router-dom";
-import Trading from "../../images/Services/service1.png";
-import Demat from "../../images/Services/service2.png";
-import Mutual from "../../images/Services/service3.png";
-import IPO from "../../images/Services/service4.png";
-import Equity from "../../images/Services/service5.png";
-import Inter from "../../images/Services/service6.png";
+import Trading from "../../images/trading.svg";
+import Demat from "../../images/dematt.svg";
+import Mutual from "../../images/mf.svg";
+import IPO from "../../images/ipo.svg";
+import Equity from "../../images/eq.svg";
+import Inter from "../../images/inter.svg";
 import Debt from "../../images/Services/service7.png";
 import Arrow from "../../images/Arrow 1 (1).png";
 
@@ -20,43 +20,43 @@ function Services() {
             heading: "Trading",
             image: Trading,
             link: "/trading",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "Trading is the base that constitutes all the core elements of all economic societies and financial activities. Build a long-term perspective."
         },
         {
             heading: "Demat",
             image: Demat,
             link: "/demat",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "One of the best ways to keep track of all your investments in shares, bonds, mutual funds, and exchange-traded funds, all organized in one place."
         },
         {
             heading: "Mutual Funds",
             image: Mutual,
             link: "/mutual-funds",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "An investment scheme that pools money from many investors which is futher invested by a professional fund manager. Invest now with a diverse set of mutual fund options to suit your financial goals."
         },
         {
             heading: "IPO",
             image: IPO,
             link: "/IPO",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "An Initial Public Offer (IPO) is the selling of securities to public on primary stock market allowing a company to raise capital from public investors. Get your window to rapid profit in a short time period."
         },
         {
             heading: "Unlisted Equity",
             image: Equity,
             link: "/unlisted-equity",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "Unlisted Equities are securities/financial instruments of a company that is not listed and does not trade publicly on the stock market. These illiquid stocks can offer you huge profits in the longer run."
         },
         {
             heading: "International Investments",
             image: Inter,
             link: "/international-investments",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "Trade in the market with stocks of non-U.S. based companies to get  a source of stability during market volatility."
         },
         {
             heading: "Debt",
             image: Debt,
             link: "/debt",
-            para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est."
+            para: "The major markets where you invest to earn more via profits through guaranteed returns with fixed interest.  Make the most of the low transaction fees in Debt funds."
         },
 
     ]
@@ -65,7 +65,9 @@ function Services() {
         return (
             <div style={{ marginTop: isMobile ? 40 : is960?75:120 }}>
                 <p style={{ fontWeight: 'bold', fontSize: isMobile ? 24 : 48, color: '#161A1B', lineHeight: isMobile ? "26px" : "57.6px", textAlign: 'center', fontFamily: 'Mulish' }}>Services</p>
-                <p style={{ fontWeight: 400, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "15.06px" : "26px", textAlign: 'center', fontFamily: 'Mulish' }}>No matter which device you use, we're available.</p>
+                <p style={{ fontWeight: 400, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "15.06px" : "26px", textAlign: 'center', fontFamily: 'Mulish' }}>
+                    Our strength lies in operating with a niche segment of investors, providing them with personalized trading services for guaranteed diversified portfolios.
+                </p>
                 <p style={{ fontWeight: 400, marginTop: 24, fontSize: isMobile ? 14 : 18, color: '#161A1B', lineHeight: isMobile ? "17.57px" : "22.59px", textAlign: 'center', fontFamily: 'Mulish' }}>Check out our <span style={{ color: '#2584F4', cursor: 'pointer' }} onClick={() => { history.push('/product') }} >Products</span></p>
             </div>
         )

@@ -644,17 +644,43 @@ export default function Tools() {
         return (
             <div style={{ margin: "120px 14.4% 108px 14.4%", display: 'flex', justifyContent: 'space-between' }}>
                 <div style={{ flex: 1, marginRight: isMobile ? 0 : 50 }}>
-                    <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px' }}>
+                    <div style={{display:isSelected===0?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px' }}>
                         SIP Calculator- Systematic Investment Plan Calculator
                     </div>
-                    <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                    <div style={{display:isSelected===1?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px' }}>
+                    What is a Margin Calculator?
+                    </div>
+                    <div style={{display:isSelected===2?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px' }}>
+                    Why is a Brokerage Calculator important? 
+                    </div>
+
+
+                    <div style={{ display:isSelected===0?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
                         Investors may think that SIPs and mutual funds are identical. However, Systematic Investment Plan or SIP is the method of investing a fixed sum of money in mutual funds at regular intervals. SIPs generally allows investing invest weekly, quarterly, or monthly.
                     </div>
-                    <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px', paddingTop: '24px' }}>
+                    <div style={{ display:isSelected===1?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                        Margin calculator assists potential investors in determining the margin the investors may get for delivery and for intraday based on the order details. The margin at hand is less in case of highly volatile stocks and vice versa. In other words, the calculator also enables the potential investors to input their Equity stocks position and understand the margin requirement.
+                    </div>
+                    <div style={{ display:isSelected===2?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                    One of the most important and predominant charges while trading in securities is the brokerage fee that a trader needs to pay to the concerned broker. Generally, it is the percentage of the total trade value, which the brokers levy over and above the original value and subtract it from the portfolio. Such monetary charge could be significant depending on the scale of the trade. Thus, a brokerage calculator is widely used to expedite the cost analysis.
+                    </div>
+
+
+                    <div style={{ display:isSelected===0?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px', paddingTop: '24px' }}>
                         What is SIP Calculator?
                     </div>
-                    <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                    <div style={{ display:isSelected===2?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 600, fontSize: '24px', lineHeight: '30px', paddingTop: '24px' }}>
+                    What is a Brokerage Calculator?
+                    </div>
+                    
+                    <div style={{ display:isSelected===0?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
                         An SIP calculator is a tool that assists in determining the returns on mutual fund investments made through SIP. These have become one of the most popular investment options for millennials lately.  The calculators are intended to provide investors an estimate on their mutual fund investments. They do not clarify the exit load and expense ratio (if any), rather it calculates the wealth gain and expected returns for your monthly SIP investment.
+                    </div>
+                    <div style={{ display:isSelected===1?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                        Margin calculators serve as a good way to estimate the amount involved in purchasing securities, thus helping in outlining the financial map. The calculations also help in understanding if the amount in margin amount is sufficient enough to go ahead with the buying of a margin.
+                    </div>
+                    <div style={{ display:isSelected===2?'':'none' ,fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '16px', color: 'rgba(22, 26, 27, 0.6)' }}>
+                        A tool that is supplied to traders by brokers and other investment platforms to facilitate brokerage calculation. It not only calculates the brokerage but also stamp duty charges, transaction fees, SEBI turnover fee, GST, and Securities Transaction Tax (STT). Such a calculator instantaneously offers precise information about such costs, thus facilitating speedy and timely trading.
                     </div>
                 </div>
                 <div style={{ flex: 1, paddingLeft: '2%', alignSelf: 'center' }}>

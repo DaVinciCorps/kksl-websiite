@@ -1,13 +1,30 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import PolicyBazar from '../images/policybazar.png'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { url } from "./Helper";
+import axios from 'axios';
 
 function IpoApply() {
     const isMobile = useMediaQuery('(max-width:850px)');
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
     const { id } = useParams();
+    const [ipo,setIpo] = useState();
+
+    useEffect(()=>{
+        axios({
+            method:'get',
+            url: url+ "ipo/"+id,
+        })
+            .then(res=>{
+                console.log(res.data);
+                setIpo(res.data);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    },[id])
 
     const section1 = () => {
         return (
@@ -16,19 +33,19 @@ function IpoApply() {
                     <div style={{ width: '80px', height: '80px', borderRadius: '15px', borderSizing: 'border-box', border: '1px solid rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <img src={PolicyBazar} alt="LOGO" />
                     </div>
-                    <div style={{ paddingLeft: '16px' }}>
+                    <div style={{ paddingLeft: '16px', paddingRight:isMobile?'':'60px' }}>
                         <div style={{ fontStyle: 'normal', fontFamily: 'Mulish', fontWeight: 'bold', fontSize: '24px', lineHeight: '120%' }}>
-                            PolicyBazaar IPO
+                            {ipo && ipo.company_name}
                         </div>
                         <div style={{ fontStyle: 'normal', fontFamily: 'Mulish', fontWeight: 'normal', fontSize: '16px', lineHeight: '26px', paddingTop: '4px', display: isMobile ? 'none' : '' }}>
-                            PolicyBazaar
+                            {ipo && ipo.company_name}
                         </div>
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', justifyContent: isMobile ? 'space-between' : '', paddingTop: isMobile ? '24px' : '' }}>
                     <div style={{ fontStyle: 'normal', fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile ? '18px' : '24px', lineHeight: '120%', display: 'flex', flexDirection: 'column' }}>
                         <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            ₹ 14,100
+                            ₹ {ipo && ipo.minimum_amount}
                             <div style={{ fontStyle: 'normal', fontFamily: 'Mulish', fontWeight: 'normal', fontSize: isMobile ? '12px' : '16px', lineHeight: isMobile ? '15px' : '26px', paddingLeft: '16px' }}>/15 shares</div>
                         </div>
                         <div style={{ fontStyle: 'normal', fontFamily: 'Mulish', fontWeight: 'normal', fontSize: isMobile ? '12px' : '16px', lineHeight: isMobile ? '15px' : '26px', paddingTop: '4px', alignSelf: isMobile ? '' : 'end' }}>
@@ -59,7 +76,7 @@ function IpoApply() {
                             Bidding Date
                         </div>
                         <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                            1 Nov, 2021 to 3 Nov, 2021
+                        {ipo && ipo.open_date}-{ipo && ipo.close_date}
                         </div>
                     </div>
                     <div>
@@ -68,7 +85,7 @@ function IpoApply() {
                                 Min. Investment
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                1 Nov, 2021 to 3 Nov, 2021
+                                {ipo && ipo.minimum_amount}
                             </div>
                         </div>
                     </div>
@@ -78,7 +95,7 @@ function IpoApply() {
                                 Lot Size
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                15
+                            {ipo && ipo.lot_size}
                             </div>
                         </div>
                     </div>
@@ -88,7 +105,7 @@ function IpoApply() {
                                 Price Range
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                15
+                            {ipo && ipo.low_price}-{ipo && ipo.high_price}
                             </div>
                         </div>
                     </div>
@@ -98,7 +115,7 @@ function IpoApply() {
                                 Issue Size
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                5625Cr
+                                {ipo && ipo.issue_size}
                             </div>
                         </div>
                     </div>
@@ -126,7 +143,10 @@ function IpoApply() {
                     About Company
                 </div>
                 <div style={{ paddingTop: '24px', maxWidth: '820px', fontSize: isMobile ? '12px' : '16px', lineHeight: isMobile ? '20px' : '26px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Mulish' }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, at condimentum ullamcorper vitae erat sollicitudin magna. Quam diam amet, quis nisi egestas amet, lorem habitasse convallis. Elementum, viverra turpis scelerisque tempor, egestas cum. Consectetur ridiculus et sit in. Viverra nulla varius diam porta euismod metus est tellus. Cursus adipiscing sed vel adipiscing. Eu tempus felis odio ut diam sed. Faucibus sit eu quis orci, risus odio nec. Ut senectus imperdiet auctor cras ornare eros, massa malesuada consequat. Vitae integer non urna, lacus rutrum. Egestas tortor, sed enim ullamcorper arcu vivamus suspendisse vestibulum iaculis. Sed est praesent placerat volutpat volutpat lectus turpis est facilisis. Egestas sit luctus tellus, arcu vitae. Curabitur dolor mollis feugiat sit pellentesque ut.
+                {ipo && ipo.about_para_1}
+                </div>
+                <div style={{ paddingTop: '24px', maxWidth: '820px', fontSize: isMobile ? '12px' : '16px', lineHeight: isMobile ? '20px' : '26px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Mulish' }}>
+                {ipo && ipo.about_para_2}
                 </div>
             </div>
         )
@@ -141,10 +161,10 @@ function IpoApply() {
                 </div>
                 <div style={{ paddingTop: '24px', maxWidth: '820px', fontSize: isMobile ? '12px' : '16px', lineHeight: isMobile ? '20px' : '26px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Mulish' }}>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, at condimentum ullamcorper vitae erat sollicitudin magna. Quam diam amet, quis nisi egestas amet, lorem habitasse convallis. Elementum, viverra turpis scelerisque tempor, egestas cum. Consectetur ridiculus et sit in. Viverra nulla varius diam porta euismod metus est tellus. Cursus adipiscing sed vel adipiscing.
+                        {ipo && ipo.recommendation_para_1}
                     </p>
                     <p style={{ paddingTop: '24px' }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, at condimentum ullamcorper vitae erat sollicitudin magna. Quam diam amet, quis nisi egestas amet, lorem habitasse convallis. Elementum, viverra turpis scelerisque tempor, egestas cum. Consectetur ridiculus et sit in. Viverra nulla varius diam porta euismod metus est tellus. Cursus adipiscing sed vel adipiscing. Eu tempus felis odio ut diam sed. Faucibus sit eu quis orci, risus odio nec. Ut senectus imperdiet auctor cras ornare eros, massa malesuada consequat. Vitae integer non urna, lacus rutrum. Egestas tortor, sed enim ullamcorper arcu vivamus suspendisse vestibulum iaculis. Sed est praesent placerat volutpat volutpat lectus turpis est facilisis. Egestas sit luctus tellus, arcu vitae. Curabitur dolor mollis feugiat sit pellentesque ut.
+                        {ipo && ipo.recommendation_para_2}
                     </p>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles';
-import AboutTopImg from '../images/g7.png'
+import AboutTopImg from '../images/AboutTopImage.svg'
 import TrustedVector from "../images/eos-icons_trusted-organization.png"
 import SeamlessVector from '../images/community.png'
 import About1 from '../images/d1.png'
@@ -264,7 +264,7 @@ function About() {
             <div className={classes.section1}>
                 <div className={classes.section1Text}>
                     <div className={classes.section1Head}>
-                        About Us
+                        Get to know your Brokers Better
                     </div>
                     <div className={classes.section1SubHead}>
                         KK Securities Ltd. is a full-service boutique broking firm and a corporate member of the National Stock Exchange of India (since September 1995) in the capital market, F&O and currency derivative segment of NSE. With 11,000 clients in hand, the company yields a depository AUM of INR 4600 crores.

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import service1 from '../images/Services/service6.png';
@@ -10,6 +10,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useHistory } from 'react-router';
+import { url } from "./Helper";
+import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,110 +46,36 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-function createData(name, calories, fat, carbs, address) {
-    return { name, calories, fat, carbs, address };
-  }
-  
-  const active = [
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "190 - 197",
-      76,
-      "/IPO/apply"
-    ),
-    createData(
-      "Nidan Laboratories and Healthcare Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "1120 - 1180",
-      12,
-      "/IPO/apply"
-    ),
-    createData(
-      "Paras Defence And Space Technologies Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "2027 - 2060",
-      6,
-      "/IPO/apply"
-    ),
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "190 - 197",
-      76,
-      "/IPO/apply"
-    )
-  ];
-
-
-  const upcoming = [
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "To be announced",
-      "-",
-      "-",
-      "View"
-    ),
-    createData(
-      "Nidan Laboratories and Healthcare Limited IPO",
-      "To be announced",
-      "-",
-      "-",
-      "View"
-    ),
-    createData(
-      "Paras Defence And Space Technologies Limited IPO",
-      "To be announced",
-      "-",
-      "-",
-      "View"
-    ),
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "To be announced",
-      "-",
-      "-",
-      "View"
-    )
-  ];
-
-
-  const closed = [
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "190 - 197",
-      76,
-      "View"
-    ),
-    createData(
-      "Nidan Laboratories and Healthcare Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "1120 - 1180",
-      12,
-      "View"
-    ),
-    createData(
-      "Paras Defence And Space Technologies Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "2027 - 2060",
-      6,
-      "View"
-    ),
-    createData(
-      "Suyog Gurbaxani Funicular Ropeways Limited IPO",
-      "8 Sep, 2021 - 11 Sep, 2021",
-      "190 - 197",
-      76,
-      "View"
-    )
-  ];
-
 function IpoHome() {
     const isMobile = useMediaQuery('(max-width:850px)');
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
     const history = useHistory();
+    const [ipos, setIpos] = useState([]);
+
+    useEffect(()=>{
+        axios({
+            method: 'get',
+            url: url + "ipo/",
+        })
+            .then(res => {
+                console.log(res.data);
+                const arr = res.data;
+                // var open_t = arr.open_date;
+                // var close_t = arr.close_date;
+
+                // var open_date = new Date(res.data.open_date);
+                // var close_date = new Date(res.data.close_date);
+                // arr.open_date = open_date.getDate() + ' ' + open_date.getMonth()+1 + ', '+open_date.getFullYear();
+                // arr.close_date = close_date.getDate() + ' ' + close_date.getMonth()+1 + ', '+close_date.getFullYear();
+
+                setIpos([...arr]);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    },[]);
     
     const handleApply=()=>{
         history.push('/IPO/apply')
@@ -161,7 +89,7 @@ function IpoHome() {
                         IPO
                     </p>
                     <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? 'center' : '' }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est.
+                    An Initial Public Offer (IPO) is the selling of securities to the public on the primary stock market which also allows a company to raise capital from public investors. From an investor point of view, IPO gives a chance to buy shares of a company, directly from the company at the price of their choice.
                     </p>
                     <div style={{ display: "flex", justifyContent: isMobile ? 'center' : "" }}>
                         <button onClick={handleApply} style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }} >
@@ -196,21 +124,21 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {active.map((row) => (
-                                <StyledTableRow key={row.name}>
+                            {ipos.map((row) => (
+                                <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
                                     scope="row"
                                     style={{ color: "#298FF5" }}
                                 >
-                                    {row.name}
+                                    {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                <StyledTableCell align="left">{row.open_date}-{row.close_date}</StyledTableCell>
+                                <StyledTableCell align="left">{row.low_price}-{row.high_price}</StyledTableCell>
+                                <StyledTableCell align="right">{row.lot_size}</StyledTableCell>
                                 <StyledTableCell align="right">
                                     <div>
-                                    <button style={{ width: 76, color:'white', height: 34, backgroundColor: '#2584F4', Acolor: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer', }} onClick={()=>history.push(row.address)} >
+                                    <button onClick={()=>window.open('/IPO/apply/'+row._id)} style={{ width: 76, color:'white', height: 34, backgroundColor: '#2584F4', Acolor: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer', }} >
                                         Apply
                                     </button>
                                     </div>
@@ -246,19 +174,19 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {upcoming.map((row) => (
-                                <StyledTableRow key={row.name}>
+                            {ipos.map((row) => (
+                                <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
                                     scope="row"
                                     style={{ color: "#298FF5" }}
                                 >
-                                    {row.name}
+                                    {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.address}</StyledTableCell>
+                                <StyledTableCell align="left">To be announced</StyledTableCell>
+                                <StyledTableCell align="right">-</StyledTableCell>
+                                <StyledTableCell align="right">-</StyledTableCell>
+                                <StyledTableCell align="right">View</StyledTableCell>
                                 </StyledTableRow>
                             ))}
                             </TableBody>
@@ -289,19 +217,19 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {closed.map((row) => (
-                                <StyledTableRow key={row.name}>
+                            {ipos.map((row) => (
+                                <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
                                     scope="row"
                                     style={{ color: "#298FF5" }}
                                 >
-                                    {row.name}
+                                    {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.address}</StyledTableCell>
+                                <StyledTableCell align="left">{row.open_date}-{row.close_date}</StyledTableCell>
+                                <StyledTableCell align="left">{row.low_price}-{row.high_price}</StyledTableCell>
+                                <StyledTableCell align="right">{row.lot_size}</StyledTableCell>
+                                <StyledTableCell align="right">View</StyledTableCell>
                                 </StyledTableRow>
                             ))}
                             </TableBody>

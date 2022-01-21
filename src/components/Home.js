@@ -1,17 +1,17 @@
 import React,{useState,useRef, useEffect} from 'react'
 import { makeStyles, } from '@mui/styles';
-import HeroSectionImage from '../images/HeroSection1.png'
+import HeroSectionImage from '../images/HeroSection1.svg'
 import Bar from "../images/BarChart.png";
 import Earth from "../images/Earth.png";
 import Person from "../images/Person1.png";
 import Equity from '../images/equity.png'
 import Derivatives from '../images/derivative.png'
 import MutualFund from '../images/mutualfunds.png'
-import EquityImage from '../images/Group 626240.png'
-import DerivateImage from '../images/Group 626241.png'
+import EquityImage from '../images/equity.svg'
+import DerivateImage from '../images/derivative.svg'
 import CommodityImage from '../images/Group 626242.png'
-import MutualFundImage from '../images/Group 626243.png'
-import Trust1 from '../images/Trust1.png'
+import MutualFundImage from '../images/mutualFundsMain.svg'
+import Trust1 from '../images/home.svg'
 import Carbon from '../images/carbon_security.png'
 import Codicon from '../images/codicon_sync.png'
 import Arrow1 from '../images/Arrow 1 (1).png'
@@ -123,8 +123,8 @@ export default function Home() {
             <div style={{margin: 'auto', width: "100%", display: 'flex', justifyContent: 'center'}}>
             <div style={{marginTop:isMobile?40:is960?105: 185,overflowX: "hidden", marginLeft:isMobile?"6.2%":isTab?"7.4%": '14.4%', display: 'flex',maxWidth:isMobile?500: 1440,flexWrap:isMobile? 'wrap':'',marginRight: isMobile?"6.2%":'', }}>
                 <div style={{display: 'flex', flexDirection: 'column',alignItems:isMobile? 'center': ''}}>
-                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28:isTab?"48px": 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width:isTab?"": 510 }}>Build Your Future With Investment</p>
-                    <p style={{fontFamily: 'Mulish', fontWeight: 400, fontSize:isMobile?12: 16, lineHeight: "20px", color: "#161A1B", marginRight: isMobile?"6.2%":'',textAlign: isMobile?'center':'left'  }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas sed fermentum aliquet est.</p>
+                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile?28:isTab?"48px": 62, lineHeight:isMobile? "34px": '120%', color: "#161A1B",marginBottom: 25,  textAlign: isMobile?'center':'left',maxWidth: isMobile?231: "", width:isTab?"": 510 }}>Investing in Your Future </p>
+                    <p style={{fontFamily: 'Mulish', fontWeight: 400, fontSize:isMobile?12: 16, lineHeight: "20px", color: "#161A1B", marginRight: isMobile?"6.2%":'',textAlign: isMobile?'center':'left'  }}>Let your money make money, while you earn more.</p>
                     <button style={{marginBottom: 30,outline: 'none', border: 'none',width: 140, height:50, backgroundColor: '#2584F4', marginTop: 48, borderRadius: 8, cursor: 'pointer'}}>
                         <p style={{fontSize: 16,fontWeight: 700,fontFamily: 'Mulish', color: 'white'}}>
                             Try For Free
@@ -144,18 +144,18 @@ export default function Home() {
         const data = [
             {
                 img: Bar,
-                text: '$30B',
-                para: "Digital Currency Exchanged"
+                text: '40+',
+                para: "years of Legacy"
             },
             {
                 img: Person,
-                text: '10M+',
-                para: "Trusted Wallets Investor"
+                text: '4600 crore',
+                para: "Depository AUM"
             },
             {
                 img: Earth,
-                text: '195',
-                para: "Countries Supported"
+                text: '11000+',
+                para: "Diversified client base"
             }
         ]
 
@@ -522,13 +522,15 @@ export default function Home() {
                 <div style={{display: 'flex', justifyContent: 'center'}}>
             <div style={{ margin:isMobile?"48px 0px":isTab?"160px 7.4%": "160px 14.4%" ,maxWidth:isMobile?500: 1440, width: '100%'}}>
                 <div style={{backgroundColor: '#0953AA', boxShadow: '0px 40px 92px -16px rgba(9, 83, 170, 0.3)', borderRadius: 8, padding:isMobile?"40px 6.2%": "80px 104px",}}>
-                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize:isMobile?20: 48, lineHeight:isMobile?"24px": "57.6px", textAlign: 'center', color: 'white'}}> Let us send you offering</p>
+                    <p style={{fontFamily: 'Mulish', fontWeight: 'bold', fontSize:isMobile?20: 48, lineHeight:isMobile?"24px": "57.6px", textAlign: 'center', color: 'white'}}>
+                        Your Wish is our Command
+                    </p>
                     <div style={{marginTop: 32, display: 'flex', justifyContent: 'center',flexWrap: isMobile?"wrap":''}}>
-                        {/* <input style={{textAlign: 'center',flex: 1,background: "white", border: '1px solid #F1F1F6', borderRadius: 8, outline: 'none', padding:isMobile?"14px 38px": "18px 16px", fontSize: '16px', color: "#92929D"}} value={"email@gmail.com"}></input> */}
+                        <input style={{textAlign: 'center',flex: 1,background: "white", border: '1px solid #F1F1F6', borderRadius: 8, outline: 'none', padding:isMobile?"14px 38px": "18px 16px", fontSize: '16px', color: "#92929D", textAlign:'left'}} placeholder={"Enter your email address here"} />
                         <a href="mailto:john@example.com? subject=Subject">
                             <button style={{backgroundColor: "#2584F4", marginLeft: 8,width:isMobile?145: 164, height:isMobile?48: 56, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer', marginTop: isMobile?24:0}}> 
                                 <p style={{fontSize: 16, fontFamily: 'Mulish', color: 'white',}}>
-                                    Contact Us
+                                    Subscribe Now
                                 </p>
                             </button>
                         </a>

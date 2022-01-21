@@ -38,7 +38,9 @@ function Demat() {
                     <p style={{ fontWeight: 'bold', marginTop: 0, fontSize: isMobile ? 24 : 36, color: '#161A1B', lineHeight: isMobile ? "30.12px" : "43.2px", fontFamily: 'Mulish', textAlign: isMobile ? '' : "" }}>
                         Demat
                     </p>
-                    <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? '' : '' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, mus volutpat aliquam velit amet non. Blandit mauris nulla diam sollicitudin amet tincidunt velit est.</p>
+                    <p style={{ fontWeight: 400, marginTop: isMobile ? 16 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: isMobile ? '' : '' }}>
+                    A Demat (Dematerialized) Account is one that helps you buy and hold shares and securities in digital or electronic format during online trading. Reduce the risk of misplacing a share and make it easy to hold them now.
+                    </p>
                     {!isMobile &&
                         <div style={{ display: "flex", justifyContent: isMobile ? 'center' : "" }}>
                             <button onClick={()=>{setLoginOpen(true)}} style={{ marginTop: isMobile ? 24 : 40, width: isMobile ? 160 : 257, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: isMobile ? 16 : 18, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
@@ -56,17 +58,17 @@ function Demat() {
         return (
             <div style={{ backgroundColor: "#F7F7F7", marginTop: isMobile ? 0 : 160, width: "100%" }}>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',maxWidth: isMobile?500: '',margin: "auto"}}>
-                    {!isMobile && <p style={{ marginTop: isMobile ? "40px" : isTab ? "88px" : "88px", textAlign: isMobile ? "left" : 'center', fontWeight: 'bold', fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish' }}>Make your first move with confidence</p>}
+                    {!isMobile && <p style={{ marginTop: isMobile ? "40px" : isTab ? "88px" : "88px", textAlign: isMobile ? "left" : 'center', fontWeight: 'bold', fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish' }}>The more you learn, the more you earn</p>}
                     <div style={{ padding: isMobile ? "24px 6.2% 40px 6.2%" : isTab ? "48px 7.4% 88px 7.4%" : "48px 14.4% 88px 14.4%", display: 'flex',  justifyContent: 'space-between', flexWrap: isMobile ? 'wrap' : '',width: '-webkit-fill-available' }}>
-                    {isMobile && <p style={{ marginBottom: isMobile ? "24px" : isTab ? "88px" : "88px", textAlign: isMobile ? "left" : 'center', fontWeight: 'bold', fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish' }}>Make your first move with confidence</p>}
+                    {isMobile && <p style={{ marginBottom: isMobile ? "24px" : isTab ? "88px" : "88px", textAlign: isMobile ? "left" : 'center', fontWeight: 'bold', fontSize: isMobile ? 20 : 36, color: '#161A1B', lineHeight: isMobile ? "24px" : "43.2px", fontFamily: 'Mulish' }}>The more you learn, the more you earn</p>}
                         <div >
                             <div style={{ display: 'flex' }}>
                                 <div>
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Paperless account opening</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Immediate and fast transfer of securities</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Transfer your securities in the most efficient and streamlined manner with on the spot, personalized services.</p>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
@@ -74,8 +76,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Elimination of 'Bad Deliveries'</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Eliminate risks associated with physical certificates such as bad delivery, fake securities and delays by availing depository services.</p>
                                 </div>
                             </div>
                         </div>
@@ -85,8 +87,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Easy analysis of mutual funds</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>Elimination of risk by loss, theft, and mutilation</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Be care free for all possible threats are taken care of in an orderly manner.</p>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', marginTop: isMobile ? 16 : 65 }}>
@@ -94,8 +96,8 @@ function Demat() {
                                     <img style={{ width: isMobile ? 20 : 44, height: isMobile ? 20 : 44 }} src={Tick} />
                                 </div>
                                 <div style={{ marginLeft: isMobile ? 14 : 28 }}>
-                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>As secure as your trusted bank</p>
-                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p style={{ fontWeight: 700, fontSize: isMobile ? 16 : 20, color: '#161A1B', lineHeight: isMobile ? "19.2px" : "24px", fontFamily: 'Mulish', maxWidth: 400 }}>No Stamp duty on transfer of securities</p>
+                                    <p style={{ fontWeight: 400, marginTop: isMobile ? 10 : 24, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400 }}>Investors are no longer required to pay stamp duty for opening of demat accounts.</p>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +115,7 @@ function Demat() {
                 </p>
                 <div style={{ width: "100%", display: 'flex', justifyContent: 'center' }}>
                     <p style={{ fontWeight: 400, marginTop: 16, fontSize: isMobile ? 12 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', maxWidth: 400, textAlign: 'center', maxWidth: 498 }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Here’s how you can get hold of your Demat account in no time. Make investments, keep track, update and manage them, all at one place.
                     </p>
                 </div>
                 <div style={{ marginTop: isMobile ? 32 : 56, display: 'flex', justifyContent: 'space-between', flexWrap: isMobile ? 'wrap' : '' }}>
@@ -124,12 +126,12 @@ function Demat() {
                                 1
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Depository Participant
                             </p>
                         </div>
-                        <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
+                        <div style={{ maxWidth: isMobile ? "" : 284,minHeight: isMobile ? "" : 284,  marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            Decide on a Depository Participant (DP), which is any authorized bank, financial institution or broker, with whom you want to open a Demat Account with, and which matches your needs and requirements. 
                             </p>
                         </div>
                     </div>
@@ -140,12 +142,12 @@ function Demat() {
                                 2
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Fill Details and Complete KYC
                             </p>
                         </div>
-                        <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
+                        <div style={{ maxWidth: isMobile ? "" : 284,minHeight: isMobile ? "" : 284,  marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            Fill all the essential details and complete the KYC either offline or via e-KYC, which is required for you to open a Demat account.
                             </p>
                         </div>
                     </div>
@@ -156,12 +158,12 @@ function Demat() {
                                 3
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Complete Verification
                             </p>
                         </div>
-                        <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
+                        <div style={{ maxWidth: isMobile ? "" : 284,minHeight: isMobile ? "" : 284,  marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            Post the submission of documents for identity and address proof, you will need to undergo the verification process which is known as ‘In Person Verification’ (IPV). Following that you will be required to sign the agreement documents.
                             </p>
                         </div>
                     </div>
@@ -172,12 +174,12 @@ function Demat() {
                                 4
                             </p>
                             <p style={{ minWidth: isMobile ? 109 : "", fontWeight: 600, marginTop: isMobile ? 8 : 16, fontSize: isMobile ? 18 : 20, color: '#161A1B', lineHeight: isMobile ? "21.6px" : "24px", fontFamily: 'Mulish', textAlign: 'center' }}>
-                                Lorem Ipsum
+                            Beneficiary Owner ID
                             </p>
                         </div>
-                        <div style={{ maxWidth: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
+                        <div style={{ maxWidth: isMobile ? "" : 284, minHeight: isMobile ? "" : 284, marginTop: isMobile ? 0 : 32, border: "1px solid rgba(0, 0, 0, 0.15)", boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.1), 0px 4px 20px rgba(0, 0, 0, 0.15)", borderRadius: 15, }}>
                             <p style={{ fontWeight: 400, textAlign: "center", fontSize: isMobile ? 10 : 16, color: '#161A1B', lineHeight: isMobile ? "18px" : "26px", fontFamily: 'Mulish', margin: isMobile ? "16px" : '24px 24px 52px 24px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum tincidunt iaculis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor nisl vitae, Auctor nisl vitae, nunc, elit. Ornare viverra enim, musLorem.
+                            Once your application is approved post signature of agreement documents, you will get a Beneficiary Owner ID. You can access your Demat account using this BO ID.
                             </p>
                         </div>
                     </div>
@@ -189,8 +191,6 @@ function Demat() {
 
 
     const faq = () => {
-        const ques = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa lorem lacus, sed orci hendrerit?";
-        const ans = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc velit quam sollicitudin augue non aliquet faucibus. At faucibus amet mattis nunc. Magnis augue cras massa bibendum massa in feugiat. Ullamcorper morbi eu id non interdum dictumst. At faucibus ut sit elit egestas vel, risus nibh amet. Facilisi faucibus a morbi id risus vel sed. Pellentesque vitae orci aliquet sed fringilla molestie. Vitae ipsum mattis amet nisl. Fringilla diam eu lectus nulla neque bibendum bibendum."
         const faqCard = (ques, ans, id) => {
             return (
                 <div style={{ backgroundColor: '#F7F7F7', border: '1px solid #E0E0E0', borderRadius: 8, padding: isMobile ? "12px" : "24px 32px", display: 'flex' }} >
@@ -238,19 +238,19 @@ function Demat() {
                     Frequently Asked Questions
                 </p>
                 <div style={{ marginTop: isMobile ? 24 : 48 }}  >
-                    {faqCard(ques, ans, 0)}
+                    {faqCard('What is a Demat account?', 'A Demat (Dematerialized) Account is one that helps you buy and hold shares and securities in digital or electronic format during online trading. With this, it is easier to own and trade stocks, shares, mutual funds, ETFs by eliminating the hassles of lengthy paperwork.', 0)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }}>
-                    {faqCard(ques, ans, 1)}
+                    {faqCard('What is a depository?', 'A depository can be compared to a bank, which holds securities (like shares, debentures, bonds, Government Securities, units etc.) of investors in electronic form.Along with holding securities, a depository also provides services related to transactions in securities.', 1)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }}>
-                    {faqCard(ques, ans, 2)}
+                    {faqCard('What are the Documents Needed in Order to Open a Demat Account? ', 'It is mandatory to have the Proof of Income, Identity and Address for opening a Demat account.', 2)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }} >
-                    {faqCard(ques, ans, 3)}
+                    {faqCard('What is CDSL and NSDL? ', 'NSDL means National Securities Depository Limited which deals with National Stock Exchange (NSE). CDSL means Central Depository Services Limited which deals with Bombay Stock Exchange (BSE). ', 3)}
                 </div>
                 <div style={{ marginTop: isMobile ? 16 : 48 }} >
-                    {faqCard(ques, ans, 4)}
+                    {faqCard('What is the dematerialisation Process?', "In the process of Dematerialisation, physical certificates of an investor are converted to an equivalent number of securities in electronic form and credited in the investor's account with his depository Participant (DP).", 4)}
                 </div>
             </div>
         )
@@ -262,10 +262,10 @@ function Demat() {
                 <div style={{ backgroundColor: "#0953AA", borderRadius: 15, display: 'flex', justifyContent: "space-between", padding: isMobile ? "40px 6.2%" : "125px 82px 100px 104px", flexWrap: isMobile ? "wrap" : '', backgroundImage: `url("/group8.png")`, backgroundRepeat: "no-repeat", backgroundPosition: "100% 0%", backgroundSize: isMobile ? "25%" : "" }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
                         <p style={{ color: "white", fontFamily: 'Mulish', fontWeight: 'bold', fontSize: isMobile ? 20 : 40, lineHeight: isMobile ? "25.1px" : "52px", letterSpacing: "0.005em" }}>
-                            Invest in Stocks
+                        Summon us Anywhere, <br/> Anytime.
                         </p>
                         <p style={{ color: 'white', marginTop: isMobile ? 16 : 25, fontFamily: 'Mulish', fontSize: isMobile ? 12 : 16, lineHeight: isMobile ? "18px" : "26px", maxWidth: 350 }}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque faucibus elementum
+                        Our service is just one-click away.  From clearing your doubts to guiding you through your investment portfolio, we are present at every step.
                         </p>
                         <button onClick={()=>{setLoginOpen(true)}} style={{ width: isMobile ? 160 : 240, marginTop: 25, height: isMobile ? 48 : 56, backgroundColor: '#2584F4', color: 'white', fontSize: 16, outline: 'none', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
                             Start Investing
