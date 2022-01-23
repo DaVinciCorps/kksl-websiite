@@ -10,7 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useHistory } from 'react-router';
-import { url } from "./Helper";
+import { url, parseDate } from "./Helper";
 import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -51,7 +51,9 @@ function IpoHome() {
     const is960 = useMediaQuery('(max-width:960px)');
     const isTab = useMediaQuery('(max-width:1100px)');
     const history = useHistory();
-    const [ipos, setIpos] = useState([]);
+    const [active,setActive] = useState([]);
+    const [past,setPast] = useState([]);
+    const [upcoming,setUpcoming] = useState([]);
 
     useEffect(()=>{
         axios({
@@ -60,16 +62,10 @@ function IpoHome() {
         })
             .then(res => {
                 console.log(res.data);
-                const arr = res.data;
-                // var open_t = arr.open_date;
-                // var close_t = arr.close_date;
-
-                // var open_date = new Date(res.data.open_date);
-                // var close_date = new Date(res.data.close_date);
-                // arr.open_date = open_date.getDate() + ' ' + open_date.getMonth()+1 + ', '+open_date.getFullYear();
-                // arr.close_date = close_date.getDate() + ' ' + close_date.getMonth()+1 + ', '+close_date.getFullYear();
-
-                setIpos([...arr]);
+                setActive([...res.data.active]);
+                setPast([...res.data.past]);
+                setUpcoming([...res.data.upcoming]);
+                
             })
             .catch(err => {
                 console.log(err);
@@ -78,7 +74,7 @@ function IpoHome() {
     },[]);
     
     const handleApply=()=>{
-        history.push('/IPO/apply')
+        
     }
     const section1 = () => {
 
@@ -124,7 +120,7 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {ipos.map((row) => (
+                            {active.map((row) => (
                                 <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
@@ -133,7 +129,7 @@ function IpoHome() {
                                 >
                                     {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">{row.open_date}-{row.close_date}</StyledTableCell>
+                                <StyledTableCell align="left">{parseDate(row.open_date)}-{parseDate(row.close_date)}</StyledTableCell>
                                 <StyledTableCell align="left">{row.low_price}-{row.high_price}</StyledTableCell>
                                 <StyledTableCell align="right">{row.lot_size}</StyledTableCell>
                                 <StyledTableCell align="right">
@@ -174,7 +170,7 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {ipos.map((row) => (
+                            {upcoming.map((row) => (
                                 <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
@@ -183,10 +179,10 @@ function IpoHome() {
                                 >
                                     {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">To be announced</StyledTableCell>
-                                <StyledTableCell align="right">-</StyledTableCell>
-                                <StyledTableCell align="right">-</StyledTableCell>
-                                <StyledTableCell align="right">View</StyledTableCell>
+                                <StyledTableCell align="left">{row.open_date?(parseDate(row.open_date)+"-"+parseDate(row.close_date)):"To be announced"}</StyledTableCell>
+                                <StyledTableCell align="right">{row.low_price && row.low_price}-{row.high_price && row.high_price}</StyledTableCell>
+                                <StyledTableCell align="right">{row.lot_size?row.lot_size:"-"}</StyledTableCell>
+                                <StyledTableCell align="right" onClick={()=>window.open('/IPO/apply/'+row._id)}>View</StyledTableCell>
                                 </StyledTableRow>
                             ))}
                             </TableBody>
@@ -217,7 +213,7 @@ function IpoHome() {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {ipos.map((row) => (
+                            {past.map((row) => (
                                 <StyledTableRow key={row.company_name}>
                                 <StyledTableCell
                                     component="th"
@@ -226,10 +222,10 @@ function IpoHome() {
                                 >
                                     {row.company_name}
                                 </StyledTableCell>
-                                <StyledTableCell align="left">{row.open_date}-{row.close_date}</StyledTableCell>
+                                <StyledTableCell align="left">{parseDate(row.open_date)}-{parseDate(row.close_date)}</StyledTableCell>
                                 <StyledTableCell align="left">{row.low_price}-{row.high_price}</StyledTableCell>
                                 <StyledTableCell align="right">{row.lot_size}</StyledTableCell>
-                                <StyledTableCell align="right">View</StyledTableCell>
+                                <StyledTableCell align="right" onClick={()=>window.open('/IPO/apply/'+row._id)}>View</StyledTableCell>
                                 </StyledTableRow>
                             ))}
                             </TableBody>

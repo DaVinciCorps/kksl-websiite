@@ -31,6 +31,7 @@ import AdminBlogList from './components/AdminBlogList';
 import AdminReviewList from './components/AdminReviewList';
 import AdminVideoList from './components/AdminVideoList';
 import AdminIpo from "./components/AdminIpo";
+import AdminIpoList from './components/AdminIpoList';
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           <Route exact path="/admin/video/:id" ><AdminVideo /></Route>
           <Route exact path="/admin/ipo" ><AdminIpo /></Route>
           <Route exact path="/admin/ipo/:id" ><AdminIpo /></Route>
+          <Route exact path="/admin/ipolist"> <AdminIpoList />  </Route>
           <Route path="/" > <Home /></Route>
         </Switch>
         <Footer />

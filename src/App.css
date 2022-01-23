@@ -1,4 +1,4 @@
-p{
+p {
   margin: 0px;
 }
 
@@ -6,54 +6,51 @@ p{
   display: none;
 }
 
-.MuiList-root{
+.MuiList-root {
   padding: 0px !important;
   box-shadow: none !important;
 }
 
-.MuiDialog-paper{
+.MuiDialog-paper {
   border-radius: 15px !important;
 }
 
-.MuiMenu-list{
+.MuiMenu-list {
   box-shadow: none !important;
 }
 
-.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   box-shadow: none !important;
 }
 
-#logincard:active{
-  background-color: #E7F1FE;
-
+#logincard:active {
+  background-color: #e7f1fe;
 }
 
-#login-button:active{
+#login-button:active {
   border: none !important;
-  background-color: #2584F4 !important;
+  background-color: #2584f4 !important;
   color: white !important;
 }
 
 .collapsible {
   height: 0rem;
   transition: height 0.25s linear;
-  border-radius: 0.25rem
+  border-radius: 0.25rem;
 }
 .collapsible.active {
   height: 156px;
 }
 
-.css-eg0mwd-MuiSlider-thumb{
+.css-eg0mwd-MuiSlider-thumb {
   background-color: white !important;
   border: 3px solid !important;
 }
-.css-1exqwzz-MuiSnackbarContent-message{
+.css-1exqwzz-MuiSnackbarContent-message {
   width: 100%;
 }
 
-
-
-input[type='radio']:after {
+input[type="radio"]:after {
   width: 24px;
   height: 24px;
   border-radius: 15px;
@@ -62,22 +59,22 @@ input[type='radio']:after {
   position: relative;
   background-color: white;
   border: 1px solid rgba(22, 26, 27, 0.6);
-  content: '';
+  content: "";
   display: inline-block;
   visibility: visible;
 }
 
-input[type='radio']:checked:after {
+input[type="radio"]:checked:after {
   width: 14px;
   height: 14px;
   border-radius: 15px;
   top: -2px;
   left: -1px;
   position: relative;
-  content: '';
+  content: "";
   display: inline-block;
   visibility: visible;
-  border: 6px solid #2584F4;
+  border: 6px solid #2584f4;
 }
 
 input::-webkit-outer-spin-button,
@@ -86,6 +83,35 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 850px) {
+  input[type="radio"]:after {
+    width: 16px;
+    height: 16px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: white;
+    border: 1px solid rgba(22, 26, 27, 0.6);
+    content: "";
+    display: inline-block;
+    visibility: visible;
+  }
+
+  input[type="radio"]:checked:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 4px solid #2584f4;
+  }
 }

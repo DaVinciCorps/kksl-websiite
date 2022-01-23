@@ -336,31 +336,32 @@ function BlogHome() {
 
     const section1 = () => {
         return (
-            <div style={{ marginTop: isMobile ? 0 : is960 ? "88px" : '133px', backgroundColor: '#F7F7F7', paddingLeft:is1200?"6.2%": '7.2%', paddingRight:is1200?"6.2%": '7.2%' }}>
+            <div style={{ marginTop: isMobile ? 0 : is960 ? "88px" : '133px', backgroundColor: '#F7F7F7', paddingLeft: is1200 ? "6.2%" : '7.2%', paddingRight: is1200 ? "6.2%" : '7.2%' }}>
                 <div style={{ paddingTop: '56px', fontFamily: 'Mulish', fontSize: '36px', fontWeight: 'bold', fontStyle: 'normal', lineHeight: '120%', textAlign: isMobile || isLarge ? 'center' : '' }}>
                     Blogs
                 </div>
-                <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px',flexWrap:is1100?'wrap':"" }}>
-                    <div style={{paddingRight: isLarge ? 0 : 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', flex: isMobile?"" :is1100?1:"" }}>
-                        <img src={MasterImage} style={{margin: 0,width:is1100?"": isLarge?"110%":"100%", marginRight: 0}} />
-                        <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth:is1100?"320px":isLarge?220: 320 }}>
-                            <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '32px' }}>
-                                A Reader in here, is a Leader out there: The (r)Evolution of Market
+                <div style={{ paddingTop: '40px', display: 'flex', justifyContent: 'space-between', paddingBottom: '56px', flexWrap: is1100 ? 'wrap' : "" }}>
+                    {blogs.length>0 &&
+                        <div style={{ paddingRight: isLarge ? 0 : 16, display: isMobile ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', flex: isMobile ? "" : is1100 ? 1 : "" }}>
+                            <img src={MasterImage} style={{ margin: 0, width: is1100 ? "" : isLarge ? "110%" : "100%", marginRight: 0 }} />
+                            <div style={{ background: 'white', position: 'relative', top: '-135px', padding: 40, display: 'flex', flexDirection: 'column', maxWidth: is1100 ? "320px" : isLarge ? 220 : 320 }}>
+                                <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '32px' }}>
+                                    {blogs[0].title.substring(0, 40)}{blogs[0].title.length > 40 ? "..." : ""}
+                                </div>
+                                <div style={{ paddingTop: '16px', fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: 16, lineHeight: '26px' }}>
+                                    {blogs[0].content_para_1.substring(0, 90)}{blogs[0].content_para_1.length > 90 ? "..." : ""}
+                                </div>
+                                <div style={{ paddingTop: '32px' }}>
+                                    <button onClick={() => window.open('/blog/' + blogs[0]._id)} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
+                                        Read More
+                                    </button>
+                                </div>
                             </div>
-                            <div style={{ paddingTop: '16px', fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'normal', fontSize: 16, lineHeight: '26px' }}>
-                                From an investor point of view, IPO gives a chance to buy shares of a company, directly from the company....
-                            </div>
-                            <div style={{ paddingTop: '32px' }}>
-                                <button onClick={() => window.open('/blog/content')} style={{ width: isMobile ? 120 : '100%', color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
-                                    Read More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div style={{ flex: isLarge ? "" : 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: is1100?624:"", marginLeft:'auto', marginRight: 'auto' }}>
-                        <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '',  }}>
+                        </div>}
+                    <div style={{ flex: isLarge ? "" : 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: is1100 ? 624 : "", marginLeft: 'auto', marginRight: 'auto' }}>
+                        <div className={classes.blog} ref={scrollRefBlog} id='blog' style={{ display: 'flex', flexWrap: isMobile ? '' : 'wrap', flexDirection: isMobile ? '' : 'row', alignItems: isMobile ? 'center' : '', }}>
                             {blogs.slice(0, 4).map((i, index) =>
-                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile?0:16, marginRight:isMobile?0:(index%2==0 || is1100)? 16:0 }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: 296, marginBottom: isMobile ? 0 : 16, marginRight: isMobile ? 0 : (index % 2 == 0 || is1100) ? 16 : 0 }}>
                                     <div style={{ flex: 1 }}>
                                         <img src={i.image} style={{ width: "100%", height: "auto", maxWidth: 296, }} />
                                     </div>
@@ -433,7 +434,7 @@ function BlogHome() {
                     {leftArrowActiveBlog ? leftActiveBlog() : leftInActiveBlog()}
                     {rightArrowActiveBlog ? rightActiveBlog() : rightInActiveBlog()}
                 </div>
-                <div style={{ display: 'flex',justifyContent: 'center', paddingTop: isMobile ? '26.88px' : 16,paddingBottom: 40 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', paddingTop: isMobile ? '26.88px' : 16, paddingBottom: 40 }}>
                     <button onClick={() => history.push('/blog/all')} style={{ width: isMobile ? 120 : 257, color: "#FFFFFF", height: isMobile ? 44 : 56, borderRadius: 8, borderWidth: 2, fontFamily: 'Poppins', fontSize: isMobile ? 14 : 18, lineHeight: '27px', fontStyle: 'normal', fontWeight: 'normal', borderColor: "#2584F4", backgroundColor: "#2584F4", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: "center", padding: '11 24', cursor: 'pointer', border: "none", outline: 'none' }}>
                         View All
                     </button>
@@ -519,7 +520,7 @@ function BlogHome() {
         }
 
         return (
-            <div style={{ paddingLeft: '7.2%', paddingRight: '7.2%', backgroundColor: isMobile?"white":'#F7F7F7', paddingTop: '56px', marginBottom:isMobile?0: '160px', paddingBottom: '56px' }}>
+            <div style={{ paddingLeft: '7.2%', paddingRight: '7.2%', backgroundColor: isMobile ? "white" : '#F7F7F7', paddingTop: '56px', marginBottom: isMobile ? 0 : '160px', paddingBottom: '56px' }}>
                 <div style={{ fontFamily: 'Mulish', fontStyle: 'normal', fontWeight: 'bold', fontSize: isMobile ? '20px' : '36px', lineHeight: '120%', }}>
                     Tutorial Videos
                 </div>

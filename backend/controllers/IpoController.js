@@ -48,11 +48,17 @@ exports.findCategory = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-    
+    const time = (new Date()).getTime();
     Ipo.find()
         .then(ipo => {
-            console.log(ipo);
-            res.send(ipo)
+            const active = ipo.filter(i=>i.open_date<time && i.close_date>time);
+            const upcoming = ipo.filter(i=>i.open_date>time);
+            const past = ipo.filter(i=>i.close_date<time && i.close_date>(time - 10*24*60*60*1000));
+            res.send({
+                active: active,
+                past: past,
+                upcoming: upcoming,
+            })
         })
         .catch((err) => {
             res.status(500).send({

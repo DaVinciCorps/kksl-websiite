@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import PolicyBazar from '../images/policybazar.png'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { url } from "./Helper";
+import { url, parseDate } from "./Helper";
 import axios from 'axios';
 
 function IpoApply() {
@@ -76,7 +76,7 @@ function IpoApply() {
                             Bidding Date
                         </div>
                         <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                        {ipo && ipo.open_date}-{ipo && ipo.close_date}
+                        {ipo && parseDate(ipo.open_date)}-{ipo && parseDate(ipo.close_date)}
                         </div>
                     </div>
                     <div>
@@ -85,7 +85,7 @@ function IpoApply() {
                                 Min. Investment
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                {ipo && ipo.minimum_amount}
+                                {ipo && ipo.minimum_amount?ipo.minimum_amount:'-'}
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ function IpoApply() {
                                 Lot Size
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                            {ipo && ipo.lot_size}
+                            {ipo && ipo.lot_size?ipo.lot_size:"-"}
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ function IpoApply() {
                                 Issue Size
                             </div>
                             <div style={{ paddingTop: '8px', fontSize: '16px', fontWeight: 600, fontFamily: 'Mulish', fontStyle: 'normal', lineHeight: '120%' }}>
-                                {ipo && ipo.issue_size}
+                                {ipo && ipo.issue_size?ipo.issue_size:"-"}
                             </div>
                         </div>
                     </div>

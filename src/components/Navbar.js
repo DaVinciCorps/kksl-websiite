@@ -210,7 +210,7 @@ export default function Navbar() {
                                 <p style={{ cursor: 'pointer', marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
                                     Circulars/ Bulletin
                                 </p>
-                                <p onClick={handleIpo} style={{ marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
+                                <p onClick={handleIpo} style={{cursor:"pointer", marginTop: 16, color: "rgba(22, 26, 27, 0.7)", fontSize: 16, fontFamily: 'Mulish', lineHeight: "19.2px", fontWeight: 400, letterSpacing: '0.05em' }}>
                                     IPOs
                                 </p>
                             </div>
@@ -347,7 +347,7 @@ export default function Navbar() {
                         <p style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, }}>
                             Fund transfer
                         </p>
-                        <p onClick={handleIpo} onClick={handleIpo} style={{ marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 62 }}>
+                        <p onClick={handleIpo} onClick={handleIpo} style={{cursor:"pointer", marginTop: 0, color: "#161A1B", fontSize: 14, fontFamily: 'Mulish', lineHeight: "22px", fontWeight: 600, marginLeft: 62 }}>
                             IPO
                         </p>
                     </div>
@@ -417,7 +417,7 @@ export default function Navbar() {
                         <p onClick={handleOpenAccount} className={classes.navP}>
                             OPEN AN ACCOUNT
                         </p>
-                        <p className={classes.navP}>
+                        <p onClick={()=>{history.push("/IPO")}} className={classes.navP}>
                             IPO
                         </p>
                         <p className={classes.navP}>
